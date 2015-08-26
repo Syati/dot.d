@@ -1,0 +1,42 @@
+*.bak
+*.dat
+*.elc
+tramp
+elpa/*
+el-get
+
+.mc-lists.el
+bookmarks
+
+# pythonenv
+.python*
+
+# cedet
+semanticdb
+srecode-map.el
+
+*.jar
+*/bin/*
+
+
+# for emacs user
+ide
+\#backup
+\#*
+.#*#
+*~
+.DS_Store
+.org-id-locations
+undohist/*
+session.*
+backup
+
+
+
+
+
+
+
+
+
+
