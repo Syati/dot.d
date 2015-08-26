@@ -2,8 +2,6 @@
 *.dat
 *.elc
 tramp
-elpa/*
-el-get
 
 .mc-lists.el
 bookmarks
@@ -27,8 +25,13 @@ ide
 *~
 .DS_Store
 .org-id-locations
-undohist/*
-session.*
+emacs.d/elscreen
+emacs.d/elpa
+emacs.d/el-get
+emacs.d/undohist
+emacs.d/session.*
+emacs.d/url
+emacs.d/var
 backup
 
 
