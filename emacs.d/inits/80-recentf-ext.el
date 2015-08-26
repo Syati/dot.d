@@ -1,0 +1,2 @@
+(require 'recentf-ext)
+
