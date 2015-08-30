@@ -5,8 +5,8 @@
 case "${OSTYPE}" in
 freebsd*|darwin*)
     export SHELL="/usr/local/bin/zsh"
-	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:~/Qt/5.3/clang_64/bin"
-    export NODE_PATH="/usr/local/lib/node_modules"
+	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Users/$USER/node_modules/.bin"
+    export NODE_PATH="/Users/$USER/node_modules/"
 	alias emacs='XMODIFIERS=@im=none emacs'
     ;;
 linux*)

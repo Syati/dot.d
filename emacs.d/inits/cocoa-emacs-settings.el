@@ -5,26 +5,27 @@
 
 
 (let ((my-emacs-path (list
-         "/opt/local/bin"
-         "/sw/bin"
+         (expand-file-name "~/node_modules/.bin")
+         (expand-file-name "~/.rbenv/shims")
+         "/usr/local/opt/coreutils/libexec/gnubin"
          "/usr/local/bin"
          "/usr/bin"
-         "/usr/sbin/"
+         "/usr/sbin"
+         "/sbin"
          "/bin"
-         "/Applications/Emacs.app/Contents/MacOS/bin"
          )))
-    (setq exec-path my-emacs-path)
-    (setenv "PATH" (mapconcat 'identity my-emacs-path ":")))
+    (setq exec-path (append my-emacs-path exec-path))
+    (setenv "PATH" (mapconcat 'identity exec-path ":")))
 
 
 (setq dired-listing-switches "-AlGh")
 (setq ls-lisp-dirs-first t)
-;; resolve Listing directory failed but access-file worked 
+;; resolve Listing directory failed but access-file worked
 (require 'ls-lisp)
 (setq ls-lisp-use-insert-directory-program nil)
 
 (setq multi-term-program "/usr/local/bin/zsh")
-(setenv "TERMINFO" "~/.terminfo")
+;;(setenv "TERMINFO" "~/.terminfo")
 
 
 (if (setq browse-url-browser-function
