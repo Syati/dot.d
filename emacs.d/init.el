@@ -44,14 +44,10 @@
     magit-gerrit
     magit-gh-pulls
     magit-gitflow
-    magit-log-edit
-    magit-push-remote
     magit-stgit
     magit-svn
     magit-topgit
     magit-tramp
-    git-commit-mode
-    git-rebase-mode
     flycheck
     flycheck-cask
     flycheck-color-mode-line
@@ -116,7 +112,6 @@
     undohist
     xml-rpc
     wgrep
-    tempbuf
     sequential-command
     multiple-cursors
     popwin
