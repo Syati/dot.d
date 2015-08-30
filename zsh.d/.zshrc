@@ -1,18 +1,17 @@
-CWD=`dirname $(readlink -s ~/.zshrc)`
-
 #================================#
 # settings of each os            #
 #================================#
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
+    export SHELL="/usr/local/bin/zsh"
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:~/Qt/5.3/clang_64/bin"
     export NODE_PATH="/usr/local/lib/node_modules"
-	alias emacs='TERM=xterm-256color XMODIFIERS=@im=none emacs'
+	alias emacs='XMODIFIERS=@im=none emacs'
     ;;
 linux*)
 	export PATH="$PATH":~/node_modules/.bin:~/android-sdks/tools:~/android-sdks/platform-tools:~/.framework/play-2.1.2:~/localenv/bin
-    alias emacs='TERM=xterm-256color XMODIFIERS=@im=none emacs -nw'
+    alias emacs='XMODIFIERS=@im=none emacs -nw'
     alias pbcopy='xclip -selection clipboard -i'
     alias pbpaste='xclip -selection clipboard -o'
     ;;
@@ -21,6 +20,8 @@ esac
 #================================#
 # common setting                 #
 #================================#
+
+CWD=`dirname $(readlink -s ~/.zshrc)`
 
 #----------------------------#
 # start up                   #
@@ -39,7 +40,7 @@ fi
 #----------------------------#
 # export                     #
 #----------------------------#
-
+export TERM=xterm-256color
 export CMAKE_PREFIX_PATH=~/Qt/5.3/clang_64
 
 export EDITOR=emacsclient
@@ -47,6 +48,10 @@ export VISUAL=emacsclient
 
 #virtual env
 export WORKON_HOME=~/.virtualenvs
+
+#rbenv
+[ `whence rbenv` ] && eval "$(rbenv init -)"
+
 
 #for ls --color | less
 export LESS='-R' 
