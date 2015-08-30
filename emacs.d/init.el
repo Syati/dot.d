@@ -98,13 +98,14 @@
     ;; org
     org
     ;; emacs 拡張
+    image+
     migemo
     recentf-ext
     elscreen
     elscreen-persist
     swap-buffers    
     switch-window
-    el-get
+    ;; el-get turn-off
     ag
     wgrep-ag
     redo+
