@@ -57,8 +57,11 @@
 
 ;; toolbar setting
 (if (display-graphic-p)
-    (progn (tool-bar-mode 0)
-	   (toggle-scroll-bar 0)))
+    (progn 
+      (tool-bar-mode 0)
+      ))
+
+(scroll-bar-mode -1)
 
 ;; frame opacity setting
 (set-frame-parameter (selected-frame) 'alpha '(90 70))
