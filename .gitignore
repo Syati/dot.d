@@ -25,6 +25,7 @@ ide
 *~
 .DS_Store
 .org-id-locations
+emacs.d/recentf
 emacs.d/elscreen
 emacs.d/elpa
 emacs.d/el-get

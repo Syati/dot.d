@@ -1,0 +1,12 @@
+# for emacs user
+\#backup
+\#*
+.\#*
+*~
+GPATH
+GRTAGS
+GTAGS
+GSYMS
+^TAGS$
+^tags$
+*_flymake.*
