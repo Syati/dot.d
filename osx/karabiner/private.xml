@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<root>
+  <appdef>
+    <appname>PYCHARM</appname>
+    <equal>com.jetbrains.pycharm</equal>
+  </appdef>
+
+  <appdef>
+    <appname>FIREFOX_DEV</appname>
+    <equal>org.mozilla.firefoxdeveloperedition</equal>
+  </appdef>
+  
+  <appdef>
+    <appname>SUBLIMETEXT</appname>
+    <equal>com.sublimetext.3</equal>
+  </appdef>
+
+  <replacementdef>
+    <replacementname>EMACS_MODE_IGNORE_APPS</replacementname>
+    <replacementvalue>
+      FIREFOX_DEV, FIREFOX, PYCHARM, EMACS, TERMINAL, SUBLIMETEXT,
+    </replacementvalue>
+  </replacementdef>
+
+  <item>
+    <name>Caps to command in Firefox</name>
+    <identifier>private.app_firefox_swap_caps_to_command</identifier>
+    <only>FIREFOX, FIREFOX_DEV</only>
+    <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+  </item>
+
+  <item>
+    <name>Ctrl + PNBF in PYCHARM</name>
+    <identifier>private.app_pycharm_emacs_pnbf</identifier>
+    <only>PYCHARM</only>
+    <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+    <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+    <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+    <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>    
+  </item>
+
+  <item>
+    <name>ESP to Ctrl + G in PYCHARM</name>
+    <identifier>private.app_pycharm_emacs_esp</identifier>
+    <only>PYCHARM</only>
+    <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+  </item>
+ 
+  
+</root>
