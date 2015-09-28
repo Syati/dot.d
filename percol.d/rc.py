@@ -1,5 +1,10 @@
-# X / _ / X
-percol.view.PROMPT  = ur"<bold><yellow>X / _ / X</yellow></bold> %q"
+
+from percol.finder import FinderMultiQueryRegex
+
+
+percol.view.PROMPT = ur"<blue>Input:</blue> %q"
+percol.view.RPROMPT = ur"(%F) [%i/%I]"
+
 
 # Emacs like
 percol.import_keymap({

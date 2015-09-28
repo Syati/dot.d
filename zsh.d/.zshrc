@@ -5,7 +5,7 @@
 case "${OSTYPE}" in
 freebsd*|darwin*)
     export SHELL="/usr/local/bin/zsh"
-	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Users/$USER/node_modules/.bin"
+	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Users/$USER/node_modules/.bin:/Users/$USER/Applications/Qt/5.5/clang_64/bin:"
     export NODE_PATH="/Users/$USER/node_modules/"
 	alias emacs='XMODIFIERS=@im=none emacs'
     ;;
@@ -100,7 +100,7 @@ bindkey "ALT+N" history-beginning-search-forward-end
 #----------------------------#
 
 #setopt auto_menu        # toggle auto menu
-setopt auto_cd           # auto change directory
+#setopt auto_cd           # auto change directory
 setopt auto_pushd        # auto directory pushd that you can get dirs list by cd -[tab]
 setopt complete_aliases  # aliased ls needs if file/dir completions work
 setopt correct           # command correct edition before each completion attempt
