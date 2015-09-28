@@ -1,16 +1,13 @@
 ;; If use bundled typescript.el,
-(require 'typescript)
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (tide-setup)
+            (flycheck-mode t)
+            (setq flycheck-check-syntax-automatically '(save mode-enabled))
+            (eldoc-mode t)
+            ;; company is an optional dependency. You have to
+            ;; install it separately via package-install
+            (company-mode-on)))
 
-(require 'tss)
-
-;; Key binding
-(setq tss-popup-help-key "C-:")
-(setq tss-jump-to-definition-key "M-.")
-(setq tss-implement-definition-key "C-c i")
-
-;; Make config suit for you. About the config item, eval the following sexp.
-;; (customize-group "tss")
-
-;; Do setting recommemded configuration
-(tss-config-default)
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)

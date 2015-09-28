@@ -63,6 +63,7 @@
     restclient
     ;; typescript
     typescript-mode
+    tide
     ;;; c
     cmake-mode
     cmake-ide
