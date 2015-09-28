@@ -84,6 +84,8 @@
     ;;; markdown
     markdown-mode
     markdown-mode+
+    ;;; docker
+    dockerfile-mode
     ;;;php
     php-mode
     ;;: web
