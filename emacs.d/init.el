@@ -136,8 +136,11 @@
     helm-git-grep
     helm-gtags
     helm-ag-r
+    helm-projectile
     wgrep-helm
     all-ext
+    ;;
+    projectile
     ;;theme(display)
     monokai-theme
     ;; japanese
