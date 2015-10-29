@@ -1,4 +1,4 @@
-(require 'origami)
+(autoload 'origami "origami" nil t)
 
 (add-to-list 'origami-parser-alist '(coffee-mode . origami-indent-parser))
 

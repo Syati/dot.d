@@ -1,4 +1,5 @@
 ;; If use bundled typescript.el,
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
 (add-hook 'typescript-mode-hook
           (lambda ()
             (tide-setup)

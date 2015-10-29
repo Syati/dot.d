@@ -1,5 +1,6 @@
 (require 'yasnippet)
 (require 'angular-snippets)
+(require 'dropdown-list)
 
 (add-to-list 'yas/root-directory "~/.emacs.d/snippets")
 ;;(define-key yas-minor-mode-map (kbd "C-tab") 'yas-expand)
@@ -18,7 +19,6 @@
 (define-key yas-keymap (kbd "C-n") 'yas-next-field-or-maybe-expand)
 (define-key yas-keymap (kbd "C-p") 'yas-prev)
 
-(require 'dropdown-list)
 
 (setq yas-prompt-functions '(yas-dropdown-prompt
                              yas-ido-prompt

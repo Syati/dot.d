@@ -1,5 +1,5 @@
 ;;Tag select function ( gnu global )
-(require 'gtags) 
+(autoload 'gtags "gtags" nil t)
 (setq gtags-path-style 'relative)
 (setq gtags-read-only t)
 (setq gtags-pop-delete t)

@@ -1,5 +1,5 @@
 ;; multi-web-mode
-(require 'multi-web-mode)
+(autoload 'multi-web-mode "multi-web-mode" nil t)
 (setq mweb-default-major-mode 'web-mode)
 (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
                   (js2-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")

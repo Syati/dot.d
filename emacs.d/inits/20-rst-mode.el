@@ -1,6 +1,6 @@
 ;; rst.elを読み込み
-(require 'rst)
-(require 'auto-complete-rst)
+(autoload 'rst "rst" nil t)
+(autoload 'auto-complete-rst "auto-complete-rst" nil t)
 
 (auto-complete-rst-init)
 ;; *.rst, *.restファイルをrst-modeでOpen

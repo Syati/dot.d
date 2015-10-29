@@ -57,6 +57,7 @@
     ;; yanippet
     yasnippet
     angular-snippets
+    react-snippets
     dropdown-list
     ;; 開発モード
     ;;; rest client
@@ -96,8 +97,6 @@
     tidy
     ;;;; less
     less-css-mode
-    ;;; doc
-    org2blog
     ;; org
     org
     ;; emacs 拡張

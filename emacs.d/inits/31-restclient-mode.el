@@ -1,1 +1,1 @@
-(require 'restclient)
+(autoload 'restclient "restclient" nil t)

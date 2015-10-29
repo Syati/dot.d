@@ -1,4 +1,4 @@
-(require 'cmake-mode)
+(autoload 'cmake-mode "cmake-mode" nil t)
 ;;(cmake-ide-setup)
 
 (setq auto-mode-alist
