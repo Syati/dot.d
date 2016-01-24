@@ -3,9 +3,15 @@ install
 --------------
 
 ```sh
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-$ brew tap Homebrew/brewdler
+$ brew tap Homebrew/bundle
 
-$ brew brewdle
+# install
+$ brew bundle
+
+# dump 
+$ brew bundle dump
 ```
 
+check below repository
+
+- https://github.com/Homebrew/homebrew-bundle
