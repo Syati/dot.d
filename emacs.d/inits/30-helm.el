@@ -61,13 +61,13 @@
 
 
 ;; helm recentf only directories
-(defvar helm-c-recentf-directory-source
-  '((name . "Recentf Directry")
-    (candidates . (lambda ()
-                    (loop for file in recentf-list
-                          when (file-directory-p file)
-                          collect file)))
-    (type . file)))
+;;(defvar helm-c-recentf-directory-source
+;;  '((name . "Recentf Directry")
+;;    (candidates . (lambda ()
+;;                    (loop for file in recentf-list
+;;                          when (file-directory-p file)
+;;                          collect file)))
+;;    (type . file)))
 
 (defun my/helm-recentf (arg)
   (interactive "P")

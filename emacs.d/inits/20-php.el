@@ -1,18 +1,22 @@
+(setq php-mode-coding-style (quote psr2))
 (autoload 'php-mode "php-mode")
-(setq php-warned-bad-indent t)
 (setq auto-mode-alist
       (cons '("\\.php\\'" . php-mode) auto-mode-alist))
 
 (setq php-search-url "http://www.php.net/ja/")
 (setq php-manual-url "http://www.php.net/manual/ja/")
 
-(setq php-mode-force-pear t)
+(add-hook 'php-mode-hook
+          (lambda ()
+            (setq flycheck-phpcs-standard "PSR2")
+
+;;(setq php-mode-force-pear t)
 
 ;;; php-mode-hook
 ;; (add-hook 'php-mode-hook
 ;;           (lambda ()
 ;;             (require 'php-completion)
-             
+
 ;;             (define-key php-mode-map [tab] 'phpcmp-complete)
 ;;             (php-completion-mode t)
 ;;             (hs-minor-mode t)

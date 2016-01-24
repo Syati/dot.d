@@ -4,6 +4,7 @@
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
+(add-hook 'php-mode-hook 'helm-gtags-mode)
 
 ;; customize
 (custom-set-variables
