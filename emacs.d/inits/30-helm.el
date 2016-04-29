@@ -11,7 +11,7 @@
 ;;(setq helm-migemize-command-idle-delay helm-idle-delay)
 ;;(helm-migemize-command helm-for-files)
 
-(define-key global-map (kbd "C-M-x")   'helm-M-x)
+(define-key global-map (kbd "M-x")   'helm-M-x)
 (define-key global-map (kbd "C-t")     'helm-for-files)
 (define-key global-map (kbd "C-x C-h") 'helm-descbinds)
 (define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
