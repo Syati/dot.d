@@ -1,34 +1,14 @@
 // ========================== KeySnail Init File =========================== //
 
-// この領域は, GUI により設定ファイルを生成した際にも引き継がれます
-// 特殊キー, キーバインド定義, フック, ブラックリスト以外のコードは, この中に書くようにして下さい
+// You can preserve your code in this area when generating the init file using GUI.
+// Put all your code except special key, set*key, hook, blacklist.
 // ========================================================================= //
 //{{%PRESERVE%
-
-// hatebu
-key.setGlobalKey(["C-x", ";"], function (ev, arg) {
-    ext.exec("list-hateb-items", arg);
-}, "はてなブックマークのアイテムを一覧表示", true);
-
-key.setViewKey("c", function (ev, arg) {
-    ext.exec("list-hateb-comments", arg);
-}, "はてなブックマークのコメントを一覧表示", true);
-
-key.setViewKey('a', function (ev, arg) {
-    ext.exec("hateb-bookmark-this-page");
-}, 'このページをはてなブックマークに追加', true);
-
-
-//k2emacs
-//plugins.options["K2Emacs.editor"]    = "/usr/bin/emacs";
-//plugins.options["K2Emacs.ext"]    = "html";
-//plugins.options["K2Emacs.encode"] = "UTF-8";
-//plugins.options["K2Emacs.sep"] = "/";
 
 //tanything
 key.setGlobalKey('C-t', function (ev, arg) {
                    ext.exec("tanything", arg);
-               }, "view all tabs", true);
+}, "view all tabs", true);
 
 plugins.options["tanything_opt.keymap"] = {
     "C-i"   : "prompt-toggle-edit-mode",
@@ -51,83 +31,8 @@ plugins.options["tanything_opt.keymap"] = {
     ""      : "localTogglePin"
 };
 
-//twitter
-plugins.options["twitter_client.tweet_keymap"] = {
-    "C-RET" : "prompt-decide",
-    "RET"   : ""
-};
 
-plugins.options["twitter_client.popup_new_statuses"] = true;
-
-key.setViewKey("t",
-    function (ev, arg) {
-        ext.exec("twitter-client-display-timeline", arg);
-    }, "TL を表示", true);
-
-key.setCaretKey("t",
-    function (ev, arg) {
-        ext.exec("twitter-client-display-timeline", arg);
-    }, "TL を表示", true);
-
-key.setGlobalKey(["C-c", "T"],
-    function (ev, arg) {
-        ext.exec("twitter-client-tweet-this-page", arg);
-    }, "Tweet with the title and URL of this page", true);
-
-plugins.options["twitter_client.keymap"] = {
-    "C-i"   : "prompt-toggle-edit-mode",
-    "SPC"   : "prompt-next-page",
-    "b"     : "prompt-previous-page",
-    "j"     : "prompt-next-completion",
-    "k"     : "prompt-previous-completion",
-    "g"     : "prompt-beginning-of-candidates",
-    "G"     : "prompt-end-of-candidates",
-    "q"     : "prompt-cancel",
-    // twitter client specific actions
-    "t"     : "tweet",
-    "r"     : "reply",
-    "R"     : "retweet",
-    "d"     : "send-direct-message",
-    "D"     : "delete-tweet",
-    "f"     : "add-to-favorite",
-    "v"     : "display-entire-message",
-    "V"     : "view-in-twitter",
-    "c"     : "copy-tweet",
-    "*"     : "show-target-status",
-    "@"     : "show-mentions",
-    "/"     : "search-word",
-    "o"     : "open-url",
-    "+"     : "show-conversations",
-    "h"     : "refresh-or-back-to-timeline",
-    "s"     : "switch-to"
-};
-
-
-//hok
-key.setCaretKey('e', function (aEvent, aArg) {
-    ext.exec("hok-start-foreground-mode", aArg);
-}, 'Hit a Hint を開始', true);
-
-key.setViewKey('e', function (aEvent, aArg) {
-    ext.exec("hok-start-foreground-mode", aArg);
-}, 'Hit a Hint を開始', true);
-
-key.setViewKey('E', function (aEvent, aArg) {
-    ext.exec("hok-start-background-mode", aArg);
-}, 'リンクをバックグラウンドで開く Hit a Hint を開始', true);
-
-key.setCaretKey('E', function (aEvent, aArg) {
-    ext.exec("hok-start-background-mode", aArg);
-}, 'リンクをバックグラウンドで開く Hit a Hint を開始', true);
-
-key.setCaretKey(';', function (aEvent, aArg) {
-    ext.exec("hok-start-extended-mode", aArg);
-}, 'HoK - 拡張ヒントモード', true);
-
-key.setCaretKey('s', function (ev, arg) {
-    ext.exec("swap-caret", arg, ev);
-}, 'キャレットを交換', true);
-
+//toggle caret mode
 key.setViewKey('i', function (ev, arg) {
     util.setBoolPref("accessibility.browsewithcaret", true);
 }, 'Enter to caret mode', true);
@@ -135,6 +40,28 @@ key.setViewKey('i', function (ev, arg) {
 key.setCaretKey('i', function (ev, arg) {
     util.setBoolPref("accessibility.browsewithcaret", false);
 }, 'Leave from caret mode', true);
+
+
+//hok
+key.setViewKey('e', function (aEvent, aArg) {
+    ext.exec("hok-start-foreground-mode", aArg);
+}, 'Hok - Foreground hint mode', true);
+
+key.setViewKey('E', function (aEvent, aArg) {
+    ext.exec("hok-start-background-mode", aArg);
+}, 'HoK - Background hint mode', true);
+
+key.setViewKey(';', function (aEvent, aArg) {
+    ext.exec("hok-start-extended-mode", aArg);
+}, 'HoK - Extented hint mode', true);
+
+key.setViewKey(['C-c', 'C-e'], function (aEvent, aArg) {
+    ext.exec("hok-start-continuous-mode", aArg);
+}, 'Start continuous HaH', true);
+
+key.setViewKey('c', function (aEvent, aArg) {
+    ext.exec("hok-yank-foreground-mode", aArg);
+}, 'Hok - Foreground yank hint mode', true);
 
 // bmany
 plugins.options["bmany.default_open_type"] = "tab";
@@ -154,7 +81,6 @@ key.setViewKey([':', 'k'], function (ev, arg) {
 key.setViewKey([':', 't'], function (ev, arg) {
     ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
 }, "bmany - List bookmarks with tag");
-
 
 //}}%PRESERVE%
 // ========================================================================= //
@@ -209,268 +135,446 @@ hook.addToHook('KeyBoardQuit', function (aEvent) {
 
 // ============================= Key bindings ============================== //
 
-key.setGlobalKey('M-v', function (ev) {
-    goDoCommand("cmd_scrollPageUp");
-}, '一画面分スクロールアップ');
-
-key.setGlobalKey('C-v', function (ev) {
-    goDoCommand("cmd_scrollPageDown");
-}, '一画面スクロールダウン');
-
-key.setGlobalKey(['C-x', 'l'], function (ev) {
-    command.focusToById("urlbar");
-}, 'ロケーションバーへフォーカス', true);
-
-key.setGlobalKey(['C-x', 'g'], function (ev) {
-    command.focusToById("searchbar");
-}, '検索バーへフォーカス', true);
-
-key.setGlobalKey(['C-x', 'k'], function (ev) {
-    BrowserCloseTabOrWindow();
-}, 'タブ / ウィンドウを閉じる');
-
-key.setGlobalKey(['C-x', 'K'], function (ev) {
-    closeWindow(true);
-}, 'ウィンドウを閉じる');
-
-key.setGlobalKey(['C-x', 'n'], function (ev) {
-    OpenBrowserWindow();
-}, 'ウィンドウを開く');
-
-key.setGlobalKey(['C-x', 'C-c'], function (ev) {
-    goQuitApplication();
-}, 'Firefox を終了', true);
-
-key.setGlobalKey(['C-x', 'o'], function (ev, arg) {
-    command.focusOtherFrame(arg);
-}, '次のフレームを選択');
-
-key.setGlobalKey(['C-x', '1'], function (ev) {
-    window.loadURI(ev.target.ownerDocument.location.href);
-}, '現在のフレームだけを表示', true);
-
-key.setGlobalKey(['C-c', 'w'], function (ev, arg) {
-    ext.exec("focus_window", arg);
-}, 'ウィンドウにフォーカス', true);
-
-key.setGlobalKey(['C-c', 'r'], function (ev, arg) {
-    ext.exec("focus_prompt", arg);
-}, 'プロンプトにフォーカス', true);
-
 key.setGlobalKey('C-M-r', function (ev) {
-    userscript.reload();
-}, '設定ファイルを再読み込み', true);
+                userscript.reload();
+            }, 'Reload the initialization file', true);
 
 key.setGlobalKey('M-x', function (ev, arg) {
-    ext.select(arg, ev);
-}, 'エクステ一覧表示', true);
+                ext.select(arg, ev);
+            }, 'List exts and execute selected one', true);
 
-key.setGlobalKey(['C-x', 'h'], function (ev) {
-    key.listKeyBindings();
-}, 'キーバインド一覧を表示');
+key.setGlobalKey('M-:', function (ev) {
+                command.interpreter();
+            }, 'Command interpreter', true);
 
-key.setGlobalKey('C-j', function (ev) {
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
-}, 'リターンコードを生成');
+key.setGlobalKey(["<f1>", "b"], function (ev) {
+                key.listKeyBindings();
+            }, 'List all keybindings', false);
 
-//key.setGlobalKey('M-w', function (ev) {
-//    command.copyRegion(ev);
-//}, '選択中のテキストをコピー', true);
+key.setGlobalKey('C-m', function (ev) {
+                key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
+            }, 'Generate the return key code', false);
+
+key.setGlobalKey(["<f1>", "F"], function (ev) {
+                openHelpLink("firefox-help");
+            }, 'Display Firefox help', false);
+
+key.setGlobalKey(["C-x", "l"], function (ev) {
+                command.focusToById("urlbar");
+            }, 'Focus to the location bar', true);
+
+key.setGlobalKey(["C-x", "g"], function (ev) {
+                command.focusToById("searchbar");
+            }, 'Focus to the search bar', true);
+
+key.setGlobalKey(["C-x", "t"], function (ev) {
+                command.focusElement(command.elementsRetrieverTextarea, 0);
+            }, 'Focus to the first textarea', true);
+
+key.setGlobalKey(["C-x", "s"], function (ev) {
+                command.focusElement(command.elementsRetrieverButton, 0);
+            }, 'Focus to the first button', true);
+
+key.setGlobalKey('M-w', function (ev) {
+                command.copyRegion(ev);
+            }, 'Copy selected text', true);
 
 key.setGlobalKey('C-s', function (ev) {
-    command.iSearchForwardKs(ev);
-}, 'Emacs ライクなインクリメンタル検索', true);
+                command.iSearchForwardKs(ev);
+            }, 'Emacs like incremental search forward', true);
 
 key.setGlobalKey('C-r', function (ev) {
-    command.iSearchBackwardKs(ev);
-}, 'Emacs ライクな逆方向インクリメンタル検索', true);
+                command.iSearchBackwardKs(ev);
+            }, 'Emacs like incremental search backward', true);
 
-key.setViewKey('B', function (ev) {
-    BrowserBack();
-}, '戻る');
+key.setGlobalKey(["C-x", "k"], function (ev) {
+                BrowserCloseTabOrWindow();
+            }, 'Close tab / window', false);
 
-key.setViewKey('F', function (ev) {
-    BrowserForward();
-}, '進む');
+key.setGlobalKey(["C-x", "K"], function (ev) {
+                closeWindow(true);
+            }, 'Close the window', false);
 
-key.setViewKey('R', function (ev) {
-    BrowserReload();
-}, '更新', true);
+key.setGlobalKey(["C-c", "u"], function (ev) {
+                undoCloseTab();
+            }, 'Undo closed tab', false);
 
-key.setViewKey([['C-n'], ['j']], function (ev) {
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
-}, '一行スクロールダウン');
+key.setGlobalKey(["C-x", "n"], function (ev) {
+                OpenBrowserWindow();
+            }, 'Open new window', false);
 
-key.setViewKey([['C-p'], ['k']], function (ev) {
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_UP, true);
-}, '一行スクロールアップ');
+key.setGlobalKey('C-M-l', function (ev) {
+                getBrowser().mTabContainer.advanceSelectedTab(1, true);
+            }, 'Select next tab', false);
 
-key.setViewKey([['C-f'], ['l']], function (ev) {
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RIGHT, true);
-}, '右へスクロール');
+key.setGlobalKey('C-M-h', function (ev) {
+                getBrowser().mTabContainer.advanceSelectedTab(-1, true);
+            }, 'Select previous tab', false);
 
-key.setViewKey([['C-b'], ['h']], function (ev) {
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_LEFT, true);
-}, '左へスクロール');
+key.setGlobalKey(["C-x", "C-c"], function (ev) {
+                goQuitApplication();
+            }, 'Exit Firefox', true);
 
-key.setViewKey('V', function (ev) {
-    goDoCommand("cmd_scrollPageUp");
-}, '一画面分スクロールアップ');
+key.setGlobalKey(["C-x", "o"], function (ev, arg) {
+                command.focusOtherFrame(arg);
+            }, 'Select next frame', false);
 
-key.setViewKey('v', function (ev) {
-    goDoCommand("cmd_scrollPageDown");
-}, '一画面スクロールダウン');
+key.setGlobalKey(["C-x", "1"], function (ev) {
+                window.loadURI(ev.target.ownerDocument.location.href);
+            }, 'Show current frame only', true);
+
+key.setGlobalKey(["C-x", "C-f"], function (ev) {
+                BrowserOpenFileWindow();
+            }, 'Open the local file', true);
+
+key.setGlobalKey(["C-x", "C-s"], function (ev) {
+                saveDocument(window.content.document);
+            }, 'Save current page to the file', true);
+
+key.setGlobalKey(["C-c", "C-c", "C-v"], function (ev) {
+                toJavaScriptConsole();
+            }, 'Display JavaScript console', true);
+
+key.setGlobalKey(["C-c", "C-c", "C-c"], function (ev) {
+                command.clearConsole();
+            }, 'Clear Javascript console', true);
+
+key.setEditKey(["C-x", "h"], function (ev) {
+                command.selectAll(ev);
+            }, 'Select whole text', true);
+
+key.setEditKey([["C-SPC"], ["C-@"]], function (ev) {
+                command.setMark(ev);
+            }, 'Set the mark', true);
+
+key.setEditKey('C-o', function (ev) {
+                command.openLine(ev);
+            }, 'Open line', false);
+
+key.setEditKey([["C-x", "u"], ["C-_"]], function (ev) {
+                display.echoStatusBar("Undo!", 2000);
+                goDoCommand("cmd_undo");
+            }, 'Undo', false);
+
+key.setEditKey('C-\\', function (ev) {
+                display.echoStatusBar("Redo!", 2000);
+                goDoCommand("cmd_redo");
+            }, 'Redo', false);
+
+key.setEditKey('C-a', function (ev) {
+                command.beginLine(ev);
+            }, 'Beginning of the line', false);
+
+key.setEditKey('C-e', function (ev) {
+                command.endLine(ev);
+            }, 'End of the line', false);
+
+key.setEditKey('C-f', function (ev) {
+                command.nextChar(ev);
+            }, 'Forward char', false);
+
+key.setEditKey('C-b', function (ev) {
+                command.previousChar(ev);
+            }, 'Backward char', false);
+
+key.setEditKey('M-f', function (ev) {
+                command.forwardWord(ev);
+            }, 'Next word', false);
+
+key.setEditKey('M-b', function (ev) {
+                command.backwardWord(ev);
+            }, 'Previous word', false);
+
+key.setEditKey('C-n', function (ev) {
+                command.nextLine(ev);
+            }, 'Next line', false);
+
+key.setEditKey('C-p', function (ev) {
+                command.previousLine(ev);
+            }, 'Previous line', false);
+
+key.setEditKey('C-v', function (ev) {
+                command.pageDown(ev);
+            }, 'Page down', false);
+
+key.setEditKey('M-v', function (ev) {
+                command.pageUp(ev);
+            }, 'Page up', false);
 
 key.setEditKey('M-<', function (ev) {
-    command.moveTop(ev);
-}, 'テキストエリア先頭へ');
+                command.moveTop(ev);
+            }, 'Beginning of the text area', false);
 
 key.setEditKey('M->', function (ev) {
-    command.moveBottom(ev);
-}, 'テキストエリア末尾へ');
+                command.moveBottom(ev);
+            }, 'End of the text area', false);
 
 key.setEditKey('C-d', function (ev) {
-    goDoCommand("cmd_deleteCharForward");
-}, '次の一文字削除');
+                goDoCommand("cmd_deleteCharForward");
+            }, 'Delete forward char', false);
 
 key.setEditKey('C-h', function (ev) {
-    goDoCommand("cmd_deleteCharBackward");
-}, '前の一文字を削除');
+                goDoCommand("cmd_deleteCharBackward");
+            }, 'Delete backward char', false);
 
 key.setEditKey('M-d', function (ev) {
-    command.deleteForwardWord(ev);
-}, '次の一単語を削除');
+                command.deleteForwardWord(ev);
+            }, 'Delete forward word', false);
 
-key.setEditKey([['C-<backspace>'], ['M-<delete>']], function (ev) {
-    command.deleteBackwardWord(ev);
-}, '前の一単語を削除');
+key.setEditKey([["C-<backspace>"], ["M-<delete>"]], function (ev) {
+                command.deleteBackwardWord(ev);
+            }, 'Delete backward word', false);
 
 key.setEditKey('M-u', function (ev, arg) {
-    command.wordCommand(ev, arg, command.upcaseForwardWord, command.upcaseBackwardWord);
-}, '次の一単語を全て大文字に (Upper case)');
+                command.wordCommand(ev, arg, command.upcaseForwardWord, command.upcaseBackwardWord);
+            }, 'Convert following word to upper case', false);
 
 key.setEditKey('M-l', function (ev, arg) {
-    command.wordCommand(ev, arg, command.downcaseForwardWord, command.downcaseBackwardWord);
-}, '次の一単語を全て小文字に (Lower case)');
+                command.wordCommand(ev, arg, command.downcaseForwardWord, command.downcaseBackwardWord);
+            }, 'Convert following word to lower case', false);
 
 key.setEditKey('M-c', function (ev, arg) {
-    command.wordCommand(ev, arg, command.capitalizeForwardWord, command.capitalizeBackwardWord);
-}, '次の一単語をキャピタライズ');
+                command.wordCommand(ev, arg, command.capitalizeForwardWord, command.capitalizeBackwardWord);
+            }, 'Capitalize the following word', false);
 
 key.setEditKey('C-k', function (ev) {
-    command.killLine(ev);
-}, 'カーソルから先を一行カット (Kill line)');
+                command.killLine(ev);
+            }, 'Kill the rest of the line', false);
 
-key.setEditKey('C-y', command.yank, '貼り付け (Yank)');
+key.setEditKey('C-y', command.yank, 'Paste (Yank)', false);
 
-key.setEditKey('M-y', command.yankPop, '古いクリップボードの中身を順に貼り付け (Yank pop)', true);
+key.setEditKey('M-y', command.yankPop, 'Paste pop (Yank pop)', true);
+
+key.setEditKey('C-M-y', function (ev) {
+                if (!command.kill.ring.length)
+                    return;
+
+                let ct = command.getClipboardText();
+                if (!command.kill.ring.length || ct != command.kill.ring[0]) {
+                    command.pushKillRing(ct);
+                }
+
+                prompt.selector(
+                    {
+                        message: "Paste:",
+                        collection: command.kill.ring,
+                        callback: function (i) { if (i >= 0) key.insertText(command.kill.ring[i]); }
+                    }
+                );
+            }, 'Show kill-ring and select text to paste', true);
 
 key.setEditKey('C-w', function (ev) {
-    goDoCommand("cmd_copy");
-    goDoCommand("cmd_delete");
-    command.resetMark(ev);
-}, '選択中のテキストを切り取り (Kill region)', true);
+                goDoCommand("cmd_copy");
+                goDoCommand("cmd_delete");
+                command.resetMark(ev);
+            }, 'Cut current region', true);
 
-key.setEditKey(['C-c', 'e'], function (ev, arg) {
-    ext.exec("edit_text", arg, ev);
-}, '外部エディタで編集', true);
+key.setEditKey(["C-x", "r", "d"], function (ev, arg) {
+                command.replaceRectangle(ev.originalTarget, "", false, !arg);
+            }, 'Delete text in the region-rectangle', true);
 
-key.setCaretKey([['C-a'], ['^']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectBeginLine") : goDoCommand("cmd_beginLine");
-}, 'キャレットを行頭へ移動');
+key.setEditKey(["C-x", "r", "t"], function (ev) {
+                prompt.read("String rectangle: ", function (aStr, aInput) {
+                                command.replaceRectangle(aInput, aStr);
+                            },
+                            ev.originalTarget);
+            }, 'Replace text in the region-rectangle with user inputted string', true);
 
-key.setCaretKey([['C-e'], ['$'], ['M->'], ['G']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectEndLine") : goDoCommand("cmd_endLine");
-}, 'キャレットを行末へ移動');
+key.setEditKey(["C-x", "r", "o"], function (ev) {
+                command.openRectangle(ev.originalTarget);
+            }, 'Blank out the region-rectangle, shifting text right', true);
 
-key.setCaretKey([['C-n'], ['j']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectLineNext") : goDoCommand("cmd_lineNext");
-}, 'キャレットを一行下へ');
+key.setEditKey(["C-x", "r", "k"], function (ev, arg) {
+                command.kill.buffer = command.killRectangle(ev.originalTarget, !arg);
+            }, 'Delete the region-rectangle and save it as the last killed one', true);
 
-key.setCaretKey([['C-p'], ['k']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectLinePrevious") : goDoCommand("cmd_linePrevious");
-}, 'キャレットを一行上へ');
+key.setEditKey(["C-x", "r", "y"], function (ev) {
+                command.yankRectangle(ev.originalTarget, command.kill.buffer);
+            }, 'Yank the last killed rectangle with upper left corner at point', true);
 
-key.setCaretKey([['C-f'], ['l']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectCharNext") : goDoCommand("cmd_charNext");
-}, 'キャレットを一文字右へ移動');
+key.setEditKey('M-n', function (ev) {
+                command.walkInputElement(command.elementsRetrieverTextarea, true, true);
+            }, 'Focus to the next text area', false);
 
-key.setCaretKey([['C-b'], ['h'], ['C-h']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectCharPrevious") : goDoCommand("cmd_charPrevious");
-}, 'キャレットを一文字左へ移動');
+key.setEditKey('M-p', function (ev) {
+                command.walkInputElement(command.elementsRetrieverTextarea, false, true);
+            }, 'Focus to the previous text area', false);
 
-key.setCaretKey([['M-f'], ['w']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectWordNext") : goDoCommand("cmd_wordNext");
-}, 'キャレットを一単語右へ移動');
+key.setViewKey([["C-n"], ["j"]], function (ev) {
+                key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
+            }, 'Scroll line down', false);
 
-key.setCaretKey([['M-b'], ['W']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectWordPrevious") : goDoCommand("cmd_wordPrevious");
-}, 'キャレットを一単語左へ移動');
+key.setViewKey([["C-p"], ["k"]], function (ev) {
+                key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_UP, true);
+            }, 'Scroll line up', false);
 
-key.setCaretKey([['C-v'], ['SPC']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectPageNext") : goDoCommand("cmd_movePageDown");
-}, 'キャレットを一画面分下へ');
+key.setViewKey([["C-f"], ["."]], function (ev) {
+                key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RIGHT, true);
+            }, 'Scroll right', false);
 
-key.setCaretKey([['M-v'], ['b']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectPagePrevious") : goDoCommand("cmd_movePageUp");
-}, 'キャレットを一画面分上へ');
+key.setViewKey([["C-b"], [","]], function (ev) {
+                key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_LEFT, true);
+            }, 'Scroll left', false);
 
-key.setCaretKey([['M-<'], ['g']], function (ev) {
-    ev.target.ksMarked ? goDoCommand("cmd_selectTop") : goDoCommand("cmd_scrollTop");
-}, 'キャレットをページ先頭へ移動');
+key.setViewKey([["M-v"], ["b"]], function (ev) {
+                goDoCommand("cmd_scrollPageUp");
+            }, 'Scroll page up', false);
 
-key.setCaretKey('J', function (ev) {
-    util.getSelectionController().scrollLine(true);
-}, '画面を一行分下へスクロール');
+key.setViewKey('C-v', function (ev) {
+                goDoCommand("cmd_scrollPageDown");
+            }, 'Scroll page down', false);
 
-key.setCaretKey('K', function (ev) {
-    util.getSelectionController().scrollLine(false);
-}, '画面を一行分上へスクロール');
+key.setViewKey([["M-<"], ["g"]], function (ev) {
+                goDoCommand("cmd_scrollTop");
+            }, 'Scroll to the top of the page', true);
 
-key.setCaretKey('H', function (ev) {
-    util.getSelectionController().scrollHorizontal(true);
-    goDoCommand("cmd_scrollLeft");
-}, '左へスクロール');
+key.setViewKey([["M->"], ["G"]], function (ev) {
+                goDoCommand("cmd_scrollBottom");
+            }, 'Scroll to the bottom of the page', true);
 
-key.setCaretKey('L', function (ev) {
-    goDoCommand("cmd_scrollRight");
-    util.getSelectionController().scrollHorizontal(false);
-}, '右へスクロール');
+key.setViewKey('l', function (ev) {
+                getBrowser().mTabContainer.advanceSelectedTab(1, true);
+            }, 'Select next tab', false);
 
-key.setCaretKey('z', function (ev) {
-    command.recenter(ev);
-}, 'キャレットの位置までスクロール');
+key.setViewKey('h', function (ev) {
+                getBrowser().mTabContainer.advanceSelectedTab(-1, true);
+            }, 'Select previous tab', false);
 
-key.setCaretKey([['C-SPC'], ['C-@']], function (ev) {
-    command.setMark(ev);
-}, 'マークをセット', true);
+//key.setViewKey(':', function (ev, arg) {
+//                shell.input(null, arg);
+//            }, 'List and execute commands', true);
 
-key.setCaretKey('R', function (ev) {
-    BrowserReload();
-}, '更新', true);
+key.setViewKey('R', function (ev) {
+                BrowserReload();
+            }, 'Reload the page', true);
 
-key.setCaretKey('B', function (ev) {
-    BrowserBack();
-}, '戻る');
+key.setViewKey('B', function (ev) {
+                BrowserBack();
+            }, 'Back', false);
 
-key.setCaretKey('F', function (ev) {
-    BrowserForward();
-}, '進む');
+key.setViewKey('F', function (ev) {
+                BrowserForward();
+            }, 'Forward', false);
 
-key.setCaretKey(['C-x', 'h'], function (ev) {
-    goDoCommand("cmd_selectAll");
-}, 'すべて選択', true);
+key.setViewKey(["C-x", "h"], function (ev) {
+                goDoCommand("cmd_selectAll");
+            }, 'Select all', true);
 
 key.setViewKey('f', function (ev) {
-    command.focusElement(command.elementsRetrieverTextarea, 0);
-}, '最初のインプットエリアへフォーカス', true);
+                command.focusElement(command.elementsRetrieverTextarea, 0);
+            }, 'Focus to the first textarea', true);
+
+key.setViewKey('M-p', function (ev) {
+                command.walkInputElement(command.elementsRetrieverButton, true, true);
+            }, 'Focus to the next button', false);
+
+key.setViewKey('M-n', function (ev) {
+                command.walkInputElement(command.elementsRetrieverButton, false, true);
+            }, 'Focus to the previous button', false);
+
+key.setCaretKey([["C-a"], ["^"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectBeginLine") : goDoCommand("cmd_beginLine");
+            }, 'Move caret to the beginning of the line', false);
+
+key.setCaretKey([["C-e"], ["$"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectEndLine") : goDoCommand("cmd_endLine");
+            }, 'Move caret to the end of the line', false);
+
+key.setCaretKey([["C-n"], ["j"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectLineNext") : goDoCommand("cmd_scrollLineDown");
+            }, 'Move caret to the next line', false);
+
+key.setCaretKey([["C-p"], ["k"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectLinePrevious") : goDoCommand("cmd_scrollLineUp");
+            }, 'Move caret to the previous line', false);
+
+key.setCaretKey([["C-f"], ["l"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectCharNext") : goDoCommand("cmd_scrollRight");
+            }, 'Move caret to the right', false);
+
+key.setCaretKey([["C-b"], ["h"], ["C-h"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectCharPrevious") : goDoCommand("cmd_scrollLeft");
+            }, 'Move caret to the left', false);
+
+key.setCaretKey([["M-f"], ["w"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectWordNext") : goDoCommand("cmd_wordNext");
+            }, 'Move caret to the right by word', false);
+
+key.setCaretKey([["M-b"], ["W"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectWordPrevious") : goDoCommand("cmd_wordPrevious");
+            }, 'Move caret to the left by word', false);
+
+key.setCaretKey([["C-v"], ["SPC"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectPageNext") : goDoCommand("cmd_movePageDown");
+            }, 'Move caret down by page', false);
+
+key.setCaretKey([["M-v"], ["b"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectPagePrevious") : goDoCommand("cmd_movePageUp");
+            }, 'Move caret up by page', false);
+
+key.setCaretKey([["M-<"], ["g"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectTop") : goDoCommand("cmd_scrollTop");
+            }, 'Move caret to the top of the page', false);
+
+key.setCaretKey([["M->"], ["G"]], function (ev) {
+                ev.target.ksMarked ? goDoCommand("cmd_selectEndLine") : goDoCommand("cmd_endLine");
+            }, 'Move caret to the end of the line', false);
+
+key.setCaretKey('J', function (ev) {
+                util.getSelectionController().scrollLine(true);
+            }, 'Scroll line down', false);
+
+key.setCaretKey('K', function (ev) {
+                util.getSelectionController().scrollLine(false);
+            }, 'Scroll line up', false);
+
+key.setCaretKey(',', function (ev) {
+                util.getSelectionController().scrollHorizontal(true);
+                goDoCommand("cmd_scrollLeft");
+            }, 'Scroll left', false);
+
+key.setCaretKey('.', function (ev) {
+                goDoCommand("cmd_scrollRight");
+                    util.getSelectionController().scrollHorizontal(false);
+            }, 'Scroll right', false);
+
+key.setCaretKey('z', function (ev) {
+                command.recenter(ev);
+            }, 'Scroll to the cursor position', false);
+
+key.setCaretKey([["C-SPC"], ["C-@"]], function (ev) {
+                command.setMark(ev);
+            }, 'Set the mark', true);
+
+//key.setCaretKey(':', function (ev, arg) {
+//                shell.input(null, arg);
+//            }, 'List and execute commands', true);
+
+key.setCaretKey('R', function (ev) {
+                BrowserReload();
+            }, 'Reload the page', true);
+
+key.setCaretKey('B', function (ev) {
+                BrowserBack();
+            }, 'Back', false);
+
+key.setCaretKey('F', function (ev) {
+                BrowserForward();
+            }, 'Forward', false);
+
+key.setCaretKey(["C-x", "h"], function (ev) {
+                goDoCommand("cmd_selectAll");
+            }, 'Select all', true);
 
 key.setCaretKey('f', function (ev) {
-    command.focusElement(command.elementsRetrieverTextarea, 0);
-}, '最初のインプットエリアへフォーカス', true);
+                command.focusElement(command.elementsRetrieverTextarea, 0);
+            }, 'Focus to the first textarea', true);
 
-key.setCaretKey('C-w', function (ev) {
-    goDoCommand("cmd_copy");
-    goDoCommand("cmd_delete");
-    command.resetMark(ev);
-}, '選択中のテキストを切り取り (Kill region)', true);
+key.setCaretKey('M-p', function (ev) {
+                command.walkInputElement(command.elementsRetrieverButton, true, true);
+            }, 'Focus to the next button', false);
+
+key.setCaretKey('M-n', function (ev) {
+                command.walkInputElement(command.elementsRetrieverButton, false, true);
+            }, 'Focus to the previous button', false);
+
