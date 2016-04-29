@@ -5,6 +5,59 @@
 // ========================================================================= //
 //{{%PRESERVE%
 
+// hatebu
+key.setGlobalKey(["C-x", ";"], function (ev, arg) {
+    ext.exec("list-hateb-items", arg);
+}, "はてなブックマークのアイテムを一覧表示", true);
+
+key.setViewKey("c", function (ev, arg) {
+    ext.exec("list-hateb-comments", arg);
+}, "はてなブックマークのコメントを一覧表示", true);
+
+key.setViewKey('a', function (ev, arg) {
+    ext.exec("hateb-bookmark-this-page");
+}, 'このページをはてなブックマークに追加', true);
+
+//twitter
+key.setViewKey("t",
+    function (ev, arg) {
+        ext.exec("twitter-client-display-timeline", arg);
+    }, "Display your timeline", true);
+
+key.setGlobalKey(["C-c", "t"],
+    function (ev, arg) {
+        ext.exec("twitter-client-tweet", arg);
+    }, "Tweet", true);
+
+key.setGlobalKey(["C-c", "T"],
+    function (ev, arg) {
+        ext.exec("twitter-client-tweet-this-page", arg);
+    }, "Tweet with the title and URL of this page", true);
+
+plugins.options["twitter_client.keymap"] = {
+    "C-z"   : "prompt-toggle-edit-mode",
+    "SPC"   : "prompt-next-page",
+    "b"     : "prompt-previous-page",
+    "j"     : "prompt-next-completion",
+    "k"     : "prompt-previous-completion",
+    "g"     : "prompt-beginning-of-candidates",
+    "G"     : "prompt-end-of-candidates",
+    "q"     : "prompt-cancel",
+    // twitter client specific actions
+    "t"     : "tweet",
+    "r"     : "reply",
+    "R"     : "retweet",
+    "D"     : "delete-tweet",
+    "f"     : "add-to-favorite",
+    "v"     : "display-entire-message",
+    "V"     : "view-in-twitter",
+    "c"     : "copy-tweet",
+    "s"     : "show-target-status",
+    "@"     : "show-mentions",
+    "/"     : "search-word",
+    "o"     : "open-url"
+};
+
 //tanything
 key.setGlobalKey('C-t', function (ev, arg) {
                    ext.exec("tanything", arg);
@@ -59,9 +112,9 @@ key.setViewKey(['C-c', 'C-e'], function (aEvent, aArg) {
     ext.exec("hok-start-continuous-mode", aArg);
 }, 'Start continuous HaH', true);
 
-key.setViewKey('c', function (aEvent, aArg) {
-    ext.exec("hok-yank-foreground-mode", aArg);
-}, 'Hok - Foreground yank hint mode', true);
+//key.setViewKey('c', function (aEvent, aArg) {
+//    ext.exec("hok-yank-foreground-mode", aArg);
+//}, 'Hok - Foreground yank hint mode', true);
 
 // bmany
 plugins.options["bmany.default_open_type"] = "tab";
