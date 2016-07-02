@@ -65,8 +65,9 @@
 (scroll-bar-mode -1)
 
 ;; frame opacity setting
-(set-frame-parameter (selected-frame) 'alpha '(90 70))
-(add-to-list 'default-frame-alist '(alpha 90 70))
+(unless (equal window-system nil)
+  (set-frame-parameter (selected-frame) 'alpha '(90 70))
+  (add-to-list 'default-frame-alist '(alpha 90 70)))
 
 ;; ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)

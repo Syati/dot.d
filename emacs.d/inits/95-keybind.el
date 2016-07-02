@@ -1,4 +1,3 @@
-
 (global-set-key (kbd "C-1") 'find-tag)
 (global-set-key (kbd "C-2") 'pop-tag-mark)
 (global-set-key (kbd "C-c o") 'iedit-mode)
@@ -21,7 +20,8 @@
 ;; (global-set-key (kbd "C->") 'mark-next-like-this)
 ;; (global-set-key (kbd "C-*") 'mark-all-like-this-in-region)
 ;; (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
-(global-set-key (kbd "C-,") 'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 (global-set-key (kbd "C-.") 'dired-omit-mode)
 
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
