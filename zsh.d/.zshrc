@@ -7,7 +7,7 @@ freebsd*|darwin*)
     export SHELL="/usr/local/bin/zsh"
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:/usr/local/Qt-5.6.0/bin:"
     export NODE_PATH="/Users/$USER/node_modules/"
-	alias emacs='XMODIFIERS=@im=none emacs'
+	alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
 	export PATH="$PATH":~/node_modules/.bin:~/android-sdks/tools:~/android-sdks/platform-tools:~/.framework/play-2.1.2:~/localenv/bin
