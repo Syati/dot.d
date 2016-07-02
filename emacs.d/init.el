@@ -126,6 +126,7 @@
     multi-term
     ;; helm
     helm
+    helm-ag
     helm-swoop
     helm-c-moccur
     helm-c-yasnippet
