@@ -32,6 +32,7 @@
   '(
     ;; ここに使っているパッケージを書く。
     init-loader
+    use-package
     ;; 開発補助    
     origami
     auto-complete-clang

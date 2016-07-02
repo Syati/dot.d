@@ -1,22 +1,17 @@
-(autoload 'flycheck "flycheck" nil t)
-(add-hook 'php-mode-hook 'flycheck-mode)
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode)
+
+  (setq-default flycheck-temp-prefix ".")
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
+  (when (executable-find "eslint")
+    (setq flycheck-checker 'javascript-eslint))
+  (setq flycheck-eslintrc "~/.eslintrc")
+  )
 
 
-(custom-set-variables
- '(flycheck-jshintrc "~/.jshintrc"))
-
-(setq flycheck-check-syntax-automatically '(save
-                                            mode-enabled))
-
-
-
-
-
-
-
-
-
-
-
-
-
+(provide '30-flycheck)
+;;; 30-flycheck ends here
