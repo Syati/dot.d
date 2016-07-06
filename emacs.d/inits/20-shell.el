@@ -1,1 +1,3 @@
-(add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+(use-package shell-script-mode
+  :mode (("\\.zsh$" . shell-script-mode))
+  )

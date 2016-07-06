@@ -32,4 +32,3 @@
 (setq multi-term-dedicated-window-height 13)
 (setq multi-term-dedicated-select-after-open-p t)
 
-

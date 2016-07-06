@@ -1,4 +1,7 @@
-(require 'origami)
+(use-package origami
+  :ensure t
+  :defer t
+  )
 ;; (makunbound 'origami-view-mode-map)
 (define-minor-mode origami-view-mode
   "TABにorigamiの折畳みを割り当てる"

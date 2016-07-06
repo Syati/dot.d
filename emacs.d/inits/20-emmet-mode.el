@@ -1,11 +1,15 @@
 ;; emmet-mode
-(autoload 'emmet-mode "emmet-mode" nil t)
-(add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
-(add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ;; indent 2 spaces.
-(setq emmet-move-cursor-between-quotes t)
-
-(define-key emmet-mode-keymap (kbd "C-j") nil)
-(define-key emmet-mode-keymap (kbd "<M-return>") 'emmet-expand-line)
-(define-key emmet-mode-keymap (kbd "<C-return>") 'emmet-expand-yas)
+(use-package emmet-mode
+  :ensure t
+  :init
+  (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+  (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+  (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+  :bind (:map emmet-mode-keymap
+              ("C-j" . nil)
+              ("<M-return>"  . emmet-expand-line)
+              ("<C-return>" . emmet-expand-yas))
+  :config
+  (setq emmet-indentation 2)
+  (setq emmet-move-cursor-between-quotes t)
+  )

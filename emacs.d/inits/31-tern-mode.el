@@ -1,8 +1,9 @@
 (use-package tern
   :commands (tern-auto-complete)
-  :init
-  (bind-key [(C-tab)] 'tern-ac-complete)
-  (tern-ac-setup)
+  :config
+  (tern-ac-setup)   
+  (bind-keys :map tern-mode-keymap
+             ([(C-tab)] . tern-ac-complete))
   )
 
 (provide '31-tern-mode)

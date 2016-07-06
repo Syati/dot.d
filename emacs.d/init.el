@@ -26,7 +26,7 @@
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 (package-initialize)
-
+(require 'use-package)
 
 (defvar installing-package-list
   '(
@@ -54,7 +54,6 @@
     flycheck-color-mode-line
     flycheck-pos-tip
     flycheck-pyflakes
-    flymake-cursor
     ;; yanippet
     yasnippet
     angular-snippets
@@ -181,9 +180,16 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
+(require 'initchart)
+(initchart-record-execution-time-of load file)
+(initchart-record-execution-time-of require feature)
+
 (require 'init-loader)
 (setq init-loader-show-log-after-init nil)
+(setq init-loader-byte-compile t)
 (init-loader-load "~/.emacs.d/inits")
+
+(byte-recompile-directory "~/.emacs.d/site-lisp" 0)
 
 
 ;================================;

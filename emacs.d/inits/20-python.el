@@ -1,13 +1,14 @@
-(when (require 'elpy nil t)
+(use-package elpy
+  :commands (elpy-mode)
+  :init
+  (add-hook 'python-mode 'elpy-mode)
+  (add-hook 'python-mode 'origami-mode)
+  :config
   (elpy-enable)
   (setq python-check-command "flake8")
   (setq elpy-rpc-backend "jedi")
   )
 
-(add-hook 'python-mode-hook
-          '(lambda ()
-             (origami-mode t)
-             ))
 ;; python
 ;;(require 'ac-python) 
 

@@ -1,14 +1,10 @@
-(setq php-mode-coding-style (quote psr2))
-(autoload 'php-mode "php-mode")
-(setq auto-mode-alist
-      (cons '("\\.php\\'" . php-mode) auto-mode-alist))
+(use-package php-mode
+  :mode (("\\.php\\'"  . php-mode))
+  :config  
+  (setq php-mode-coding-style (quote psr2))
+  )
 
-(setq php-search-url "http://www.php.net/ja/")
-(setq php-manual-url "http://www.php.net/manual/ja/")
-
-(add-hook 'php-mode-hook
-          (lambda ()
-            (setq flycheck-phpcs-standard "PSR2")
+(provide '20-php)
 
 ;;(setq php-mode-force-pear t)
 

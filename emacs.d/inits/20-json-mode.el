@@ -1,7 +1,9 @@
-(add-hook 'json-mode-hook
-          '(lambda()
-             (setq js-indent-level 2)
-             ))
+(use-package json-mode
+  :ensure t
+  :defer t
+  :config
+  (setq js-indent-level 2)
+  )
 
 
 
