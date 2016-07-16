@@ -7,6 +7,7 @@ freebsd*|darwin*)
     export SHELL="/usr/local/bin/zsh"
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:/usr/local/Qt-5.6.0/bin:"
     export NODE_PATH="/Users/$USER/node_modules/"
+    export QTDIR="/usr/local/Qt-5.6.0"
 	alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
@@ -116,6 +117,7 @@ setopt share_history     # share command history data
 # alias                      #
 #----------------------------#
 
+alias composer="php -n /usr/local/bin/composer"
 alias df="df -h"
 alias du="du -h"
 alias gitlog='git log --pretty=oneline | cat'
