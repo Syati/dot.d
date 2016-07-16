@@ -19,6 +19,8 @@
 ;================================;
 ; package                        ;
 ;================================;
+(require 'package)
+(package-initialize)
 
 ;; package archives
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
@@ -180,16 +182,26 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
-(require 'initchart)
+
+
+;================================;
+; initial use-package            ;
+;================================;
+
+(require 'use-package)
+
+(use-package initchart)
 (initchart-record-execution-time-of load file)
 (initchart-record-execution-time-of require feature)
 
-(require 'init-loader)
-(setq init-loader-show-log-after-init nil)
-(setq init-loader-byte-compile t)
-(init-loader-load "~/.emacs.d/inits")
-
-(byte-recompile-directory "~/.emacs.d/site-lisp" 0)
+(use-package init-loader
+  :init
+  (setq init-loader-show-log-after-init nil)
+  (setq init-loader-byte-compile t)
+  (init-loader-load "~/.emacs.d/inits")
+  
+  (byte-recompile-directory "~/.emacs.d/site-lisp" 0)
+  )
 
 
 ;================================;
