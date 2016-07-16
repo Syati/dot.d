@@ -3,6 +3,7 @@
   :defer t
   :init
   (add-hook 'js2-mode-hook 'origami-mode)
+  :config  
   (bind-keys*
    ("C-c C-o ="     . origami-open-node)
    ("C-c C-o +"     . origami-open-all-nodes)

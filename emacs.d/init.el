@@ -27,8 +27,6 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
-(package-initialize)
-(require 'use-package)
 
 (defvar installing-package-list
   '(
@@ -188,9 +186,10 @@
 
 (require 'use-package)
 
-(use-package initchart)
-(initchart-record-execution-time-of load file)
-(initchart-record-execution-time-of require feature)
+; speed check
+;(use-package initchart)
+;(initchart-record-execution-time-of load file)
+;(initchart-record-execution-time-of require feature)
 
 (use-package init-loader
   :init
