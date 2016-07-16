@@ -1,6 +1,5 @@
 (global-set-key (kbd "C-1") 'find-tag)
 (global-set-key (kbd "C-2") 'pop-tag-mark)
-(global-set-key (kbd "C-c o") 'iedit-mode)
 (global-set-key (kbd "C-q") 'dabbrev-expand)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-z") 'undo)

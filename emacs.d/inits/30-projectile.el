@@ -1,5 +1,14 @@
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-global-mode)
+  )
 
-(require 'helm-projectile)
-(helm-projectile-on)
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on)
+  )
+
+(provide 'setup-projectile)
+

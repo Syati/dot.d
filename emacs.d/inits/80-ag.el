@@ -2,7 +2,9 @@
   :ensure t
   :defer t
   :init
-  (use-package wgrep-ag)
+  (use-package wgrep-ag
+    :ensure t
+    )
   :config
   (bind-keys :map ag-mode-map
              ("r" . wgrep-change-to-wgrep-mode))
