@@ -1,7 +1,5 @@
 (setq default-directory "~/" )
-
-;; recentf
-(setq recentf-max-saved-items nil)
+(setq initial-buffer-choice default-directory)
 
 ;; backup settings
 (setq make-backup-files t)
@@ -70,7 +68,7 @@
   (add-to-list 'default-frame-alist '(alpha 90 70)))
 
 ;; ediff
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; tab indent setting
 (setq c-auto-newline t)

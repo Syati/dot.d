@@ -105,8 +105,6 @@
     image+
     migemo
     recentf-ext
-    elscreen
-    elscreen-persist
     swap-buffers    
     switch-window
     ;; el-get turn-off
