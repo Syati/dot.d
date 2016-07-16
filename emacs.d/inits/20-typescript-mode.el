@@ -1,14 +1,22 @@
-;; If use bundled typescript.el,
-(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
-(add-hook 'typescript-mode-hook
-          (lambda ()
-            (tide-setup)
-            (flycheck-mode t)
-            (setq flycheck-check-syntax-automatically '(save mode-enabled))
-            (eldoc-mode t)
-            ;; company is an optional dependency. You have to
-            ;; install it separately via package-install
-            (company-mode-on)))
+(use-package typescript-mode
+  :ensure t
+  :defer t
+  :mode (("\\.tsx?\\'" . typescript-mode))
+  :config
+  (use-package flycheck)
+  (use-package company)
+  (use-package tide)
+  (add-hook 'typescript-mode-hook 'setup-tide-mode)
+  )
 
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode t)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode t)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  (company-mode t)
+  (setq company-tooltip-align-annotations t)
+  )

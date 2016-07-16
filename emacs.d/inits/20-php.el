@@ -1,10 +1,14 @@
 (use-package php-mode
+  :ensure t
   :mode (("\\.php\\'"  . php-mode))
-  :config  
+  :config
+  (use-package flycheck)
   (setq php-mode-coding-style (quote psr2))
+  (add-hook 'php-mode-hook
+            (lambda ()
+              (setq flycheck-phpcs-standard "PSR2")))
   )
 
-(provide '20-php)
 
 ;;(setq php-mode-force-pear t)
 
