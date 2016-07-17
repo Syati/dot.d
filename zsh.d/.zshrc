@@ -117,7 +117,7 @@ setopt share_history     # share command history data
 # alias                      #
 #----------------------------#
 
-alias composer="php -n /usr/local/bin/composer"
+alias composer="php -n /usr/local/Cellar/composer/1.1.2/libexec/composer.phar"
 alias df="df -h"
 alias du="du -h"
 alias gitlog='git log --pretty=oneline | cat'
