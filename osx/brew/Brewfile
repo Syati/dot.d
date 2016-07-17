@@ -33,7 +33,7 @@ brew 'imagemagick'
 brew 'gettext'
 brew 'libffi'
 brew 'glib'
-brew 'emacs', args: ['with-cocoa', 'with-gnutls']
+brew 'emacs', args: ['with-cocoa', 'with-gnutls', 'srgb']
 brew 'x264'
 brew 'lame'
 brew 'libvo-aacenc'
