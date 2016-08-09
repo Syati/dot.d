@@ -135,6 +135,7 @@ key.setViewKey([':', 't'], function (ev, arg) {
     ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
 }, "bmany - List bookmarks with tag");
 
+
 //}}%PRESERVE%
 // ========================================================================= //
 
@@ -152,6 +153,7 @@ key.negativeArgument2Key = "C-M--";
 key.negativeArgument3Key = "M--";
 
 // ================================= Hooks ================================= //
+
 
 hook.addToHook('KeyBoardQuit', function (aEvent) {
          if (key.currentKeySequence.length)
@@ -187,6 +189,22 @@ hook.addToHook('KeyBoardQuit', function (aEvent) {
      });
 
 // ============================= Key bindings ============================== //
+
+key.setGlobalKey(['C-c', 'b'], function (ev, arg) {
+    let elem = document.commandDispatcher.focusedElement;
+    if (elem) elem.blur();
+    gBrowser.focus();
+    _content.focus();
+}, 'コンテンツへフォーカス');
+
+key.setGlobalKey(['C-c', 'p'], function (ev, arg) {
+    var p = document.getElementById("keysnail-prompt");
+    if (p.hidden)
+        return;
+
+    document.getElementById("keysnail-prompt-textbox").focus();
+}, 'プロンプトへフォーカス');
+
 
 key.setGlobalKey('C-M-r', function (ev) {
                 userscript.reload();
