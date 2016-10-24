@@ -1,10 +1,12 @@
 (use-package web-mode
   :ensure t
   :defer t
+  :mode (("\\.erb$" . web-mode)
+         )
   :config 
-  (setq web-mode-markup-indent-offset 4) ;; html indent
-  (setq web-mode-css-indent-offset 4) ;; css indent
-  (setq web-mode-code-indent-offset 4) ;; script indent(js,php,etc..)
+  (setq web-mode-markup-indent-offset 2) ;; html indent
+  (setq web-mode-css-indent-offset 2) ;; css indent
+  (setq web-mode-code-indent-offset 2) ;; script indent(js,php,etc..)
   (setq indent-tabs-mode nil)
 
   (eval-after-load "sgml-mode"
