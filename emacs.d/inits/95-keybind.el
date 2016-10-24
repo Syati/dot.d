@@ -6,6 +6,7 @@
 (global-set-key (kbd "M-z") 'redo)
 (global-set-key (kbd "C-o") 'switch-window)
 (global-set-key (kbd "C-S-o") 'switch-window-backward)
+(global-set-key (kbd "C-x q") 'quoted-insert)
 (global-set-key (kbd "C-x C-d") 'nav-toggle)
 (global-set-key (kbd "C-c C-r") 'revert-buffer)
 (global-set-key (kbd "C-c C-e") 'eval-current-buffer)

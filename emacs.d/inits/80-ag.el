@@ -9,5 +9,6 @@
   (bind-keys :map ag-mode-map
              ("r" . wgrep-change-to-wgrep-mode))
   (setq ag-highlight-search t)  ; 検索キーワードをハイライト
+  (setq ag-group-matches nil)
   ;;(setq ag-reuse-buffers t)     ; 検索用バッファを使い回す (検索ごとに新バッファを作らない)
   )
