@@ -41,6 +41,7 @@ fi
 #----------------------------#
 # export                     #
 #----------------------------#
+export LC_ALL=ja_JP.UTF-8
 export TERM=xterm-256color
 export CMAKE_PREFIX_PATH=~/Qt/5.3/clang_64
 

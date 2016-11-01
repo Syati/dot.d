@@ -4,9 +4,9 @@
   :config
   (use-package flycheck)
   (setq php-mode-coding-style (quote psr2))
-  (add-hook 'php-mode-hook
-            (lambda ()
-              (setq flycheck-phpcs-standard "PSR2")))
+;;  (add-hook 'php-mode-hook
+;;            (lambda ()
+;;              (setq flycheck-phpcs-standard "PSR2")))
   )
 
 
