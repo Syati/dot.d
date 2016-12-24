@@ -1,17 +1,15 @@
-(use-package ruby-mode
-  :config
-  (use-package robe
-    :ensure t
-    :config
-    (add-hook 'robe-mode-hook 'ac-robe-setup))
-  
-  (add-hook 'ruby-mode-hook 'robe-mode)  
+(use-package inf-ruby
+  :init 
+  (setq inf-ruby-default-implementation "pry")
   )
 
-;; python
-;;(require 'ac-python) 
-
-;;(add-hook 'python-mode-hook 'jedi:ac-setup)
-;;(setq jedi:setup-keys t)
-
-
+(use-package robe
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (add-hook 'ruby-mode-hook 'robe-mode)
+    (add-hook 'robe-mode-hook 'ac-robe-setup)))
+;;    (add-hook 'ruby-mode-hook 'company-mode)
+;;    (with-eval-after-load 'company
+;;      (add-to-list 'company-backends 'company-robe))))

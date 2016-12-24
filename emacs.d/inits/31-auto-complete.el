@@ -11,7 +11,6 @@
   (setq ac-auto-start t)
   (setq ac-use-menu-map t)
   (global-auto-complete-mode t)
-  (ac-set-trigger-key "TAB")
-  (ac-set-trigger-key "<tab>")
+  (ac-set-trigger-key "C-M-i")
   )
 
