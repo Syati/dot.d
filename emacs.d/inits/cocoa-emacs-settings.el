@@ -18,16 +18,29 @@
     (setenv "PATH" (mapconcat 'identity exec-path ":")))
 
 
-(setq dired-listing-switches "-AlGh")
-(setq ls-lisp-dirs-first t)
+(setq dired-listing-switches "-AlGhg")
 ;; resolve Listing directory failed but access-file worked
 (require 'ls-lisp)
+(setq ls-lisp-dirs-first t)
 (setq ls-lisp-use-insert-directory-program nil)
 
 (setq multi-term-program "/usr/local/bin/zsh")
 ;;(setenv "TERMINFO" "~/.terminfo")
 
 
-(if (setq browse-url-browser-function
-        'browse-url-generic browse-url-generic-program
-        "open"))
+(setq browse-url-browser-function
+      'browse-url-generic browse-url-generic-program
+      "open")
+
+(defun copy-from-osx ()
+ (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+ (let ((process-connection-type nil))
+     (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+       (process-send-string proc text)
+       (process-send-eof proc))))
+
+;;(setq interprogram-cut-function 'paste-to-osx)
+;;(setq interprogram-paste-function 'copy-from-osx)
+
