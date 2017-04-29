@@ -79,6 +79,9 @@
 (setq c-default-style
       '((java-mode . "java") (awk-mode . "awk") (other . "linux")))
 
+;; 保存時ホワイトスペース削除
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; trash setting
 (custom-set-variables
  '(delete-by-moving-to-trash t)
