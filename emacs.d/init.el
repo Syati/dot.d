@@ -3,18 +3,7 @@
 ;================================;
 
 (require 'cl)
-(require 'cl-macs)
-
-;================================;
-; path                           ;
-;================================;
-
-;; load path
-(let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
-  (add-to-list 'load-path default-directory)
-  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-      (normal-top-level-add-subdirs-to-load-path)))
-
+;(require 'cl-macs)
 
 ;================================;
 ; package                        ;
@@ -33,7 +22,7 @@
     ;; ここに使っているパッケージを書く。
     init-loader
     use-package
-    ;; 開発補助    
+    ;; 開発補助
     origami
     auto-complete-clang
     auto-complete
@@ -58,7 +47,7 @@
     yasnippet
     angular-snippets
     react-snippets
-    dropdown-list
+
     ;; 開発モード
     ;;; rest client
     restclient
@@ -103,15 +92,12 @@
     image+
     migemo
     recentf-ext
-    swap-buffers    
+    swap-buffers
     switch-window
     ;; el-get turn-off
     ag
     wgrep-ag
-    redo+
-    undo-tree
     undohist
-    xml-rpc
     wgrep
     sequential-command
     multiple-cursors
@@ -146,29 +132,7 @@
     ;; japanese
     mozc
     mozc-popup
-    ;;
-    concurrent
-    ctable
-    dash
-    deferred
-    epc
-    epl
-    f
-    find-file-in-project
-    fringe-helper
-    fuzzy
-    gh
-    highlight-indentation
-    idomenu
-    iedit
-    logito
-    nose
-    pcache
-    pkg-info
-    popup
-    s
-    sws-mode
-    ))
+   ))
 
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
@@ -196,9 +160,8 @@
   (setq init-loader-show-log-after-init nil)
   (setq init-loader-byte-compile t)
   (init-loader-load "~/.emacs.d/inits")
-  
-  (byte-recompile-directory "~/.emacs.d/site-lisp" 0)
   )
+
 
 
 ;================================;
@@ -226,3 +189,21 @@
     (if file-name
         (find-alternate-file (concat "/sudo::" file-name))
       (error "Cannot get a file name"))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(delete-by-moving-to-trash t)
+ '(js2-strict-trailing-comma-warning nil)
+ '(package-selected-packages
+   (quote
+    (undo-tree mozc-popup mozc monokai-theme projectile all-ext wgrep-helm helm-projectile helm-ag-r helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-swoop helm-ag helm multi-term jedi-direx direx popwin multiple-cursors sequential-command wgrep undohist wgrep-ag ag switch-window swap-buffers recentf-ext migemo image+ less-css-mode tidy emmet-mode multi-web-mode web-mode php-mode dockerfile-mode markdown-mode+ markdown-mode json-reformat json-mode jade-mode coffee-mode tern-auto-complete tern js2-mode haskell-mode pyvenv python-environment elpy cmake-ide cmake-mode tide typescript-mode restclient react-snippets angular-snippets yasnippet flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask flycheck magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex magit gtags auto-complete auto-complete-clang origami use-package init-loader)))
+ '(trash-directory "~/.Trash"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-scrollbar-bg ((t (:background "#75715E"))))
+ '(company-scrollbar-fg ((t (:background "#F8F8F0")))))
