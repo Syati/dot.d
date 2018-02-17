@@ -4,13 +4,12 @@
   :init
   (progn
     (use-package helm-config)
-    (use-package helm-file)
     (use-package helm-descbinds)
     (use-package all-ext))
   (helm-mode t)
   :config
   (bind-keys* ("M-x"     . helm-M-x)
-              ("C-t"     . helm-for-files)             
+              ("C-t"     . helm-for-files)
               ("C-x C-h" . helm-descbinds)
               ("C-x C-b" . helm-buffers-list)
               ("C-x C-f" . helm-find-files)
@@ -24,7 +23,7 @@
               ("TAB" . helm-execute-persistent-action)
               :map helm-read-file-map
               ("TAB" . helm-execute-persistent-action))
-  
+
   ;;(setq helm-migemize-command-idle-delay helm-idle-delay)
   ;;(helm-migemize-command helm-for-files)
 

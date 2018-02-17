@@ -1,5 +1,7 @@
 (use-package inf-ruby
-  :init 
+  :ensure t
+  :defer t
+  :init
   (setq inf-ruby-default-implementation "pry")
   )
 

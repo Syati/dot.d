@@ -43,14 +43,7 @@
     flycheck-color-mode-line
     flycheck-pos-tip
     flycheck-pyflakes
-    ;; yanippet
-    yasnippet
-    angular-snippets
-    react-snippets
-
     ;; 開発モード
-    ;;; rest client
-    restclient
     ;; typescript
     typescript-mode
     tide
