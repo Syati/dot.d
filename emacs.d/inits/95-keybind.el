@@ -2,7 +2,7 @@
 (global-set-key (kbd "C-2") 'pop-tag-mark)
 (global-set-key (kbd "C-q") 'dabbrev-expand)
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-o") 'switch-window)
+;; (global-set-key (kbd "C-o") 'switch-window)
 (global-set-key (kbd "C-S-o") 'switch-window-backward)
 (global-set-key (kbd "C-x q") 'quoted-insert)
 (global-set-key (kbd "C-x C-d") 'nav-toggle)
@@ -24,4 +24,3 @@
 
 (global-set-key [f9] 'linum-mode)
 (global-set-key (kbd "C-q C-q") 'quoted-insert)
-

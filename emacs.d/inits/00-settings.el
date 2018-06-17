@@ -42,7 +42,7 @@
 ;; ignore the difference between capital letter and small letter
 ;; (setq completion-ignore-case t)
 
-;; toggle delete-region 
+;; toggle delete-region
 (delete-selection-mode t)
 
 ;; 通常のウィンドウで行を折り返さない
@@ -56,23 +56,29 @@
 
 ;; toolbar setting
 (if (display-graphic-p)
-    (progn 
+    (progn
       (tool-bar-mode 0)
       ))
 
-(scroll-bar-mode -1)
 
-;; frame opacity setting
-(unless (equal window-system nil)
-  (set-frame-parameter (selected-frame) 'alpha '(90 70))
-  (add-to-list 'default-frame-alist '(alpha 90 70)))
+(when (memq window-system '(mac ns))
+  (setq initial-frame-alist
+        (append
+         '((ns-transparent-titlebar . t) ;; タイトルバーを透過
+           (vertical-scroll-bars . nil) ;; スクロールバーを消す
+           (ns-appearance . dark) ;; 26.1 {light, dark}
+           (internal-border-width . 0)
+           (alpha 90 70)
+           )))
+  ) ;; 余白を消す
+(setq default-frame-alist initial-frame-alist)
 
 ;; ediff
 ;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; tab indent setting
 (setq c-auto-newline t)
-(setq-default indent-tabs-mode nil)  
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq default-tab-width 4)
 (setq c-basic-offset 4)

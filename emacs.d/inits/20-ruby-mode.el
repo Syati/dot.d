@@ -1,3 +1,10 @@
+(use-package rbenv
+  :ensure t
+  :defer t
+  :init
+  (global-rbenv-mode)
+  )
+
 (use-package inf-ruby
   :ensure t
   :defer t
@@ -11,7 +18,11 @@
   :init
   (progn
     (add-hook 'ruby-mode-hook 'robe-mode)
-    (add-hook 'robe-mode-hook 'ac-robe-setup)))
+    (eval-after-load 'company
+      '(push 'company-robe company-backends))
+    )
+  )
+
 ;;    (add-hook 'ruby-mode-hook 'company-mode)
 ;;    (with-eval-after-load 'company
 ;;      (add-to-list 'company-backends 'company-robe))))

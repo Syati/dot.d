@@ -1,6 +1,4 @@
 (when (require 'popwin)
-  (setq helm-samewindow nil)
-  (setq display-buffer-function 'popwin:display-buffer)
   (setq popwin:special-display-config '(("*compilatoin*" :noselect t)
                                         (direx:direx-mode :position left :width 25 :dedicated t)
                                         ("*Python*" :position bottom :height 10 :dedicated t)

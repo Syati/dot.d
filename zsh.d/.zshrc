@@ -5,9 +5,8 @@
 case "${OSTYPE}" in
 freebsd*|darwin*)
     export SHELL="/usr/local/bin/zsh"
-	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:/usr/local/Qt-5.6.0/bin:"
+	export PATH="/usr/local/opt/ghc@8.0/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:"
     export NODE_PATH="/Users/$USER/node_modules/"
-    export QTDIR="/usr/local/Qt-5.6.0"
 	alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
@@ -43,20 +42,20 @@ fi
 #----------------------------#
 export LC_ALL=ja_JP.UTF-8
 export TERM=xterm-256color
-export CMAKE_PREFIX_PATH=~/Qt/5.3/clang_64
 
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 
 #virtual env
-export WORKON_HOME=~/.virtualenvs
-
-#rbenv
-[ `whence rbenv` ] && eval "$(rbenv init -)"
-
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 
 #for ls --color | less
-export LESS='-R' 
+export LESS='-R'
+
+#gitduet
+export GIT_DUET_GLOBAL=1
+export GIT_DUET_ROTATE_AUTHOR=1
 
 #================================#
 # LOAD LIB                       #
@@ -64,7 +63,7 @@ export LESS='-R'
 
 source $CWD/zsh_antigen.zsh
 
-#keybind 
+#keybind
 bindkey -e  # emacs style
 
 #LANG
@@ -78,7 +77,7 @@ esac
 # prompt
 PROMPT="%n%% "
 RPROMPT="[%~]"
-SPROMPT="%r is correct? [n,y,a,e]: " 
+SPROMPT="%r is correct? [n,y,a,e]: "
 
 
 # Use modern completion system
@@ -95,7 +94,7 @@ autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "ALT+P" history-beginning-search-backward-end
-bindkey "ALT+N" history-beginning-search-forward-end 
+bindkey "ALT+N" history-beginning-search-forward-end
 
 #----------------------------#
 # option                     #
@@ -112,13 +111,13 @@ setopt list_packed       # compacked complete list display
 setopt no_beep           # mute beep sound
 setopt noautoremoveslash # no remove postfix slash of command line
 setopt nolistbeep        # mute beep sound
-setopt share_history     # share command history data 
+setopt share_history     # share command history data
 
 #----------------------------#
 # alias                      #
 #----------------------------#
 
-alias composer="php -n /usr/local/Cellar/composer/1.1.2/libexec/composer.phar"
+#alias composer="php -d memory_limit=-1 -n /usr/local/Cellar/composer/1.5.2/libexec/composer.phar"
 alias df="df -h"
 alias du="du -h"
 alias gitlog='git log --pretty=oneline | cat'
@@ -175,3 +174,13 @@ export NVM_DIR="/Users/mizuki-y/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# ghc
+export PATH="$HOME/.cabal/bin:$PATH"
+
+# ndenv
+#export PATH="$HOME/.ndenv/bin:$PATH"
+
+#init
+eval "$(rbenv init -)"
+eval "$(ndenv init -)"

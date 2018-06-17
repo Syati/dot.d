@@ -3,7 +3,17 @@
 ;================================;
 
 (require 'cl)
-;(require 'cl-macs)
+
+;================================;
+; path                           ;
+;================================;
+
+;; load path
+(let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
+  (add-to-list 'load-path default-directory)
+  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+      (normal-top-level-add-subdirs-to-load-path)))
+
 
 ;================================;
 ; package                        ;
@@ -24,8 +34,6 @@
     use-package
     ;; 開発補助
     origami
-    auto-complete-clang
-    auto-complete
     gtags
     magit
     magit-annex
@@ -38,7 +46,6 @@
     magit-svn
     magit-topgit
     magit-tramp
-    git-gutter
     flycheck
     flycheck-cask
     flycheck-color-mode-line
@@ -60,7 +67,6 @@
     ;;; js
     js2-mode
     tern
-    tern-auto-complete
     coffee-mode
     jade-mode
     json-mode
@@ -188,14 +194,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
  '(delete-by-moving-to-trash t)
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-path-style (quote relative))
+ '(js2-strict-trailing-comma-warning nil)
  '(package-selected-packages
    (quote
-    (wgrep-helm wgrep-ag web-mode use-package undohist undo-tree tidy tide tern-auto-complete switch-window swap-buffers sequential-command recentf-ext popwin php-mode origami multiple-cursors multi-web-mode multi-term mozc-popup monokai-theme migemo markdown-mode+ magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex less-css-mode json-mode js2-mode jedi-direx jade-mode init-loader image+ helm-swoop helm-projectile helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag-r helm-ag haskell-mode gtags flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy dockerfile-mode coffee-mode cmake-mode cmake-ide auto-complete-clang all-ext ag)))
+    (rbenv wgrep-helm wgrep-ag web-mode use-package undohist undo-tree tidy tide switch-window swap-buffers sequential-command recentf-ext popwin php-mode origami multiple-cursors multi-web-mode multi-term mozc-popup monokai-theme migemo markdown-mode+ magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex less-css-mode json-mode js2-mode jedi-direx jade-mode init-loader image+ helm-swoop helm-projectile helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag-r helm-ag haskell-mode gtags flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy dockerfile-mode coffee-mode cmake-mode cmake-ide all-ext ag)))
  '(trash-directory "~/.Trash"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-scrollbar-bg ((t (:background "#75715E"))))
+ '(company-scrollbar-fg ((t (:background "#F8F8F0")))))
+(put 'dired-find-alternate-file 'disabled nil)

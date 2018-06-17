@@ -53,7 +53,6 @@
 
 (add-hook 'dired-mode-hook
       (lambda ()
-        (define-key dired-mode-map (kbd "C-o") 'other-window)
         (define-key dired-mode-map (kbd "C-t") 'helm-for-files)
         )
       )
