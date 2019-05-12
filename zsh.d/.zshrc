@@ -86,13 +86,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
-## historical backward/forward search with linehead string binded to Alt+P/Alt+N
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "ALT+P" history-beginning-search-backward-end
-bindkey "ALT+N" history-beginning-search-forward-end
-
 #----------------------------#
 # option                     #
 #----------------------------#
