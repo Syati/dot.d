@@ -1,5 +1,10 @@
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_DEFAULT_OPTS='
+  --height 40% --reverse --border
+  --bind ctrl-k:kill-line
+  --bind ctrl-v:page-down
+  --bind alt-v:page-up
+'
 
 fzf_select_directory_history() {
     cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf +s --tac)"
