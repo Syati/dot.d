@@ -98,11 +98,15 @@ setopt complete_aliases  # aliased ls needs if file/dir completions work
 setopt correct           # command correct edition before each completion attempt
 setopt extended_history  # save hisotorical time
 setopt hist_ignore_dups  # ignore duplication command history list
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
 setopt list_packed       # compacked complete list display
 setopt no_beep           # mute beep sound
 setopt noautoremoveslash # no remove postfix slash of command line
 setopt nolistbeep        # mute beep sound
 setopt share_history     # share command history data
+
 
 #----------------------------#
 # alias                      #
