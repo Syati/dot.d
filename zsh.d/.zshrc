@@ -23,6 +23,7 @@ esac
 #================================#
 
 CWD=`dirname $(readlink -s ~/.zshrc)`
+eval `dircolors ~/.dir_colors`
 
 #----------------------------#
 # start up                   #
