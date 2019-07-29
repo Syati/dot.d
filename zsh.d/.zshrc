@@ -4,8 +4,9 @@
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
+    export GOPATH="$HOME/.go"
     export SHELL="/usr/local/bin/zsh"
-	export PATH="/usr/local/opt/ghc@8.0/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:"
+	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:$GOPATH/bin"
     export NODE_PATH="/Users/$USER/node_modules/"
 	alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
@@ -22,6 +23,7 @@ esac
 #================================#
 
 CWD=`dirname $(readlink -s ~/.zshrc)`
+eval `dircolors ~/.dir_colors`
 
 #----------------------------#
 # start up                   #
@@ -52,10 +54,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 
 #for ls --color | less
 export LESS='-R'
-
-#gitduet
-export GIT_DUET_GLOBAL=1
-export GIT_DUET_ROTATE_AUTHOR=1
 
 #================================#
 # LOAD LIB                       #
@@ -89,13 +87,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
-## historical backward/forward search with linehead string binded to Alt+P/Alt+N
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "ALT+P" history-beginning-search-backward-end
-bindkey "ALT+N" history-beginning-search-forward-end
-
 #----------------------------#
 # option                     #
 #----------------------------#
@@ -107,11 +98,15 @@ setopt complete_aliases  # aliased ls needs if file/dir completions work
 setopt correct           # command correct edition before each completion attempt
 setopt extended_history  # save hisotorical time
 setopt hist_ignore_dups  # ignore duplication command history list
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
 setopt list_packed       # compacked complete list display
 setopt no_beep           # mute beep sound
 setopt noautoremoveslash # no remove postfix slash of command line
 setopt nolistbeep        # mute beep sound
 setopt share_history     # share command history data
+
 
 #----------------------------#
 # alias                      #

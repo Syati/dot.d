@@ -10,9 +10,9 @@ antigen bundle virtualenvwrapper
 antigen bundle docker
 antigen bundle git
 
-antigen bundle mooz/percol
 antigen bundle zsh-users/zsh-completions
 antigen bundle $CWD/customs --no-local-clone
+antigen bundle $CWD/fzf --no-local-clone
 
 
 # Syntax highlighting bundle.
