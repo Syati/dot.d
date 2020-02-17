@@ -7,8 +7,11 @@ export FZF_DEFAULT_OPTS='
 '
 
 fzf_select_directory_history() {
-    BUFFER="cd $(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf +s --tac)"
-    zle accept-line
+    select_path=$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf +s --tac)
+    if [ ! -z $select_path ]; then
+        BUFFER="cd ${select_path}"
+        zle accept-line
+    fi
     zle reset-prompt
 }
 

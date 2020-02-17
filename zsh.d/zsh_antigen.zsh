@@ -1,4 +1,4 @@
-CWD=`dirname $(readlink -f $0)`
+CWD=`dirname $(readlink -s -f $0)`
 
 source $CWD/antigen.zsh
 
@@ -6,7 +6,7 @@ antigen use oh-my-zsh
 
 #antigen bundle git
 antigen bundle z
-antigen bundle virtualenvwrapper
+#antigen bundle virtualenvwrapper
 antigen bundle docker
 antigen bundle git
 

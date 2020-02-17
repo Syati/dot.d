@@ -4,10 +4,14 @@
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
-    export GOPATH="$HOME/.go"
     export SHELL="/usr/local/bin/zsh"
-	export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin:/Users/$USER/node_modules/.bin:$GOPATH/bin"
-    export NODE_PATH="/Users/$USER/node_modules/"
+	export DEFAULT_PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin"
+    export GNU_PATH="/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin"
+    export JS_YARN_PATH="$HOME/.yarn/bin"
+    export POETRY_PATH="$HOME/.poetry/bin"
+    export CUSTOM_PATH="$HOME/.bin"
+    export PATH="$CUSTOM_PATH:$GNU_PATH:$JS_YARN_PATH:$POETRY_PATH:$DEFAULT_PATH"
+
 	alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
@@ -18,11 +22,20 @@ linux*)
     ;;
 esac
 
+#anyenv init
+eval "$(anyenv init -)"
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+
+export GOOGLE_CLOUD_SDK="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
+source $GOOGLE_CLOUD_SDK/completion.zsh.inc
+source $GOOGLE_CLOUD_SDK/path.zsh.inc
+
+
 #================================#
 # common setting                 #
 #================================#
 
-CWD=`dirname $(readlink -s ~/.zshrc)`
+CWD=`dirname $(readlink -s -f ~/.zshrc)`
 eval `dircolors ~/.dir_colors`
 
 #----------------------------#
@@ -49,8 +62,8 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 
 #virtual env
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 
 #for ls --color | less
 export LESS='-R'
@@ -165,17 +178,12 @@ zstyle ":chpwd:*" recent-dirs-max 500
 zstyle ":chpwd:*" recent-dirs-default true
 zstyle ":completion:*" recent-dirs-insert always
 
-export NVM_DIR="/Users/mizuki-y/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH="$HOME/.yarn/bin:$PATH"
 
-# ghc
-export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="${GOPATH}/bin:/Users/mizuki-y/.anyenv/envs/goenv/shims:${PATH}"
+export GOENV_SHELL=zsh
+source '/Users/mizuki-y/.anyenv/envs/goenv/libexec/../completions/goenv.zsh'
 
-# ndenv
-#export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(goenv init -)"
 
-#init
-eval "$(rbenv init -)"
-eval "$(ndenv init -)"
+eval "$(direnv hook zsh)"
