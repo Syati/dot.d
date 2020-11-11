@@ -1,6 +1,8 @@
 ;================================;
 ; use common lisp                ;
 ;================================;
+;; (require 'cl) を見逃す
+(setq byte-compile-warnings '(not cl-functions obsolete))
 
 (require 'cl)
 
@@ -22,10 +24,10 @@
 (package-initialize)
 
 ;; package archives
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+(setq package-archives '(("ELPA" . "https://tromey.com/elpa/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")))
+
 
 (defvar installing-package-list
   '(
@@ -34,7 +36,6 @@
     use-package
     ;; 開発補助
     origami
-    gtags
     magit
     magit-annex
     magit-filenotify
@@ -45,7 +46,6 @@
     magit-stgit
     magit-svn
     magit-topgit
-    magit-tramp
     flycheck
     flycheck-cask
     flycheck-color-mode-line
@@ -76,14 +76,9 @@
     markdown-mode+
     ;;; docker
     dockerfile-mode
-    ;;;php
     php-mode
     ;;: web
     web-mode
-    multi-web-mode
-    ;;;; html
-    emmet-mode
-    tidy
     ;;;; less
     less-css-mode
     ;; org
@@ -189,27 +184,3 @@
     (if file-name
         (find-alternate-file (concat "/sudo::" file-name))
       (error "Cannot get a file name"))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2)
- '(delete-by-moving-to-trash t)
- '(google-translate-default-source-language "en")
- '(google-translate-default-target-language "ja")
- '(helm-gtags-auto-update t)
- '(helm-gtags-ignore-case t)
- '(helm-gtags-path-style (quote relative))
- '(js2-strict-trailing-comma-warning nil)
- '(package-selected-packages
-   (quote
-    (company-go go-mode google-translate yaml-mode wgrep-helm wgrep-ag web-mode use-package undohist undo-tree tidy tide tern-auto-complete switch-window swap-buffers slim-mode sequential-command scss-mode robe recentf-ext rbenv popwin php-mode origami multiple-cursors multi-web-mode multi-term mozc-popup monokai-theme migemo markdown-mode+ magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex less-css-mode json-mode js2-mode jedi-direx jade-mode init-loader image+ helm-swoop helm-projectile helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag-r helm-ag haskell-mode gtags git-gutter flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy dockerfile-mode csv-mode coffee-mode cmake-mode cmake-ide auto-complete-clang all-ext ag)))
- '(trash-directory "~/.Trash"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-scrollbar-bg ((t (:background "#75715E"))))
- '(company-scrollbar-fg ((t (:background "#F8F8F0")))))
