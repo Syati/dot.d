@@ -73,7 +73,7 @@
     json-reformat
     ;;; markdown
     markdown-mode
-    markdown-mode+
+
     ;;; docker
     dockerfile-mode
     php-mode
@@ -184,3 +184,25 @@
     (if file-name
         (find-alternate-file (concat "/sudo::" file-name))
       (error "Cannot get a file name"))))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(delete-by-moving-to-trash t)
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-path-style 'relative)
+ '(js2-strict-trailing-comma-warning nil)
+ '(package-selected-packages
+   '(terraform-mode lua-mode undo-tree yaml-mode slim-mode scss-mode robe inf-ruby rbenv multi-web-mode company-go go-mode csv-mode mozc-popup mozc monokai-theme projectile all-ext wgrep-helm helm-projectile helm-ag-r helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-swoop helm-ag helm multi-term jedi-direx direx popwin multiple-cursors sequential-command wgrep undohist wgrep-ag ag switch-window swap-buffers recentf-ext migemo image+ web-mode php-mode dockerfile-mode use-package tide tern python-environment origami markdown-mode magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex json-reformat json-mode js2-mode jade-mode init-loader haskell-mode flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy coffee-mode cmake-mode cmake-ide))
+ '(trash-directory "~/.Trash"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-scrollbar-thumb ((t (:background "#F8F8F0"))))
+ '(company-tooltip-scrollbar-track ((t (:background "#75715E")))))

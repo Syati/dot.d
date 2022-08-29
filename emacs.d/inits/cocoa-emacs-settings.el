@@ -7,7 +7,7 @@
 (let ((my-emacs-path (list
          (expand-file-name "~/node_modules/.bin")
          (expand-file-name "~/.rbenv/shims")
-         "/usr/local/opt/coreutils/libexec/gnubin"
+         "/opt/homebrew/bin/"
          "/usr/local/bin"
          "/usr/bin"
          "/usr/sbin"
@@ -43,4 +43,3 @@
 
 ;;(setq interprogram-cut-function 'paste-to-osx)
 ;;(setq interprogram-paste-function 'copy-from-osx)
-

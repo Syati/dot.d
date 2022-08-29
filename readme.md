@@ -8,10 +8,5 @@ install
 ---------------
 
 ```sh
-./create_link.sh
+./setup.sh
 ```
-
-
-
-
-
