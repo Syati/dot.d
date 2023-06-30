@@ -1,3 +1,4 @@
+
 #================================#
 # settings of each os            #
 #================================#
@@ -13,6 +14,7 @@ freebsd*|darwin*)
     export POETRY_PATH="$HOME/.poetry/bin"
     export CUSTOM_PATH="$HOME/.bin:$HOME/.cargo/bin"
     export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$DEFAULT_PATH"
+    export PGDATA="/opt/homebrew/var/postgresql@14"
     alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
@@ -22,6 +24,13 @@ linux*)
     alias pbpaste='xclip -selection clipboard -o'
     ;;
 esac
+
+#================================#
+# common setting                 #
+#================================#
+
+CWD=`dirname $(readlink -s -f ~/.zshrc)`
+
 
 # fpath
 fpath=(~/.zsh/completions $fpath)
@@ -37,11 +46,10 @@ source $GOOGLE_CLOUD_SDK/path.zsh.inc
 #direnv hook
 eval "$(direnv hook zsh)"
 
-#================================#
-# common setting                 #
-#================================#
+#sheldon
+export SHELDON_CONFIG_DIR="$CWD/sheldon"
+export SHELDON_DATA_DIR="$CWD/sheldon/share"
 
-CWD=`dirname $(readlink -s -f ~/.zshrc)`
 
 
 #----------------------------#
@@ -52,7 +60,7 @@ CWD=`dirname $(readlink -s -f ~/.zshrc)`
 if [ -z $OS ]; then
     if [ -z $EMACS ]; then
 	    if which tmux 2>&1 >/dev/null; then
-	        test -z "$TMUX" && (tmux attach || tmux new-session)
+	        test -z $TMUX && (tmux attach || tmux new-session)
 	    fi
     fi
 fi
@@ -151,8 +159,6 @@ zstyle ':completion:*:descriptions' format '%BCompleting%b %U%d%u'
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-
-
 
 
 

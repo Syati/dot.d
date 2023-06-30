@@ -19,7 +19,8 @@ github = 'romkatv/zsh-defer'
 apply = ['source']
 
 [templates]
-defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
 
 # theme
 [plugins.base16-shell]
@@ -45,6 +46,10 @@ github = 'zsh-users/zsh-completions'
 github = 'zsh-users/zsh-autosuggestions'
 
 [plugins.local-functions]
-local = "~/.dot.d/zsh.d/"
+local = "~/.dot.d/zsh.d/functions"
 use = ["{!sync,*}.zsh"]
 apply = ["source"]
+
+
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"

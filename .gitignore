@@ -1,3 +1,6 @@
+.idea
+zsh.d/sheldon/*
+!zsh.d/sheldon/plugins.toml
 *.zwc
 emacs.d/network-security.data
 emacs.d/transient
