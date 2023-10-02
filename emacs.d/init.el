@@ -54,21 +54,7 @@
     ;; 開発モード
     ;; typescript
     typescript-mode
-    tide
-    ;;; c
-    cmake-mode
-    cmake-ide
-    ;;; python
-    elpy
-    python-environment
-    pyvenv
-    ;;; haskell
-    haskell-mode
     ;;; js
-    js2-mode
-    tern
-    coffee-mode
-    jade-mode
     json-mode
     json-reformat
     ;;; markdown
@@ -81,8 +67,6 @@
     web-mode
     ;;;; less
     less-css-mode
-    ;; org
-    org
     ;; emacs 拡張
     image+
     migemo

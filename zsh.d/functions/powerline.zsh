@@ -1,5 +1,5 @@
 function powerline_precmd() {
-    eval "$(powerline-go -eval -error $? -cwd-max-depth 3 -hostname-only-if-ssh -modules host,ssh,cwd,perms,jobs -modules-right docker,docker-context,git)"
+    eval "$(powerline-go -eval -error $? -cwd-max-depth 3 -hostname-only-if-ssh -modules host,ssh,cwd,perms,jobs -modules-right git)"
 }
 
 function install_powerline_precmd() {

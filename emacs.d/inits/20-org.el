@@ -1,4 +1,4 @@
-(use-package org-install
+(use-package org
   :config
   (setq org-src-fontify-natively t)
   ;; org-modeでの強調表示を可能にする

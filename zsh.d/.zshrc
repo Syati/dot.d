@@ -166,4 +166,3 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 # seldon                     #
 #----------------------------#
 eval "$(sheldon source)"
-base16_monokai

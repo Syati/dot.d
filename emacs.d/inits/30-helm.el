@@ -3,7 +3,6 @@
   :diminish helm-mode
   :init
   (progn
-    (use-package helm-config)
     (use-package helm-occur)
     (use-package helm-descbinds)
     (use-package all-ext))

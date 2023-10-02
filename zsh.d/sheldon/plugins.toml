@@ -27,7 +27,6 @@ defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 github = "chriskempson/base16-shell"
 apply = ['source']
 
-
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
 
