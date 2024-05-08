@@ -47,8 +47,8 @@ source $GOOGLE_CLOUD_SDK/path.zsh.inc
 eval "$(direnv hook zsh)"
 
 #sheldon
-export SHELDON_CONFIG_DIR="$CWD/sheldon"
-export SHELDON_DATA_DIR="$CWD/sheldon/share"
+export SHELDON_CONFIG_DIR=~/.sheldon
+export SHELDON_DATA_DIR=~/.sheldon/share
 
 
 
@@ -166,3 +166,6 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 # seldon                     #
 #----------------------------#
 eval "$(sheldon source)"
+
+# Created by `pipx` on 2023-10-02 07:04:54
+export PATH=""
