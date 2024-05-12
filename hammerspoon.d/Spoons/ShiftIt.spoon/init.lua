@@ -19,10 +19,10 @@ obj.mapping = {
   left = { obj.mash, 'left' },
   right = { obj.mash, 'right' },
 
-  left00_25 = { obj.mash, 'm' },
-  left25_50 = { obj.mash, ',' },
-  left50_75 = { obj.mash, '.' },
-  left75_100 = { obj.mash, '/' },
+  left00_20 = { obj.mash, 'm' },
+  left20_40 = { obj.mash, ',' },
+  left40_100 = { obj.mash, '.' },
+  left20_100 = { obj.mash, '/' },
 
   left00_32 = { obj.mash, 'j' },
   left32_68 = { obj.mash, 'k' },
@@ -49,10 +49,10 @@ local units = {
   right50       = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
   left50        = { x = 0.00, y = 0.00, w = 0.50, h = 1.00 },
 
-  left00_25      = { x = 0.00, y = 0.00, w = 0.25, h = 1.00 },
-  left25_50      = { x = 0.25, y = 0.00, w = 0.25, h = 1.00 },
-  left50_75      = { x = 0.50, y = 0.00, w = 0.25, h = 1.00 },
-  left75_100     = { x = 0.75, y = 0.00, w = 0.25, h = 1.00 },
+  left00_20      = { x = 0.00, y = 0.00, w = 0.20, h = 1.00 },
+  left20_40      = { x = 0.20, y = 0.00, w = 0.20, h = 1.00 },
+  left40_100     = { x = 0.40, y = 0.00, w = 0.60, h = 1.00 },
+  left20_100     = { x = 0.20, y = 0.00, w = 0.80, h = 1.00 },
 
   left00_32      = { x = 0.00, y = 0.00, w = 0.32, h = 1.00 },
   left32_68      = { x = 0.32, y = 0.00, w = 0.36, h = 1.00 },
@@ -136,10 +136,10 @@ end
 function obj:left() move(units.left50, nil, true, 0) end
 function obj:right() move(units.right50, nil, true, 0) end
 
-function obj:left00_25() move(units.left00_25, nil, true, 0) end
-function obj:left25_50() move(units.left25_50, nil, true, 0) end
-function obj:left50_75() move(units.left50_75, nil, true, 0) end
-function obj:left75_100() move(units.left75_100, nil, true, 0) end
+function obj:left00_20() move(units.left00_20, nil, true, 0) end
+function obj:left20_40() move(units.left20_40, nil, true, 0) end
+function obj:left40_100() move(units.left40_100, nil, true, 0) end
+function obj:left20_100() move(units.left20_100, nil, true, 0) end
 
 function obj:left00_32() move(units.left00_32, nil, true, 0) end
 function obj:left32_68() move(units.left32_68, nil, true, 0) end
@@ -196,10 +196,10 @@ function obj:bindHotkeys(mapping)
   hs.hotkey.bind(self.mapping.left[1], self.mapping.left[2], function() self:left() end)
   hs.hotkey.bind(self.mapping.right[1], self.mapping.right[2], function() self:right() end)
 
-  hs.hotkey.bind(self.mapping.left00_25[1], self.mapping.left00_25[2], function() self:left00_25() end)
-  hs.hotkey.bind(self.mapping.left25_50[1], self.mapping.left25_50[2], function() self:left25_50() end)
-  hs.hotkey.bind(self.mapping.left50_75[1], self.mapping.left50_75[2], function() self:left50_75() end)
-  hs.hotkey.bind(self.mapping.left75_100[1], self.mapping.left75_100[2], function() self:left75_100() end)
+  hs.hotkey.bind(self.mapping.left00_20[1], self.mapping.left00_20[2], function() self:left00_20() end)
+  hs.hotkey.bind(self.mapping.left20_40[1], self.mapping.left20_40[2], function() self:left20_40() end)
+  hs.hotkey.bind(self.mapping.left40_100[1], self.mapping.left40_100[2], function() self:left40_100() end)
+  hs.hotkey.bind(self.mapping.left20_100[1], self.mapping.left20_100[2], function() self:left20_100() end)
 
   hs.hotkey.bind(self.mapping.left00_32[1], self.mapping.left00_32[2], function() self:left00_32() end)
   hs.hotkey.bind(self.mapping.left32_68[1], self.mapping.left32_68[2], function() self:left32_68() end)

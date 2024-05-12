@@ -11,7 +11,7 @@ freebsd*|darwin*)
     export GNU_PATH="/opt/homebrew/opt/coreutils/libexec/gnubin"
     export JS_YARN_PATH="$HOME/.yarn/bin"
     export FLUTTER_PATH="$HOME/.flutter/bin"
-    export POETRY_PATH="$HOME/.poetry/bin"
+    export POETRY_PATH="$HOME/.local/bin"
     export CUSTOM_PATH="$HOME/.bin:$HOME/.cargo/bin"
     export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$DEFAULT_PATH"
     export PGDATA="/opt/homebrew/var/postgresql@14"
@@ -35,8 +35,6 @@ CWD=`dirname $(readlink -s -f ~/.zshrc)`
 # fpath
 fpath=(~/.zsh/completions $fpath)
 
-#anyenv init
-eval "$(anyenv init -)"
 export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 export GOOGLE_CLOUD_SDK="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
@@ -143,6 +141,7 @@ alias preview='open -a Preview'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias where="command -v"
 
+
 #----------------------------#
 # zstyle                     #
 #----------------------------#
@@ -167,5 +166,7 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 #----------------------------#
 eval "$(sheldon source)"
 
-# Created by `pipx` on 2023-10-02 07:04:54
-export PATH=""
+#----------------------------#
+# mise                       #
+#----------------------------#
+eval "$(~/.local/bin/mise activate zsh)"
