@@ -28,6 +28,7 @@ srecode-map.el
 ide
 \#backup
 \#*
+.\#*
 .#*#
 *~
 .DS_Store
