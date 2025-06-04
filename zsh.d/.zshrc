@@ -1,4 +1,3 @@
-
 #================================#
 # settings of each os            #
 #================================#
@@ -11,10 +10,11 @@ freebsd*|darwin*)
     export GNU_PATH="/opt/homebrew/opt/coreutils/libexec/gnubin"
     export JS_YARN_PATH="$HOME/.yarn/bin"
     export FLUTTER_PATH="$HOME/.flutter/bin"
-    export POETRY_PATH="$HOME/.local/bin"
-    export CUSTOM_PATH="$HOME/.bin:$HOME/.cargo/bin"
-    export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$DEFAULT_PATH"
-    export PGDATA="/opt/homebrew/var/postgresql@14"
+    export CUSTOM_PATH="$HOME/.bin::$HOME/.local/bin"
+    export MYSQL_PATH="/opt/homebrew/opt/mysql@5.7/bin"
+    export POSGRE_PATH="/opt/homebrew/opt/postgresql@17/bin"
+    export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$MYSQL_PATH:$POSGRE_PATH:$DEFAULT_PATH"
+    export PGDATA="/opt/homebrew/var/postgresql@17"
     alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
@@ -35,8 +35,6 @@ CWD=`dirname $(readlink -s -f ~/.zshrc)`
 # fpath
 fpath=(~/.zsh/completions $fpath)
 
-export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
-
 export GOOGLE_CLOUD_SDK="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
 source $GOOGLE_CLOUD_SDK/completion.zsh.inc
 source $GOOGLE_CLOUD_SDK/path.zsh.inc
@@ -49,6 +47,8 @@ export SHELDON_CONFIG_DIR=~/.sheldon
 export SHELDON_DATA_DIR=~/.sheldon/share
 
 
+#ruby
+export RUBY_CONFIGURE_OPTS="--enable-yjit"
 
 #----------------------------#
 # start up                   #
@@ -85,7 +85,6 @@ export LESS='-R'
 #================================#
 #keybind
 bindkey -e  # emacs style
-
 
 #LANG
 export LANG=ja_JP.UTF-8
@@ -170,3 +169,8 @@ eval "$(sheldon source)"
 # mise                       #
 #----------------------------#
 eval "$(~/.local/bin/mise activate zsh)"
+
+#----------------------------#
+# rust                       #
+#----------------------------#
+source "$HOME/.cargo/env"
