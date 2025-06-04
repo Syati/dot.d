@@ -1,0 +1,113 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+x g",
+        "command": "magit.status"
+    },
+    {
+        "key": "alt+x g",
+        "command": "-magit.status"
+    },
+    {
+        "key": "ctrl+x alt+g",
+        "command": "magit.file-popup",
+        "when": "activeEditor"
+    },
+    {
+        "key": "alt+x alt+g",
+        "command": "-magit.file-popup",
+        "when": "activeEditor"
+    },
+    {
+        "key": "ctrl+x shift+g",
+        "command": "magit.dispatch"
+    },
+    {
+        "key": "alt+x ctrl+g",
+        "command": "-magit.dispatch"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "extension.railsGoToSpec",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+y",
+        "command": "-extension.railsGoToSpec",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+x ctrl+o",
+        "command": "-emacs-mcx.isearchExit",
+        "when": "editorFocus && findWidgetVisible && !isComposing"
+    },
+    {
+        "key": "ctrl+x ctrl+o",
+        "command": "-emacs-mcx.deleteBlankLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+t",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "cmd+f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && isWeb"
+    },
+    {
+        "key": "shift+alt+t",
+        "command": "editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+f12",
+        "command": "-editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "alt+,",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-editor.action.transposeLetters",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+r",
+        "command": "Rails:Navigation"
+    },
+    {
+        "key": "alt+.",
+        "command": "-Rails:Navigation"
+    },
+    {
+        "key": "alt+t",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+x ctrl+r",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    }
+]
