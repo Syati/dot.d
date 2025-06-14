@@ -5,7 +5,7 @@ README
 想定環境
 --------
 * OS
-    * ubuntu 
+    * ubuntu
     * MAC
     * その他
 * emacs-ver
@@ -20,6 +20,13 @@ README
 ```
 C-u 0 M-x byte-recompile-directory
 ```
+
+Font install
+------------------------------
+
+M-x all-the-icons-install-fonts
+
+
 
 利用方法
 ------------------------------
@@ -39,4 +46,3 @@ emacs 立ち上げ時に、.emacs.d に記述のあるパッケージを自動�
     * tty-takao
 * gtags を利用しているため、以下のパッケージをDLして make, make install
     * [gnu global](http://www.gnu.org/software/global/)
-
