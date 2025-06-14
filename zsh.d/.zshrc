@@ -54,12 +54,10 @@ export RUBY_CONFIGURE_OPTS="--enable-yjit"
 # start up                   #
 #----------------------------#
 
-# auto tmux
-if [ -z $OS ]; then
-    if [ -z $EMACS ]; then
-	    if which tmux 2>&1 >/dev/null; then
-	        test -z $TMUX && (tmux attach || tmux new-session)
-	    fi
+# auto tmux (avoid in IntelliJ)
+if [ -z "$OS" ] && [ -z "$EMACS" ] && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
+    if command -v tmux >/dev/null 2>&1; then
+        [ -z "$TMUX" ] && (tmux attach || tmux new-session)
     fi
 fi
 

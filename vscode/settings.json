@@ -1,4 +1,5 @@
 {
     "git.openRepositoryInParentFolders": "always",
-    "mise.binPath": "/Users/m.yamamoto/.local/bin/mise"
+    "mise.binPath": "/Users/m.yamamoto/.local/bin/mise",
+    "ruby.rubocop.useBundler": true
 }

@@ -3,7 +3,7 @@
 
     (set-face-attribute 'default nil
                         :family "Inconsolata"
-                        :height 140)
+                        :height 180)
 
     (set-fontset-font
      (frame-parameter nil 'font)
@@ -26,7 +26,7 @@
                       (font-spec :family "TakaoExGothic")
                       nil
                       'prepend)
-    
+
     ;; 記号、全角ひらがな、全角カタカナの設定
     (set-fontset-font nil
                       '( #x3000 . #x30ff)
@@ -40,6 +40,3 @@
             (".*TakaoExGothic.*" . 1.0)
             (".*HannariMincho.*" . 1.0)
             ("-cdac$" . 1.3)))))
-
-
-

@@ -41,8 +41,8 @@
     magit-filenotify
     magit-find-file
     magit-gerrit
-    magit-gh-pulls
     magit-gitflow
+    magit-gh-pulls
     magit-stgit
     magit-svn
     magit-topgit
@@ -62,7 +62,6 @@
 
     ;;; docker
     dockerfile-mode
-    php-mode
     ;;: web
     web-mode
     ;;;; less
@@ -74,37 +73,35 @@
     swap-buffers
     switch-window
     ;; el-get turn-off
-    ag
-    wgrep-ag
     undohist
     wgrep
     sequential-command
     multiple-cursors
     popwin
     ;;dire 拡張
-    direx
-    jedi-direx
+;;    direx
+;;    jedi-direx
     ;; shell
     multi-term
+    counsel
+
     ;; helm
-    helm
-    helm-ag
-    helm-swoop
-    helm-c-moccur
-    helm-c-yasnippet
-    helm-descbinds
-    helm-dictionary
-    helm-dired-recent-dirs
-    helm-emmet
-    helm-flycheck
-    helm-git-files
-    helm-git-grep
-    helm-gtags
-    helm-ag-r
-    helm-projectile
-    wgrep-helm
-    all-ext
-    ;;
+    ;; helm
+    ;; helm-ag
+    ;; helm-swoop
+    ;; helm-c-moccur
+    ;; helm-c-yasnippet
+    ;; helm-descbinds
+    ;; helm-dictionary
+    ;; helm-dired-recent-dirs
+    ;; helm-emmet
+    ;; helm-flycheck
+    ;; helm-git-grep
+    ;; helm-gtags
+    ;; helm-projectile
+    ;; wgrep-helm
+    ;; all-ext
+    ;; ;;
     projectile
     ;;theme(display)
     monokai-theme
@@ -168,20 +165,18 @@
     (if file-name
         (find-alternate-file (concat "/sudo::" file-name))
       (error "Cannot get a file name"))))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2)
  '(delete-by-moving-to-trash t)
  '(helm-gtags-auto-update t)
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style 'relative)
  '(js2-strict-trailing-comma-warning nil)
  '(package-selected-packages
-   '(terraform-mode lua-mode undo-tree yaml-mode slim-mode scss-mode robe inf-ruby rbenv multi-web-mode company-go go-mode csv-mode mozc-popup mozc monokai-theme projectile all-ext wgrep-helm helm-projectile helm-ag-r helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-swoop helm-ag helm multi-term jedi-direx direx popwin multiple-cursors sequential-command wgrep undohist wgrep-ag ag switch-window swap-buffers recentf-ext migemo image+ web-mode php-mode dockerfile-mode use-package tide tern python-environment origami markdown-mode magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex json-reformat json-mode js2-mode jade-mode init-loader haskell-mode flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy coffee-mode cmake-mode cmake-ide))
+   '(all-the-icons-ivy all-th-icons-ivy ivy-hydra ivy terraform-mode lua-mode undo-tree yaml-mode slim-mode scss-mode robe inf-ruby rbenv multi-web-mode company-go go-mode csv-mode mozc-popup mozc monokai-theme projectile all-ext wgrep-helm helm-projectile helm-ag-r helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-swoop helm-ag helm multi-term jedi-direx direx popwin multiple-cursors sequential-command wgrep undohist wgrep-ag ag switch-window swap-buffers recentf-ext migemo image+ web-mode php-mode dockerfile-mode use-package tide tern python-environment origami markdown-mode magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex json-reformat json-mode js2-mode jade-mode init-loader haskell-mode flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy coffee-mode cmake-mode cmake-ide))
  '(trash-directory "~/.Trash"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
