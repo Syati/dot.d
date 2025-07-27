@@ -1,7 +1,0 @@
-(when (require 'popwin)
-  (setq popwin:special-display-config '(("*compilatoin*" :noselect t)
-                                        (direx:direx-mode :position left :width 25 :dedicated t)
-                                        ("*Python*" :position bottom :height 10 :dedicated t)
-                                        ("*shell*"  :position bottom :height 10 :dedicated t)
-                                        ("*HTTP Response*" :position bottom :height 10 :dedicated t)
-                                        )))

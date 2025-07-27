@@ -37,71 +37,18 @@
     ;; 開発補助
     origami
     magit
-    magit-annex
-    magit-filenotify
     magit-find-file
-    magit-gerrit
     magit-gitflow
     magit-gh-pulls
-    magit-stgit
-    magit-svn
-    magit-topgit
     flycheck
-    flycheck-cask
     flycheck-color-mode-line
-    flycheck-pos-tip
-    flycheck-pyflakes
-    ;; 開発モード
-    ;; typescript
-    ;;typescript-mode
-    ;;; js
-    json-mode
-    json-reformat
-    ;;; markdown
-    markdown-mode
 
-    ;;; docker
+    ;; 開発モード
     dockerfile-mode
-    ;;: web
-    web-mode
-    ;;;; less
-    less-css-mode
-    ;; emacs 拡張
-    image+
-    migemo
-    recentf-ext
-    swap-buffers
-    switch-window
-    ;; el-get turn-off
-    undohist
     wgrep
     sequential-command
     multiple-cursors
-    popwin
-    ;;dire 拡張
-;;    direx
-;;    jedi-direx
-    ;; shell
-    multi-term
     counsel
-
-    ;; helm
-    ;; helm
-    ;; helm-ag
-    ;; helm-swoop
-    ;; helm-c-moccur
-    ;; helm-c-yasnippet
-    ;; helm-descbinds
-    ;; helm-dictionary
-    ;; helm-dired-recent-dirs
-    ;; helm-emmet
-    ;; helm-flycheck
-    ;; helm-git-grep
-    ;; helm-gtags
-    ;; helm-projectile
-    ;; wgrep-helm
-    ;; all-ext
-    ;; ;;
     projectile
     ;;theme(display)
     monokai-theme
