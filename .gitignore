@@ -4,6 +4,8 @@ zsh.d/sheldon/*
 *.zwc
 emacs.d/network-security.data
 emacs.d/transient
+emacs.d/projects
+emacs.d/tree-sitter
 
 .tern-port
 *.bak
