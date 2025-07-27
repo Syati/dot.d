@@ -36,12 +36,23 @@ function pb-yank() {
     zle yank
 }
 
+function ghq-fzf() {
+  local src=$(ghq list | fzf --preview "cat $(ghq root)/{}/README.*")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+
 zle -N fzf_select_directory_history
 zle -N fzf_select_command_history
 zle -N pb-kill-line
 zle -N pb-yank
+zle -N ghq-fzf
 
 bindkey "^x^r" fzf_select_directory_history
 bindkey "^r" fzf_select_command_history
 bindkey "^y" pb-yank
 bindkey "^k" pb-kill-line
+bindkey "^t" ghq-fzf
