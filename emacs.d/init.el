@@ -53,7 +53,7 @@
     flycheck-pyflakes
     ;; 開発モード
     ;; typescript
-    typescript-mode
+    ;;typescript-mode
     ;;; js
     json-mode
     json-reformat
@@ -171,12 +171,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(delete-by-moving-to-trash t)
- '(helm-gtags-auto-update t)
- '(helm-gtags-ignore-case t)
- '(helm-gtags-path-style 'relative)
- '(js2-strict-trailing-comma-warning nil)
  '(package-selected-packages
-   '(all-the-icons-ivy all-th-icons-ivy ivy-hydra ivy terraform-mode lua-mode undo-tree yaml-mode slim-mode scss-mode robe inf-ruby rbenv multi-web-mode company-go go-mode csv-mode mozc-popup mozc monokai-theme projectile all-ext wgrep-helm helm-projectile helm-ag-r helm-gtags helm-git-grep helm-git-files helm-flycheck helm-emmet helm-dired-recent-dirs helm-dictionary helm-descbinds helm-c-yasnippet helm-c-moccur helm-swoop helm-ag helm multi-term jedi-direx direx popwin multiple-cursors sequential-command wgrep undohist wgrep-ag ag switch-window swap-buffers recentf-ext migemo image+ web-mode php-mode dockerfile-mode use-package tide tern python-environment origami markdown-mode magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex json-reformat json-mode js2-mode jade-mode init-loader haskell-mode flycheck-pyflakes flycheck-pos-tip flycheck-color-mode-line flycheck-cask elpy coffee-mode cmake-mode cmake-ide))
+   '(ag all-ext all-the-icons-ivy coffee-mode company-go counsel csv-mode
+        dockerfile-mode exec-path-from-shell flycheck-cask
+        flycheck-color-mode-line flycheck-pos-tip flycheck-pyflakes
+        haskell-mode helm-ag helm-c-moccur helm-c-yasnippet
+        helm-descbinds helm-dictionary helm-dired-recent-dirs
+        helm-emmet helm-flycheck helm-git-grep helm-projectile
+        helm-swoop image+ init-loader ivy-hydra jedi-direx js2-mode
+        json-mode json-reformat magit-annex magit-filenotify
+        magit-find-file magit-gerrit magit-gh-pulls magit-gitflow
+        magit-stgit magit-svn magit-topgit markdown-mode migemo
+        monokai-theme mozc-popup multi-term multi-web-mode
+        multiple-cursors origami php-mode popwin rbenv recentf-ext
+        robe scss-mode sequential-command slim-mode swap-buffers
+        switch-window terraform-mode tide tree-sitter-langs
+        treesit-auto typescript-mode undo-tree undohist vterm web-mode
+        wgrep-ag wgrep-helm yaml-mode))
  '(trash-directory "~/.Trash"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

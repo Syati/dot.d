@@ -35,9 +35,6 @@ CWD=`dirname $(readlink -s -f ~/.zshrc)`
 # fpath
 fpath=(~/.zsh/completions $fpath)
 
-export GOOGLE_CLOUD_SDK="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
-source $GOOGLE_CLOUD_SDK/completion.zsh.inc
-source $GOOGLE_CLOUD_SDK/path.zsh.inc
 
 #direnv hook
 eval "$(direnv hook zsh)"
@@ -171,4 +168,6 @@ eval "$(~/.local/bin/mise activate zsh)"
 #----------------------------#
 # rust                       #
 #----------------------------#
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+   source "$HOME/.cargo/env"
+fi
