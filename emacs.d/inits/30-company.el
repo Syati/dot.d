@@ -1,12 +1,14 @@
 (use-package company
   :defer t
+  :custom
+  (company-auto-expand t)
+  (company-idle-delay 0)
+  (company-minimum-prefix-length 2)
+  (company-selection-wrap-around t)
+  (completion-ignore-case t)
+  (company-dabbrev-downcase nil)
   :config
-  (setq company-auto-expand t)
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 2)
-  (setq company-selection-wrap-around t)
-  (setq completion-ignore-case t)
-  (setq company-dabbrev-downcase nil)
+  (global-company-mode t)
 
   (custom-set-faces
     '(company-scrollbar-bg ((t (:background "#75715E"))))
@@ -25,6 +27,4 @@
          ("\C-s" . company-search-candidates)
          ("\C-h" . nil)
          )
-  :init
-  (global-company-mode)
   )
