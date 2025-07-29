@@ -30,5 +30,4 @@
     (setq flycheck-check-syntax-automatically '(save mode-enabled))
     (eldoc-mode +1)
     (tide-hl-identifier-mode +1)
-    (company-mode +1))
-  (setq company-tooltip-align-annotations t))
+    (setq company-tooltip-align-annotations t)))
