@@ -95,15 +95,92 @@
         "command": "-Rails:Navigation"
     },
     {
-        "key": "cmd+p",
-        "command": "-workbench.action.quickOpen"
+        "key": "ctrl+t",
+        "command": "workbench.action.quickOpen"
     },
     {
         "key": "ctrl+x ctrl+r",
-        "command": "workbench.action.openRecent"
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+    },
+    {
+        "key": "ctrl+x f",
+        "command": "extension.dired.open",
+        "when": "!inDebugRepl"
+    },
+    {
+        "key": "ctrl+x f",
+        "command": "-extension.dired.open",
+        "when": "editorTextFocus && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "-workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "cmd+k cmd+m",
+        "command": "-workbench.action.toggleMaximizeEditorGroup",
+        "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "-find-it-faster.findFiles"
+    },
+    {
+        "key": "cmd+0",
+        "command": "-workbench.action.focusSideBar"
+    },
+    {
+        "key": "ctrl+x ctrl+j",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+x p",
+        "command": "projectManager.listProjects"
+    },
+    {
+        "key": "alt+cmd+p",
+        "command": "-projectManager.listProjects"
+    },
+    {
+        "key": "ctrl+x j",
+        "command": "-workbench.action.togglePanel",
+        "when": "!terminalFocus"
+    },
+    {        
+        "key": "ctrl+x ctrl+j",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
         "key": "ctrl+r",
-        "command": "-workbench.action.openRecent"
+        "command": "-workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+        "when": "inQuickOpen && inRecentFilesPicker"
+    },
+    {
+        "key": "alt+r",
+        "command": "-emacs-mcx.moveToWindowLineTopBottom",
+        "when": "config.emacs-mcx.useMetaPrefixAlt && editorTextFocus"
     }
 ]

@@ -1,5 +1,17 @@
 {
     "git.openRepositoryInParentFolders": "always",
-    "mise.binPath": "/Users/m.yamamoto/.local/bin/mise",
-    "ruby.rubocop.useBundler": true
+    "mise.binPath": "/Users/mizuki-y/.local/bin/mise",
+    "ruby.rubocop.useBundler": true,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "workbench.activityBar.location": "hidden",
+    "workbench.editor.showTabs": "none",
+    "projectManager.git.baseFolders": [
+        "~/Projects"
+    ],
+    "workbench.startupEditor": "none",
+    "debug.javascript.defaultRuntimeExecutable": {
+        "pwa-node": "/Users/mizuki-y/.local/share/mise/shims/node"
+    },
+    "window.newWindowProfile": "Default"
 }
