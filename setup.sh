@@ -7,16 +7,13 @@ if !(type brew > /dev/null 2>&1); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# install brew formulare
+brew bundle --file ${CWD}/osx/brew/Brewfile
+
 # install sheldon for zsh pckage manager
 if !(type sheldon > /dev/null 2>&1); then
     brew install sheldon
     mkdir -p ~/.sheldon/
-fi
-
-
-# install powerline-go
-if !(type sheldon > /dev/null 2>&1); then
-    brew install powerline-go
 fi
 
 

@@ -182,5 +182,13 @@
         "key": "alt+r",
         "command": "-emacs-mcx.moveToWindowLineTopBottom",
         "when": "config.emacs-mcx.useMetaPrefixAlt && editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+/",
+        "command": "redo"
+    },
+    {
+        "key": "shift+cmd+z",
+        "command": "-redo"
     }
 ]
