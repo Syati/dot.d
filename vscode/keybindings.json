@@ -164,6 +164,16 @@
         "when": "sideBarFocus"
     },
     {
+        "key": "ctrl+x ctrl+;",
+        "command": "workbench.action.focusAuxiliaryBar",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+x ctrl+;",
+        "command": "workbench.action.toggleAuxiliaryBar",
+        "when": "!editorTextFocus"
+    },    
+    {
         "key": "r",
         "command": "renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"

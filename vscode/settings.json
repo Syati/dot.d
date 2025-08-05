@@ -7,11 +7,21 @@
     "workbench.activityBar.location": "hidden",
     "workbench.editor.showTabs": "none",
     "projectManager.git.baseFolders": [
-        "~/Projects"
+        "~/Projects",
+        "~/.dot.d"
     ],
     "workbench.startupEditor": "none",
     "debug.javascript.defaultRuntimeExecutable": {
         "pwa-node": "/Users/mizuki-y/.local/share/mise/shims/node"
     },
-    "window.newWindowProfile": "Default"
+    "window.newWindowProfile": "Default",
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.toggleAndFocusSecondarySidebar",
+            "sequence": [
+                "workbench.action.toggleAuxiliaryBar",
+                "workbench.action.focusAuxiliaryBar"
+            ]
+        }
+    ]
 }
