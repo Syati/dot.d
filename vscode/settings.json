@@ -1,8 +1,8 @@
 {
     "git.openRepositoryInParentFolders": "always",
     "mise.binPath": "/Users/mizuki-y/.local/bin/mise",
-    "ruby.rubocop.useBundler": true,
     "editor.minimap.enabled": false,
+    "workbench.tree.indent": 16,
     "terminal.integrated.defaultProfile.osx": "zsh",
     "workbench.activityBar.location": "hidden",
     "workbench.editor.showTabs": "none",
@@ -23,5 +23,15 @@
                 "workbench.action.focusAuxiliaryBar"
             ]
         }
-    ]
+    ],
+    "scm.compactFolders": false,
+    "explorer.compactFolders": false,
+    "notebook.compactView": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "explorer.confirmDelete": false,
+    "explorer.autoReveal": true,
+    "workbench.editor.revealIfOpen": true,
+    "git.blame.editorDecoration.enabled": true,
+    "files.insertFinalNewline": true,
+    "diffEditor.ignoreTrimWhitespace": false
 }

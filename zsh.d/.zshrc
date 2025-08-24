@@ -34,7 +34,8 @@ CWD=`dirname $(readlink -s -f ~/.zshrc)`
 
 # fpath
 fpath=(~/.zsh/completions $fpath)
-
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(~/.docker/completions $fpath)
 
 #direnv hook
 eval "$(direnv hook zsh)"
