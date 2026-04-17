@@ -1,0 +1,210 @@
+# Emacs/Dired スタイルのキーバインド
+
+# ===== ナビゲーション =====
+[[mgr.prepend_keymap]]
+on   = "<C-n>"
+run  = "arrow next"
+desc = "下に移動 (Emacs/Dired n)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-p>"
+run  = "arrow prev"
+desc = "上に移動 (Emacs/Dired p)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-f>"
+run  = "enter"
+desc = "ディレクトリに入る / ファイルを開く (Emacs C-f)"
+
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "<C-b>"
+run  = "leave"
+desc = "親ディレクトリに戻る (Emacs C-b)"
+
+[[mgr.prepend_keymap]]
+on   = "b"
+run  = "leave"
+desc = "親ディレクトリに戻る (Dired b)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-v>"
+run  = "arrow 50%"
+desc = "ページダウン (Emacs C-v)"
+
+[[mgr.prepend_keymap]]
+on   = "<A-v>"
+run  = "arrow -50%"
+desc = "ページアップ (Emacs M-v)"
+
+[[mgr.prepend_keymap]]
+on   = "<A-<>"
+run  = "arrow -99999"
+desc = "先頭に移動 (Emacs M-<)"
+
+[[mgr.prepend_keymap]]
+on   = "<A->>"
+run  = "arrow 99999"
+desc = "末尾に移動 (Emacs M->)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-a>"
+run  = "arrow -99999"
+desc = "先頭に移動 (Emacs C-a)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-e>"
+run  = "arrow 99999"
+desc = "末尾に移動 (Emacs C-e)"
+
+# ===== ファイル選択・操作 =====
+[[mgr.prepend_keymap]]
+on   = "<C-Space>"
+run  = "toggle"
+desc = "選択/選択解除 (Emacs C-Space)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-@>"
+run  = "toggle"
+desc = "選択/選択解除 (Emacs C-@)"
+
+[[mgr.prepend_keymap]]
+on   = "u"
+run  = "select --state=false"
+desc = "選択解除 (Dired u)"
+
+[[mgr.prepend_keymap]]
+on   = "U"
+run  = "select_all --state=false"
+desc = "全選択解除 (Dired U)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-k>"
+run  = "remove --cut"
+desc = "削除（カット） (Emacs C-k)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-w>"
+run  = "remove --cut"
+desc = "カット (Emacs C-w)"
+
+[[mgr.prepend_keymap]]
+on   = "<A-w>"
+run  = "yank --cut=false"
+desc = "コピー (Emacs M-w)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-y>"
+run  = "paste --force"
+desc = "ペースト (Emacs C-y)"
+
+[[mgr.prepend_keymap]]
+on   = "d"
+run  = "remove"
+desc = "削除マーク (Dired d)"
+
+[[mgr.prepend_keymap]]
+on   = "D"
+run  = "remove --permanently"
+desc = "即座に削除 (Dired D)"
+
+[[mgr.prepend_keymap]]
+on   = "R"
+run  = "rename"
+desc = "リネーム (Dired R)"
+
+[[mgr.prepend_keymap]]
+on   = "c"
+run  = "copy"
+desc = "コピー (Dired c)"
+
+[[mgr.prepend_keymap]]
+on   = "S"
+run  = "link"
+desc = "シンボリックリンク作成 (Dired S)"
+
+[[mgr.prepend_keymap]]
+on   = "!"
+run  = "shell --block"
+desc = "外部コマンド実行 (Dired !)"
+
+# ===== 検索・フィルタ =====
+[[mgr.prepend_keymap]]
+on   = "<C-s>"
+run  = "find"
+desc = "検索 (Emacs C-s)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-r>"
+run  = "find --previous"
+desc = "逆方向検索 (Emacs C-r)"
+
+[[mgr.prepend_keymap]]
+on   = "s"
+run  = "search"
+desc = "ファイル名検索 (Dired s)"
+
+# ===== その他の操作 =====
+[[mgr.prepend_keymap]]
+on   = "g"
+run  = "refresh"
+desc = "リフレッシュ (Dired g)"
+
+[[mgr.prepend_keymap]]
+on   = "+"
+run  = "create"
+desc = "ディレクトリ/ファイル作成 (Dired +)"
+
+[[mgr.prepend_keymap]]
+on   = "m"
+run  = "toggle"
+desc = "マーク (Dired m)"
+
+[[mgr.prepend_keymap]]
+on   = "o"
+run  = "open"
+desc = "ファイルを開く (Dired o)"
+
+[[mgr.prepend_keymap]]
+on   = "e"
+run  = "open"
+desc = "ファイルを編集 (Dired e)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-g>"
+run  = "escape"
+desc = "キャンセル (Emacs C-g)"
+
+[[mgr.prepend_keymap]]
+on   = "q"
+run  = "quit"
+desc = "終了 (Dired q)"
+
+[[mgr.prepend_keymap]]
+on   = "?"
+run  = "help"
+desc = "ヘルプ"
+
+
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+desc = "Cancel input"
+
+[[mgr.prepend_keymap]]
+on   = "v"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "V"
+run  = "plugin toggle-pane max-preview"
+desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on  = [ "F", "G" ]
+run = "plugin yafg"
