@@ -1,5 +1,9 @@
 function powerline_precmd() {
-    eval "$(powerline-go -eval -error $? -cwd-max-depth 3 -hostname-only-if-ssh -modules host,ssh,cwd,perms,jobs -modules-right git)"
+    if [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]; then
+        eval "$(powerline-go -eval -error $? -cwd-max-depth 3 -hostname-only-if-ssh -modules host,ssh,cwd,perms,jobs)"
+    else
+        eval "$(powerline-go -eval -error $? -cwd-max-depth 3 -hostname-only-if-ssh -modules host,ssh,cwd,perms,jobs -modules-right git)"
+    fi
 }
 
 function install_powerline_precmd() {

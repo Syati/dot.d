@@ -1,3 +1,11 @@
+# 1. 履歴や fzf から除外したいコマンドリスト
+local -a my_ignore_commands
+my_ignore_commands=(
+    cd pwd ls la ll history mv
+    "rm|mkdir"      # 履歴から再実行すると危ないもの（お好みで）
+)
+local ignore_pattern="^(\*|${(j:|:)my_ignore_commands})($|[[:space:]])"
+
 #----------------------------#
 # funcs                      #
 #----------------------------#
@@ -20,11 +28,18 @@ function fzf_select_directory_history() {
     zle reset-prompt
 }
 
+# 3. fzf 連携関数
 function fzf_select_command_history() {
-    BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | sed -r 's/\s*[0-9]*\s*//' | fzf +s --tac)
+    # 履歴取得時に最初から grep でフィルタリング
+    BUFFER=$(fc -rl 1 | \
+        sed -E 's/^\s*[0-9]+\*?\s*//' | \
+        grep -Ev "$ignore_pattern" | \
+        fzf --no-sort --reverse --query="$LBUFFER")
+
     CURSOR=$#BUFFER
     zle reset-prompt
 }
+
 
 function pb-kill-line() {
     zle kill-line

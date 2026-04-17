@@ -21,9 +21,9 @@ apply = ['source']
 defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
 
 # theme
-[plugins.base16-shell]
-github = "chriskempson/base16-shell"
-apply = ['source']
+# [plugins.base16-shell]
+# github = "chriskempson/base16-shell"
+# apply = ['source']
 
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
@@ -34,7 +34,7 @@ github = 'agkozak/zsh-z'
 
 # auto completions
 [plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
+inline = 'autoload -Uz compinit && compinit'
 
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'

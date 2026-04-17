@@ -5,16 +5,16 @@
 case "${OSTYPE}" in
 freebsd*|darwin*)
     export SHELL="/bin/zsh"
-    export HOMEBREW="/opt/homebrew/bin"
+    export HOMEBREW="/opt/homebrew/bin:/opt/homebrew/sbin"
     export DEFAULT_PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin"
     export GNU_PATH="/opt/homebrew/opt/coreutils/libexec/gnubin"
     export JS_YARN_PATH="$HOME/.yarn/bin"
     export FLUTTER_PATH="$HOME/.flutter/bin"
     export CUSTOM_PATH="$HOME/.bin::$HOME/.local/bin"
     export MYSQL_PATH="/opt/homebrew/opt/mysql@5.7/bin"
-    export POSGRE_PATH="/opt/homebrew/opt/postgresql@17/bin"
-    export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$MYSQL_PATH:$POSGRE_PATH:$DEFAULT_PATH"
-    export PGDATA="/opt/homebrew/var/postgresql@17"
+    export PSQL_PATH="/opt/homebrew/opt/libpq/bin"
+    export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$MYSQL_PATH:$PSQL_PATH:$DEFAULT_PATH"
+    #export PGDATA="/opt/homebrew/var/postgresql@18"
     alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
 linux*)
@@ -34,8 +34,8 @@ CWD=`dirname $(readlink -s -f ~/.zshrc)`
 
 # fpath
 fpath=(~/.zsh/completions $fpath)
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(~/.docker/completions $fpath)
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 #direnv hook
 eval "$(direnv hook zsh)"
@@ -48,28 +48,33 @@ export SHELDON_DATA_DIR=~/.sheldon/share
 #ruby
 export RUBY_CONFIGURE_OPTS="--enable-yjit"
 
+
 #----------------------------#
 # start up                   #
 #----------------------------#
 
 # auto tmux (avoid in IntelliJ)
-if [ -z "$OS" ] && [ -z "$EMACS" ] \
-       && [ "$TERM_PROGRAM" != "vscode" ] \
-       && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
-    if command -v tmux >/dev/null 2>&1; then
-        [ -z "$TMUX" ] && (tmux attach || tmux new-session)
-    fi
-fi
+# if [ -z "$OS" ] && [ -z "$EMACS" ] \
+#       && [ "$TERM_PROGRAM" != "vscode" ] \
+#       && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then
+#    if command -v tmux >/dev/null 2>&1; then
+#        [ -z "$TMUX" ] && (tmux attach || tmux new-session)
+#    fi
+# fi
 
 
 #----------------------------#
 # export                     #
 #----------------------------#
 export LC_ALL=ja_JP.UTF-8
-export TERM=xterm-256color
+# RubyMineなどの特殊な環境（dumb）でない場合のみ 256color を設定
+if [[ "$TERM" != "dumb" ]]; then
+    export TERM=xterm-256color
+fi
 
-export EDITOR=emacsclient
-export VISUAL=emacsclient
+
+export EDITOR="code --reuse-window --wait"
+export VISUAL="code --reuse-window --wait"
 
 # docker
 # export DOCKER_HOST=unix:///Users/mizuki-y/.lima/docker/sock/docker.sock
@@ -77,12 +82,18 @@ export VISUAL=emacsclient
 #for ls --color | less
 export LESS='-R'
 
+# psql 用
+alias psql="PAGER='ov -m psql' psql"
+alias mysql="PAGER='ov -m mysql' mysql"
+
+
 
 #================================#
 # LOAD LIB                       #
 #================================#
 #keybind
 bindkey -e  # emacs style
+bindkey -r '\ex' # M-x disable
 
 #LANG
 export LANG=ja_JP.UTF-8
@@ -96,6 +107,7 @@ esac
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=100000
+HISTORY_IGNORE="(cd|pwd|l[sal]|mv|rm|mkdir)"
 
 # #----------------------------#
 # # option                     #
@@ -174,3 +186,12 @@ eval "$(~/.local/bin/mise activate zsh)"
 if [ -f "$HOME/.cargo/env" ]; then
    source "$HOME/.cargo/env"
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mizuki-y/.lmstudio/bin"
+# End of LM Studio CLI section
+
+#----------------------------#
+# entire
+#----------------------------#
+source <(entire completion zsh)
