@@ -1,0 +1,15 @@
+[mgr]
+show_hidden = true
+
+# 比率を [0, 1, 0] に設定することで、左右のカラムを消します
+ratio = [0, 3, 1]
+# ファイルの行をどのように表示するかを指定します。 "permissions" を指定すると、ファイルのパーミッションを表示します。
+linemode = "permissions"
+
+# yazi.toml
+[opener]
+edit = [
+    # -r をつけると、現在開いているウィンドウのサイドバーでそのファイルを強調表示（reveal）します
+    { run = 'code -r "$@"', desc = "Open and Reveal in Sidebar" }
+]
+
