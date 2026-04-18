@@ -279,14 +279,18 @@
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+, ctrl+l", // 好きなキーバインドに変更してください
+        "key": "ctrl+, ctrl+l",
         "command": "workbench.view.scm",
         "when": "!scmFocus"
     },
     {
-        "key": "ctrl+, ctrl+m", // 好きなキーバインドに変更してください
-"command": "github.copilot.git.generateCommitMessage",
-        "when": "scmFocus"
+        "key": "ctrl+, ctrl+l",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarFocus"
+    },    
+    {
+        "key": "ctrl+, ctrl+m",
+        "command": "github.copilot.git.generateCommitMessage"
     },    
     {
         "key": "ctrl+shift+g",

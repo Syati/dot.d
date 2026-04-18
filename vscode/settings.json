@@ -4,7 +4,7 @@
     "editor.minimap.enabled": false,
     "workbench.tree.indent": 16,
     "terminal.integrated.defaultProfile.osx": "zsh",
-    "workbench.activityBar.location": "hidden",
+    //"workbench.activityBar.location": "hidden",
     "workbench.editor.showTabs": "none",
     "projectManager.git.baseFolders": [
         "~/Projects",
@@ -14,7 +14,6 @@
     "debug.javascript.defaultRuntimeExecutable": {
         "pwa-node": "/Users/mizuki-y/.local/share/mise/shims/node"
     },
-    "window.newWindowProfile": "Default",
     "multiCommand.commands": [
         {
             "command": "multiCommand.toggleAndFocusSecondarySidebar",
@@ -33,5 +32,22 @@
     "workbench.editor.revealIfOpen": true,
     "git.blame.editorDecoration.enabled": true,
     "files.insertFinalNewline": true,
-    "diffEditor.ignoreTrimWhitespace": false
+    "diffEditor.ignoreTrimWhitespace": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "redhat.telemetry.enabled": false,
+    "editor.fontFamily": "'Meslo LG M for Powerline', Monaco, 'Courier New', monospace",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "rubyLsp.formatter": "rubocop",
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+        "editor.formatOnSave": true
+    },
+    "chat.viewSessions.orientation": "stacked",
+    "chat.viewSessions.enabled": false,
+    "chat.tips.enabled": false,
+    "github.copilot.chat.localeOverride": "ja",
+    "debug.onTaskErrors": "debugAnyway"
 }
