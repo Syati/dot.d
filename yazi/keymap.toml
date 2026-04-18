@@ -135,13 +135,13 @@ desc = "外部コマンド実行 (Dired !)"
 # ===== 検索・フィルタ =====
 [[mgr.prepend_keymap]]
 on   = "<C-s>"
-run  = "find"
-desc = "検索 (Emacs C-s)"
+run  = "filter --smart"
+desc = "検索 like fzf"
 
 [[mgr.prepend_keymap]]
 on   = "<C-r>"
-run  = "find --previous"
-desc = "逆方向検索 (Emacs C-r)"
+run  = "filter --smart"
+desc = "検索 like fzf"
 
 [[mgr.prepend_keymap]]
 on   = "s"
@@ -205,6 +205,4 @@ on   = "V"
 run  = "plugin toggle-pane max-preview"
 desc = "Show or hide the preview pane"
 
-[[mgr.prepend_keymap]]
-on  = [ "F", "G" ]
-run = "plugin yafg"
+
