@@ -16,7 +16,8 @@ if !(type sheldon > /dev/null 2>&1); then
     mkdir -p ~/.sheldon/
 fi
 
-
+ln -v -s -f ${CWD}/yazi ~/.config/yazi
+ln -v -s -f ${CWD}/.ov.yml ~/.ov.yml
 ln -v -s -f ${CWD}/zsh.d/sheldon/plugins.toml ~/.sheldon/plugins.toml
 ln -v -s -f ${CWD}/zsh.d/.zshrc ~/.zshrc
 ln -v -s -f ${CWD}/tmux.d/.tmux.conf ~/.tmux.conf
