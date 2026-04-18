@@ -100,27 +100,7 @@
     },
     {
         "key": "ctrl+x ctrl+r",
-        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
-    },
-    {
-        "key": "ctrl+x f",
-        "command": "extension.dired.open",
-        "when": "!inDebugRepl"
-    },
-    {
-        "key": "ctrl+x f",
-        "command": "-extension.dired.open",
-        "when": "editorTextFocus && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+x ctrl+f",
-        "command": "workbench.action.quickOpen",
-        "when": "!terminalFocus"
-    },
-    {
-        "key": "ctrl+x ctrl+f",
-        "command": "-workbench.action.quickOpen",
-        "when": "!terminalFocus"
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
     },
     {
         "key": "cmd+k cmd+m",
@@ -158,7 +138,7 @@
         "command": "-workbench.action.togglePanel",
         "when": "!terminalFocus"
     },
-    {        
+    {
         "key": "ctrl+x ctrl+j",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "sideBarFocus"
@@ -172,7 +152,7 @@
         "key": "ctrl+x ctrl+;",
         "command": "workbench.action.toggleAuxiliaryBar",
         "when": "!editorTextFocus"
-    },    
+    },
     {
         "key": "r",
         "command": "renameFile",
@@ -272,6 +252,45 @@
     {
         "key": "alt+cmd+down",
         "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+c ctrl-t",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+x ctrl-f",
+        "command": "yazi-vscode.toggle"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-v",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001bv"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+, ctrl+l", // 好きなキーバインドに変更してください
+        "command": "workbench.view.scm",
+        "when": "!scmFocus"
+    },
+    {
+        "key": "ctrl+, ctrl+m", // 好きなキーバインドに変更してください
+"command": "github.copilot.git.generateCommitMessage",
+        "when": "scmFocus"
+    },    
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.action.quickchat.toggle",
         "when": "editorTextFocus"
     }
 ]
