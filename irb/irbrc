@@ -1,0 +1,30 @@
+# ~/.irbrc
+
+  # 1. Bundler環境下（rails cなど）かチェック
+if defined?(Bundler)
+  # 2. Bundlerの制限を一時的に解除して、システム側の gem のパスを取得
+  reline_pac_gem_path = Bundler.with_unbundled_env do 
+    `gem which reline_pac 2> /dev/null`.chomp
+  end
+
+  unless reline_pac_gem_path.empty?
+    lib_dir = File.dirname(reline_pac_gem_path)
+    $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
+  end
+end
+
+begin 
+  require 'reline_pac'
+  RelinePac.configure do |config|
+    # デフォルトを適用
+    RelinePac::Packages::DEFAULT_KEYBINDS.each do |key, method|
+      config.add_keybind(key, method)
+    end
+  end
+
+    # 上書きや独自の割り当ても可能
+    # config.add_keybind("\C-r", :fzf_history)
+
+rescue LoadError
+  # do nothing
+end
