@@ -1,3 +1,5 @@
+(setq mac-command-modifier nil)
+
 (global-set-key (kbd "C-1") 'find-tag)
 (global-set-key (kbd "C-2") 'pop-tag-mark)
 (global-set-key (kbd "C-q") 'dabbrev-expand)
