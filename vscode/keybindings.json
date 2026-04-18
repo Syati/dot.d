@@ -291,7 +291,11 @@
     {
         "key": "ctrl+, ctrl+m",
         "command": "github.copilot.git.generateCommitMessage"
-    },    
+    },
+    {
+        "key": "ctrl+, ctrl+c",
+        "command": "git.commit"
+    },
     {
         "key": "ctrl+shift+g",
         "command": "workbench.action.quickchat.toggle",
