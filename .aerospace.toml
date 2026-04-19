@@ -1,0 +1,99 @@
+config-version = 2
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 30
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = false
+
+# List of workspaces that should stay alive even when they contain no windows,
+# even when they are invisible.
+# This config version is only available since 'config-version = 2'
+# Fallback value (if you omit the key): persistent-workspaces = []
+# ワークスペースを固定
+persistent-workspaces = ["1", "2", "3", "4", "5"]
+
+# A callback that runs every time binding mode changes
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+on-mode-changed = []
+
+[key-mapping]
+preset = 'qwerty'
+
+[gaps]
+inner.horizontal = 0
+inner.vertical = 0
+outer.left = 0
+outer.bottom = 0
+outer.top = 0
+outer.right = 0
+
+[mode.main.binding]
+ctrl-alt-shift-cmd-r = 'reload-config'
+
+# --- ワークスペース切り替え (Hyper + 数字) ---
+ctrl-alt-shift-cmd-1 = 'workspace 1'
+ctrl-alt-shift-cmd-2 = 'workspace 2'
+ctrl-alt-shift-cmd-3 = 'workspace 3'
+ctrl-alt-shift-cmd-4 = 'workspace 4'
+ctrl-alt-shift-cmd-5 = 'workspace 5'
+
+ctrl-alt-shift-cmd-f1 = 'move-node-to-workspace 1'
+ctrl-alt-shift-cmd-f2 = 'move-node-to-workspace 2'
+ctrl-alt-shift-cmd-f3 = 'move-node-to-workspace 3'
+ctrl-alt-shift-cmd-f4 = 'move-node-to-workspace 4'
+ctrl-alt-shift-cmd-f5 = 'move-node-to-workspace 5'
+
+# --- フォーカス移動 (Hyper + hjkl) ---
+ctrl-alt-shift-cmd-f = 'focus right'
+ctrl-alt-shift-cmd-b = 'focus left'
+ctrl-alt-shift-cmd-p = 'focus up'
+ctrl-alt-shift-cmd-n = 'focus down'
+
+# --- ウィンドウ自体の移動 (Hyper + 矢印キー) ---
+# AeroSpaceは Hyper + m + h のような3キー同時押しができないため、矢印キーを割り当て
+ctrl-alt-shift-cmd-left  = 'move left'
+ctrl-alt-shift-cmd-down  = 'move down'
+ctrl-alt-shift-cmd-up    = 'move up'
+ctrl-alt-shift-cmd-right = 'move right'
+
+# --- レイアウト・リセット操作 ---
+# Hyper + 2 で水平（上下に並べる
+ctrl-alt-shift-cmd-v = 'layout tiles vertical'
+ctrl-alt-shift-cmd-s = 'layout tiles horizontal'
+ctrl-alt-shift-cmd-g = 'flatten-workspace-tree'
+ctrl-alt-shift-cmd-h = 'layout floating tiling'
+ctrl-alt-shift-cmd-9 = 'layout tiles horizontal vertical'
+ctrl-alt-shift-cmd-0 = 'layout accordion horizontal vertical'
+
+# --- サイズ変更 ---
+ctrl-alt-shift-cmd-minus = 'resize smart -50'
+ctrl-alt-shift-cmd-equal = 'resize smart +50'
+
+
+
