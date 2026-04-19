@@ -13,22 +13,22 @@ desc = "上に移動 (Emacs/Dired p)"
 
 [[mgr.prepend_keymap]]
 on   = "<C-f>"
-run  = "enter"
-desc = "ディレクトリに入る / ファイルを開く (Emacs C-f)"
+run  = ["plugin smart-enter"]
+desc = "ディcレクトリに入る / ファイルを開く (Emacs C-f)"
 
 [[mgr.prepend_keymap]]
 on   = "<Enter>"
-run  = "plugin smart-enter"
+run  = ["plugin smart-enter"]
 desc = "Enter the child directory, or open the file"
 
 [[mgr.prepend_keymap]]
 on   = "<C-b>"
-run  = "leave"
+run  = ["leave"]
 desc = "親ディレクトリに戻る (Emacs C-b)"
 
 [[mgr.prepend_keymap]]
 on   = "b"
-run  = "leave"
+run  = ["leave"]
 desc = "親ディレクトリに戻る (Dired b)"
 
 [[mgr.prepend_keymap]]
@@ -63,6 +63,11 @@ desc = "末尾に移動 (Emacs C-e)"
 
 # ===== ファイル選択・操作 =====
 [[mgr.prepend_keymap]]
+on   = "A"
+run  = "create"
+desc = "作成"
+
+[[mgr.prepend_keymap]]
 on   = "<C-Space>"
 run  = "toggle"
 desc = "選択/選択解除 (Emacs C-Space)"
@@ -89,12 +94,12 @@ desc = "削除（カット） (Emacs C-k)"
 
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
-run  = "remove --cut"
+run  = "yank --cut"
 desc = "カット (Emacs C-w)"
 
 [[mgr.prepend_keymap]]
 on   = "<A-w>"
-run  = "yank --cut=false"
+run  = "yank"
 desc = "コピー (Emacs M-w)"
 
 [[mgr.prepend_keymap]]
@@ -118,8 +123,8 @@ run  = "rename"
 desc = "リネーム (Dired R)"
 
 [[mgr.prepend_keymap]]
-on   = "c"
-run  = "copy"
+on   = "C"
+run  = "yank"
 desc = "コピー (Dired c)"
 
 [[mgr.prepend_keymap]]
@@ -156,8 +161,8 @@ desc = "リフレッシュ (Dired g)"
 
 [[mgr.prepend_keymap]]
 on   = "+"
-run  = "create"
-desc = "ディレクトリ/ファイル作成 (Dired +)"
+run  = "create --dir"
+desc = "ディレクトリ作成 (Dired +)"
 
 [[mgr.prepend_keymap]]
 on   = "m"
@@ -204,5 +209,15 @@ desc = "Show or hide the preview pane"
 on   = "V"
 run  = "plugin toggle-pane max-preview"
 desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = [ "~" ]
+run  = "cd ~/"
+desc = "cd to ~/"
+
+[[mgr.prepend_keymap]]
+on   = [ "P" ]
+run  = "cd ~/Projects"
+desc = "cd to ~/Projects"
 
 

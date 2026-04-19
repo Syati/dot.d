@@ -187,16 +187,6 @@
         "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+n",
-        "command": "editor.action.addSelectionToNextFindMatch",
-        "when": "editorFocus"
-    },
-    {
-        "key": "cmd+d",
-        "command": "-editor.action.addSelectionToNextFindMatch",
-        "when": "editorFocus"
-    },
-    {
         "key": "alt+cmd+[",
         "command": "-notebook.fold",
         "when": "notebookEditorFocused && !inputFocus && activeEditor == 'workbench.editor.notebook'"

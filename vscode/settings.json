@@ -45,9 +45,8 @@
         "editor.defaultFormatter": "Shopify.ruby-lsp",
         "editor.formatOnSave": true
     },
-    "chat.viewSessions.orientation": "stacked",
-    "chat.viewSessions.enabled": false,
     "chat.tips.enabled": false,
     "github.copilot.chat.localeOverride": "ja",
-    "debug.onTaskErrors": "debugAnyway"
+    "debug.onTaskErrors": "debugAnyway",
+    "chat.viewSessions.orientation": "stacked"
 }
