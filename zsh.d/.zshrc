@@ -176,11 +176,6 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 eval "$(sheldon source)"
 
 #----------------------------#
-# mise                       #
-#----------------------------#
-eval "$(~/.local/bin/mise activate zsh)"
-
-#----------------------------#
 # rust                       #
 #----------------------------#
 if [ -f "$HOME/.cargo/env" ]; then
