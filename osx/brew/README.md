@@ -3,15 +3,12 @@ install
 --------------
 
 ```sh
-$ brew tap Homebrew/bundle
-
 # install
-$ brew bundle
+## server pc
+$ brew bundle　--file Brewfile.server 
+## or for remote pc
+$ brew bundle　--file Brewfile.remote 
 
 # dump 
-$ brew bundle dump
+$ brew bundle dump --file Brewfile.server # or Brewfile.remote
 ```
-
-check below repository
-
-- https://github.com/Homebrew/homebrew-bundle

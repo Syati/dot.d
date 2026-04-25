@@ -28,8 +28,11 @@ echo 'DONE'
 
 
 cat <<EOF
-Plz install powerline-fonts visiting below site
+1. Plz install powerline-fonts visiting below site
 
 https://github.com/powerline/fonts
 
+2. Plz install yazi plugin
+
+ya pkg install
 EOF
