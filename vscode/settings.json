@@ -55,5 +55,6 @@
             "command": "code $(zoxide query --interactive)"
         }
     ],
-    "fzf-picker.general.openCommand": "code -g"
+    "fzf-picker.general.openCommand": "code -g",
+    "yazi-vscode.useWorkspaceFolder": true
 }
