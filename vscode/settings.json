@@ -48,5 +48,12 @@
     "chat.tips.enabled": false,
     "github.copilot.chat.localeOverride": "ja",
     "debug.onTaskErrors": "debugAnyway",
-    "chat.viewSessions.orientation": "stacked"
+    "chat.viewSessions.orientation": "stacked",
+    "fzf-picker.customTasks": [
+        {
+            "name": "zoxide",
+            "command": "code $(zoxide query --interactive)"
+        }
+    ],
+    "fzf-picker.general.openCommand": "code -g"
 }

@@ -171,7 +171,7 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 
 
 #----------------------------#
-# seldon                     #
+# sheldon                     #
 #----------------------------#
 eval "$(sheldon source)"
 
@@ -190,3 +190,9 @@ export PATH="$PATH:/Users/mizuki-y/.lmstudio/bin"
 # entire
 #----------------------------#
 source <(entire completion zsh)
+
+
+#----------------------------#
+# 1password plugin           #
+#----------------------------#
+source /Users/mizuki-y/.config/op/plugins.sh

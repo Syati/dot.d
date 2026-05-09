@@ -9,7 +9,12 @@ local ignore_pattern="^(\*|${(j:|:)my_ignore_commands})($|[[:space:]])"
 #----------------------------#
 # funcs                      #
 #----------------------------#
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+local -a fzf_exclude_dirs=(
+    .git .local .cache .gem .zsh_sessions .lmstudio
+    node_modules dist tmp 
+)
+local exclude_opts="${(@)fzf_exclude_dirs/#/--exclude }"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden ${exclude_opts}"
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 export FZF_DEFAULT_OPTS='
   --height 40%
@@ -20,7 +25,7 @@ export FZF_DEFAULT_OPTS='
 '
 
 function fzf_select_directory_history() {
-    select_path=$(z -l 2>&1 | sed -r 's/\s*[0-9]*\s*//' | fzf +s --tac)
+    select_path=$(zoxide query -i)
     if [ ! -z $select_path ]; then
         BUFFER="cd ${select_path}"
         zle accept-line

@@ -269,6 +269,11 @@
         "when": "terminalFocus"
     },
     {
+        "key": "ctrl+x o",
+        "command": "workbench.action.navigateEditorGroups",
+        "when": "terminalFocus"
+    },
+    {
         "key": "ctrl+, ctrl+l",
         "command": "workbench.view.scm",
         "when": "!scmFocus"
@@ -277,7 +282,7 @@
         "key": "ctrl+, ctrl+l",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "sideBarFocus"
-    },    
+    },
     {
         "key": "ctrl+, ctrl+m",
         "command": "github.copilot.git.generateCommitMessage"
@@ -290,5 +295,18 @@
         "key": "ctrl+shift+g",
         "command": "workbench.action.quickchat.toggle",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "fzf-picker.findFiles"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "fzf-picker.findWithinFiles"
+    },
+    {
+        "key": "ctrl+x o",
+        "command": "-workbench.action.focusAuxiliaryBar",
+        "when": "activeEditorGroupLast && auxiliaryBarVisible && !auxiliaryBarFocus && !terminalFocus && activeAuxiliary == 'workbench.panel.chat'"
     }
 ]

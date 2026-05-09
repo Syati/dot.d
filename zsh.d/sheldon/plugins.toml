@@ -28,9 +28,6 @@ defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source 
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
 
-# history
-[plugins.zsh-z]
-github = 'agkozak/zsh-z'
 
 # auto completions
 [plugins.compinit]
