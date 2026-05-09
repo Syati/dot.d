@@ -71,12 +71,14 @@ keybind = cmd+shift+s=end_search
 keybind = cmd+x>k=close_surface
 keybind = cmd+x>2=new_split:right
 keybind = cmd+x>3=new_split:down
-keybind = cmd+x>cmd+o=goto_split:next
-keybind = cmd+o=goto_split:next
-keybind = cmd+h=goto_split:left
-keybind = cmd+j=goto_split:bottom
-keybind = cmd+k=goto_split:top
-keybind = cmd+l=goto_split:right
+keybind = cmd+x>o=goto_split:next
+keybind = cmd+x>shift+o=goto_split:previous
+#keybind = cmd+x>cmd+o=goto_split:next
+#keybind = cmd+o=goto_split:next
+#keybind = cmd+h=goto_split:left
+#keybind = cmd+j=goto_split:bottom
+#keybind = cmd+k=goto_split:top
+#keybind = cmd+l=goto_split:right
 keybind = cmd+shift+up=resize_split:up,10
 keybind = cmd+shift+down=resize_split:down,10
 keybind = cmd+shift+left=resize_split:left,10
@@ -85,6 +87,7 @@ keybind = cmd+shift+right=resize_split:right,10
 
 # tab設定
 keybind = cmd+x>cmd+n=new_tab
+keybind = cmd+x>k=close_tab
 keybind = cmd+n=next_tab
 keybind = cmd+p=previous_tab
 keybind = cmd+1=goto_tab:1

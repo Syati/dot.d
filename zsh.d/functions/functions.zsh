@@ -115,6 +115,6 @@ if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]]; then
   bindkey "^r" fzf_select_command_history
   bindkey "^x^f" yazi-zle
   bindkey "^[sf" fzf-find-file
-  bindkey "^[sg" fzf-live-grep
+  bindkey "^[sr" fzf-live-grep
   bindkey "^xp" ghq-fzf
 fi
