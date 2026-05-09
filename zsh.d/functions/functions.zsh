@@ -55,15 +55,66 @@ function ghq-fzf() {
   zle reset-prompt
 }
 
+function yazi-zle() {
+  local tmp
+  tmp="$(mktemp -t yazi-cwd.XXXXXX)"
+  yazi --cwd-file="$tmp"
+  if [ -f "$tmp" ]; then
+    local cwd
+    cwd="$(cat "$tmp")"
+    if [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+      BUFFER="cd ${(q)cwd}"
+      zle accept-line
+    fi
+    rm -f "$tmp"
+  fi
+  zle reset-prompt
+}
+
+function fzf-find-file() {
+  local file
+  local -a fd_excludes
+  fd_excludes=("${(@)fzf_exclude_dirs/#/--exclude=}")
+  file=$(fd --type f --hidden "${fd_excludes[@]}" | fzf --preview "bat --color=always --style=header,grid --line-range :200 {}")
+  if [ -n "$file" ]; then
+    BUFFER="${EDITOR:-vi} ${(q)file}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+
+function fzf-live-grep() {
+  local selected
+  selected=$(
+    rg --line-number --no-heading --smart-case . 2>/dev/null | \
+      fzf --delimiter : \
+          --preview 'bat --color=always --style=header,grid --highlight-line {2} {1}' \
+          --preview-window '~4,+{2}+4/3,<80(up)'
+  )
+  if [ -n "$selected" ]; then
+    local file line
+    file="${selected%%:*}"
+    line="${${selected#*:}%%:*}"
+    BUFFER="${EDITOR:-vi} +${line:-1} ${(q)file}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+
 zle -N fzf_select_directory_history
 zle -N fzf_select_command_history
 zle -N ghq-fzf
-
+zle -N yazi-zle
+zle -N fzf-find-file
+zle -N fzf-live-grep
 
 
 # JetBrainsのターミナル以外でbindkeyを設定
 if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]]; then
   bindkey "^x^r" fzf_select_directory_history
   bindkey "^r" fzf_select_command_history
-  bindkey "^t" ghq-fzf
+  bindkey "^x^f" yazi-zle
+  bindkey "^[sf" fzf-find-file
+  bindkey "^[sg" fzf-live-grep
+  bindkey "^xp" ghq-fzf
 fi
