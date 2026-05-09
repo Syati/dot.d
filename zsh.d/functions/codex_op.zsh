@@ -1,3 +1,3 @@
-codex-op() {
-  op run -- codex "$@"
+codex() {
+  op run --no-masking -- command codex "$@"
 }

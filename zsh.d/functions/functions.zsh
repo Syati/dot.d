@@ -46,16 +46,6 @@ function fzf_select_command_history() {
 }
 
 
-function pb-kill-line() {
-    zle kill-line
-    print -rn -- $CUTBUFFER | pbcopy
-}
-
-function pb-yank() {
-    CUTBUFFER=$(pbpaste)
-    zle yank
-}
-
 function ghq-fzf() {
   local src=$(ghq list | fzf --preview "cat $(ghq root)/{}/README.*")
   if [ -n "$src" ]; then
@@ -67,12 +57,9 @@ function ghq-fzf() {
 
 zle -N fzf_select_directory_history
 zle -N fzf_select_command_history
-zle -N pb-kill-line
-zle -N pb-yank
 zle -N ghq-fzf
 
-bindkey "^y" pb-yank
-bindkey "^k" pb-kill-line
+
 
 # JetBrainsのターミナル以外でbindkeyを設定
 if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]]; then

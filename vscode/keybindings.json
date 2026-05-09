@@ -297,11 +297,11 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "shift+alt+f",
+        "key": "alt+s f",
         "command": "fzf-picker.findFiles"
     },
     {
-        "key": "ctrl+shift+f",
+        "key": "alt+s r",
         "command": "fzf-picker.findWithinFiles"
     },
     {
