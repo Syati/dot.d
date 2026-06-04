@@ -24,5 +24,6 @@ README
 sheldon に function を追加したとき
 ---------------------------
 
-sheldon lock
+sheldon lock --update
 sheldon source
+

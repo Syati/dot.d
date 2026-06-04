@@ -116,5 +116,5 @@ if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]]; then
   bindkey "^x^f" yazi-zle
   bindkey "^[sf" fzf-find-file
   bindkey "^[sr" fzf-live-grep
-  bindkey "^xp" ghq-fzf
+  bindkey "^x^p" ghq-fzf
 fi
