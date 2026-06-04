@@ -45,6 +45,12 @@
         "editor.defaultFormatter": "Shopify.ruby-lsp",
         "editor.formatOnSave": true
     },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "files.associations": {
+        "*.sh": "shellscript"
+    },
     "chat.tips.enabled": false,
     "github.copilot.chat.localeOverride": "ja",
     "debug.onTaskErrors": "debugAnyway",
@@ -56,5 +62,6 @@
         }
     ],
     "fzf-picker.general.openCommand": "code -g",
-    "yazi-vscode.useWorkspaceFolder": true
+    "yazi-vscode.useWorkspaceFolder": true,
+    "shellformat.path": "/opt/homebrew/bin/shfmt"
 }

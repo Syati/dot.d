@@ -308,5 +308,25 @@
         "key": "ctrl+x o",
         "command": "-workbench.action.focusAuxiliaryBar",
         "when": "activeEditorGroupLast && auxiliaryBarVisible && !auxiliaryBarFocus && !terminalFocus && activeAuxiliary == 'workbench.panel.chat'"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
     }
 ]
