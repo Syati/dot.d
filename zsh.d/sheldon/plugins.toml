@@ -50,3 +50,6 @@ apply = ["source"]
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
+
+[plugins.entire-fzf]
+github = "Syati/entire-fzf"

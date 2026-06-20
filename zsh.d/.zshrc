@@ -196,3 +196,13 @@ source <(entire completion zsh)
 # 1password plugin           #
 #----------------------------#
 source /Users/mizuki-y/.config/op/plugins.sh
+
+
+#----------------------------#
+# git wt                     #
+#----------------------------#
+if command -v git >/dev/null 2>&1; then
+  _git_wt_init="$(git wt --init zsh 2>/dev/null)"
+  [[ -n "$_git_wt_init" ]] && eval "$_git_wt_init"
+fi
+
