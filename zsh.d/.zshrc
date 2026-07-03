@@ -197,6 +197,11 @@ source <(entire completion zsh)
 #----------------------------#
 source /Users/mizuki-y/.config/op/plugins.sh
 
+# 1password ssh-agent (起動していれば切り替え)
+_op_ssh_sock="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+[ -S "$_op_ssh_sock" ] && export SSH_AUTH_SOCK="$_op_ssh_sock"
+unset _op_ssh_sock
+
 
 #----------------------------#
 # git wt                     #

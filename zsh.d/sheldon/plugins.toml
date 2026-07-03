@@ -53,3 +53,6 @@ github = "Aloxaf/fzf-tab"
 
 [plugins.entire-fzf]
 github = "Syati/entire-fzf"
+
+[plugins.agent-stack]
+github = "Syati/agent-stack"
