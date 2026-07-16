@@ -56,3 +56,4 @@ github = "Syati/entire-fzf"
 
 [plugins.agent-stack]
 github = "Syati/agent-stack"
+use = ["agent-stack.plugin.zsh"]

@@ -10,10 +10,10 @@ freebsd*|darwin*)
     export GNU_PATH="/opt/homebrew/opt/coreutils/libexec/gnubin"
     export JS_YARN_PATH="$HOME/.yarn/bin"
     export FLUTTER_PATH="$HOME/.flutter/bin"
-    export CUSTOM_PATH="$HOME/.bin::$HOME/.local/bin"
+    export CUSTOM_PATH="$HOME/.bin:$HOME/.local/bin"
     export MYSQL_PATH="/opt/homebrew/opt/mysql@5.7/bin"
     export PSQL_PATH="/opt/homebrew/opt/libpq/bin"
-    export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$POETRY_PATH:$FLUTTER_PATH:$MYSQL_PATH:$PSQL_PATH:$DEFAULT_PATH"
+    export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$FLUTTER_PATH:$MYSQL_PATH:$PSQL_PATH:$DEFAULT_PATH"
     #export PGDATA="/opt/homebrew/var/postgresql@18"
     alias emacs='XMODIFIERS=@im=none emacs -nw'
     ;;
@@ -28,9 +28,6 @@ esac
 #================================#
 # common setting                 #
 #================================#
-
-CWD=`dirname $(readlink -s -f ~/.zshrc)`
-
 
 # fpath
 fpath=(~/.zsh/completions $fpath)
@@ -91,6 +88,12 @@ alias mysql="PAGER='ov -m mysql' mysql"
 #================================#
 # LOAD LIB                       #
 #================================#
+
+# source a file only if it exists (keeps this rc portable across machines)
+safe_source() {
+  [[ -r "$1" ]] && source "$1"
+}
+
 #keybind
 bindkey -e  # emacs style
 bindkey -r '\ex' # M-x disable
@@ -178,9 +181,7 @@ eval "$(sheldon source)"
 #----------------------------#
 # rust                       #
 #----------------------------#
-if [ -f "$HOME/.cargo/env" ]; then
-   source "$HOME/.cargo/env"
-fi
+safe_source "$HOME/.cargo/env"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/mizuki-y/.lmstudio/bin"
@@ -189,19 +190,17 @@ export PATH="$PATH:/Users/mizuki-y/.lmstudio/bin"
 #----------------------------#
 # entire
 #----------------------------#
-source <(entire completion zsh)
-
+command -v entire >/dev/null 2>&1 && source <(entire completion zsh)
 
 #----------------------------#
 # 1password plugin           #
 #----------------------------#
-source /Users/mizuki-y/.config/op/plugins.sh
+safe_source "$HOME/.config/op/plugins.sh"
 
 # 1password ssh-agent (起動していれば切り替え)
 _op_ssh_sock="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-[ -S "$_op_ssh_sock" ] && export SSH_AUTH_SOCK="$_op_ssh_sock"
+[[ -S "$_op_ssh_sock" ]] && export SSH_AUTH_SOCK="$_op_ssh_sock"
 unset _op_ssh_sock
-
 
 #----------------------------#
 # git wt                     #
@@ -209,5 +208,21 @@ unset _op_ssh_sock
 if command -v git >/dev/null 2>&1; then
   _git_wt_init="$(git wt --init zsh 2>/dev/null)"
   [[ -n "$_git_wt_init" ]] && eval "$_git_wt_init"
+  unset _git_wt_init
 fi
 
+#----------------------------#
+# gcloud sdk                 #
+#----------------------------#
+_gcloud_sdk_dir="/opt/homebrew/share/google-cloud-sdk"
+safe_source "$_gcloud_sdk_dir/path.zsh.inc"
+safe_source "$_gcloud_sdk_dir/completion.zsh.inc"
+unset _gcloud_sdk_dir
+
+# >>> otty shell integration >>>
+# Added by Otty — toggle in Settings > Shell > Shell Integration.
+# Inert unless launched by Otty (it sets $OTTY_SHELL_INTEGRATION).
+if [[ -n "$OTTY_SHELL_INTEGRATION" ]]; then
+  safe_source "$OTTY_SHELL_INTEGRATION/otty-integration.zsh"
+fi
+# <<< otty shell integration <<<

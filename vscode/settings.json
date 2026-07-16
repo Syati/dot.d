@@ -63,5 +63,13 @@
     ],
     "fzf-picker.general.openCommand": "code -g",
     "yazi-vscode.useWorkspaceFolder": true,
-    "shellformat.path": "/opt/homebrew/bin/shfmt"
+    "shellformat.path": "/opt/homebrew/bin/shfmt",
+    "yaml.disableSchemaDetection": [
+        "**/.github/workflows/*.yml",
+        "**/.github/workflows/*.yaml",
+        "**/.gitea/workflows/*.yml",
+        "**/.gitea/workflows/*.yaml",
+        "**/.forgejo/workflows/*.yml",
+        "**/.forgejo/workflows/*.yaml"
+    ]
 }

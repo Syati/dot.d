@@ -2,11 +2,18 @@
 zsh.d/sheldon/*
 !zsh.d/sheldon/plugins.toml
 *.zwc
+
+# AI agent tools: keep shared config (agents/, settings.json, etc.)
+# tracked, ignore only machine-local/generated state
+.claude/settings.local.json
+
+# emacs
 emacs.d/network-security.data
 emacs.d/transient
 emacs.d/projects
 emacs.d/tree-sitter
 
+# 
 .tern-port
 *.bak
 *.dat
