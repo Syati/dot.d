@@ -72,7 +72,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(agent-shell consult corfu corfu-terminal dockerfile-mode
+   '(ace-window agent-shell consult corfu corfu-terminal dockerfile-mode
         exec-path-from-shell init-loader magit marginalia migemo
         multiple-cursors nerd-icons nerd-icons-completion orderless
         sequential-command treesit-auto undo-tree
