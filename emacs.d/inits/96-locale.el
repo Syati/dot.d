@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (setq system-time-locale "C")
 
 (set-language-environment "Japanese")

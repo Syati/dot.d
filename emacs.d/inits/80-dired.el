@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (require 'dired-x)
 
 (setq dired-dwim-target t)
@@ -6,25 +7,20 @@
       (concat dired-omit-files "\\|^\\..+$"))
 
 ;; dired + wdired
+;; 新規バッファで開いた際、遷移先も dired なら元のバッファを閉じる
 (defvar my-dired-before-buffer nil)
 
-(defadvice dired-advertised-find-file
-  (before kill-dired-buffer activate)
+(defun my-dired-remember-buffer (&rest _)
   (setq my-dired-before-buffer (current-buffer)))
 
-(defadvice dired-advertised-find-file
-  (after kill-dired-buffer-after activate)
-  (if (eq major-mode 'dired-mode)
-      (kill-buffer my-dired-before-buffer)))
+(defun my-dired-kill-previous-buffer (&rest _)
+  (when (eq major-mode 'dired-mode)
+    (kill-buffer my-dired-before-buffer)))
 
-(defadvice dired-up-directory
-  (before kill-up-dired-buffer activate)
-  (setq my-dired-before-buffer (current-buffer)))
-
-(defadvice dired-up-directory
-  (after kill-up-dired-buffer-after activate)
-  (if (eq major-mode 'dired-mode)
-      (kill-buffer my-dired-before-buffer)))
+(advice-add 'dired-advertised-find-file :before #'my-dired-remember-buffer)
+(advice-add 'dired-advertised-find-file :after #'my-dired-kill-previous-buffer)
+(advice-add 'dired-up-directory :before #'my-dired-remember-buffer)
+(advice-add 'dired-up-directory :after #'my-dired-kill-previous-buffer)
 
 (defvar my-dired-additional-compression-suffixes
   '(".7z" ".Z" ".a" ".ace" ".alz" ".arc" ".arj" ".bz" ".bz2" ".cab" ".cpio"
@@ -32,11 +28,10 @@
     ".rpm" ".rz" ".t7z" ".tZ" ".tar" ".tbz" ".tbz2" ".tgz" ".tlz" ".txz"
     ".tzo" ".war" ".xz" ".zip"))
 
-(eval-after-load "dired-aux"
-  '(progn
-     (loop for suffix in my-dired-additional-compression-suffixes
-           do (add-to-list 'dired-compress-file-suffixes
-                           `(,(concat "\\" suffix "\\'") "" "aunpack")))))
+(with-eval-after-load 'dired-aux
+  (dolist (suffix my-dired-additional-compression-suffixes)
+    (add-to-list 'dired-compress-file-suffixes
+                 `(,(concat "\\" suffix "\\'") "" "aunpack"))))
 
 ;;; ファイル・ディレクトリ名のリストを編集することで、まとめてリネーム可能にする
 (require 'wdired)
@@ -49,10 +44,3 @@
 ;;; 「^」がを押しにくい場合「b」でも上の階層に移動できるようにする
 (define-key dired-mode-map "b" 'dired-up-directory)
 (put 'dired-find-alternate-file 'disabled nil)
-
-
-(add-hook 'dired-mode-hook
-      (lambda ()
-        (define-key dired-mode-map (kbd "C-t") 'helm-for-files)
-        )
-      )

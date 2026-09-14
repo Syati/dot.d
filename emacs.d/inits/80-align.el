@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (add-to-list 'align-rules-list
              '(camma-assignment
                (regexp . ",\\( *\\)")

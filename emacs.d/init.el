@@ -1,11 +1,4 @@
-;================================;
-; use common lisp                ;
-;================================;
-;; (require 'cl) を見逃す
-(setq byte-compile-warnings '(not cl-functions obsolete))
-
-(require 'cl)
-
+;;; -*- lexical-binding: t -*-
 ;================================;
 ; path                           ;
 ;================================;
@@ -21,50 +14,21 @@
 ; package                        ;
 ;================================;
 (require 'package)
+
+(setq package-archives '(("melpa"  . "https://melpa.org/packages/")
+                          ("gnu"    . "https://elpa.gnu.org/packages/")
+                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+
 (package-initialize)
 
-;; package archives
-(setq package-archives '(("ELPA" . "https://tromey.com/elpa/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("gnu" . "https://elpa.gnu.org/packages/")))
+(unless package-archive-contents
+  (package-refresh-contents))
 
-
-(defvar installing-package-list
-  '(
-    ;; ここに使っているパッケージを書く。
-    init-loader
-    use-package
-    ;; 開発補助
-    origami
-    magit
-    magit-find-file
-    magit-gitflow
-    magit-gh-pulls
-    flycheck
-    flycheck-color-mode-line
-
-    ;; 開発モード
-    dockerfile-mode
-    wgrep
-    sequential-command
-    multiple-cursors
-    counsel
-    projectile
-    ;;theme(display)
-    monokai-theme
-    ;; japanese
-    mozc
-    mozc-popup
-   ))
-
-(let ((not-installed (loop for x in installing-package-list
-                            when (not (package-installed-p x))
-                            collect x)))
-  (when not-installed
-    (package-refresh-contents)
-    (dolist (pkg not-installed)
-        (package-install pkg))))
-
+;; init-loader / use-package themselves must be present before
+;; init-loader-load can hand installation off to each use-package block.
+(dolist (pkg '(init-loader use-package))
+  (unless (package-installed-p pkg)
+    (package-install pkg)))
 
 
 ;================================;
@@ -72,11 +36,6 @@
 ;================================;
 
 (require 'use-package)
-
-; speed check
-;(use-package initchart)
-;(initchart-record-execution-time-of load file)
-;(initchart-record-execution-time-of require feature)
 
 (use-package init-loader
   :init
@@ -99,12 +58,6 @@
     (fill-region (region-beginning) (region-end)))
   )
 
-;; other-window
-(defun other-window-backward ()
-  "move to other window backward"
-  (interactive)
-  (other-window -1))
-
 (defun reopen-with-sudo ()
   "Reopen current buffer-file with sudo using tramp."
   (interactive)
@@ -112,34 +65,15 @@
     (if file-name
         (find-alternate-file (concat "/sudo::" file-name))
       (error "Cannot get a file name"))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(delete-by-moving-to-trash t)
  '(package-selected-packages
-   '(ag all-ext all-the-icons-ivy coffee-mode company-go counsel csv-mode
-        dockerfile-mode exec-path-from-shell flycheck-cask
-        flycheck-color-mode-line flycheck-pos-tip flycheck-pyflakes
-        haskell-mode helm-ag helm-c-moccur helm-c-yasnippet
-        helm-descbinds helm-dictionary helm-dired-recent-dirs
-        helm-emmet helm-flycheck helm-git-grep helm-projectile
-        helm-swoop image+ init-loader ivy-hydra jedi-direx js2-mode
-        json-mode json-reformat magit-annex magit-filenotify
-        magit-find-file magit-gerrit magit-gh-pulls magit-gitflow
-        magit-stgit magit-svn magit-topgit markdown-mode migemo
-        monokai-theme mozc-popup multi-term multi-web-mode
-        multiple-cursors origami php-mode popwin rbenv recentf-ext
-        robe scss-mode sequential-command slim-mode swap-buffers
-        switch-window terraform-mode tide tree-sitter-langs
-        treesit-auto typescript-mode undo-tree undohist vterm web-mode
-        wgrep-ag wgrep-helm yaml-mode))
- '(trash-directory "~/.Trash"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-scrollbar-thumb ((t (:background "#F8F8F0"))))
- '(company-tooltip-scrollbar-track ((t (:background "#75715E")))))
+   '(company consult dockerfile-mode exec-path-from-shell
+        init-loader magit marginalia migemo
+        multiple-cursors nerd-icons nerd-icons-completion orderless
+        sequential-command switch-window treesit-auto undo-tree
+        use-package vertico vterm wgrep)))

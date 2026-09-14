@@ -24,7 +24,7 @@ C-u 0 M-x byte-recompile-directory
 Font install
 ------------------------------
 
-M-x all-the-icons-install-fonts
+M-x nerd-icons-install-fonts でアイコン用フォントを入れてください
 
 
 

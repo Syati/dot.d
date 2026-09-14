@@ -1,4 +1,6 @@
+;;; -*- lexical-binding: t -*-
 (use-package company
+  :ensure t
   :defer t
   :custom
   (company-auto-expand t)
@@ -9,10 +11,6 @@
   (company-dabbrev-downcase nil)
   :config
   (global-company-mode t)
-
-  (custom-set-faces
-    '(company-scrollbar-bg ((t (:background "#75715E"))))
-    '(company-scrollbar-fg ((t (:background "#F8F8F0")))))
   :bind (("C-M-i" . company-complete)
          :map company-active-map
          ("\C-g" . company-abort)

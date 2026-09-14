@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (setq default-directory "~/" )
 (setq initial-buffer-choice default-directory)
 
@@ -21,7 +22,7 @@
 ;;(setq debug-on-error t)
 
 ;; Emacs の質問を y/n に
-(fset 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)
 
 ;; シンボリックリンクを開くときの質問省略
 (setq vc-follow-symlinks t)
@@ -75,7 +76,6 @@
 (setq c-auto-newline t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq default-tab-width 4)
 (setq c-basic-offset 4)
 (setq c-default-style
       '((java-mode . "java") (awk-mode . "awk") (other . "linux")))
@@ -84,6 +84,5 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; trash setting
-(custom-set-variables
- '(delete-by-moving-to-trash t)
- '(trash-directory "~/.Trash"))
+(setq delete-by-moving-to-trash t)
+(setq trash-directory "~/.Trash")

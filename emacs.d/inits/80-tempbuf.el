@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (use-package tempbuf
   :diminish t
   :init

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (use-package view
   :commands (view-mode)
   :bind

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 ;;; tempbuf.el --- kill unused buffers in the background
 
 ;; Copyright (c) 2001, 2002, 2011 Michele Bini
