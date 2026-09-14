@@ -11,6 +11,7 @@ zsh.d/sheldon/*
 emacs.d/network-security.data
 emacs.d/transient
 emacs.d/projects
+emacs.d/projects.eld
 emacs.d/tree-sitter
 emacs.d/eln-cache
 

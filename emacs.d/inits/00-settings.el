@@ -14,6 +14,9 @@
 ;; 編集時 buffer 再読み込み
 (global-auto-revert-mode 1)
 
+;; 最近開いたファイルを記録 (consult-recent-file 等が使う)
+(recentf-mode 1)
+
 ;; 対応する括弧をハイライト
 (setq show-paren-delay 0)
 (show-paren-mode t)

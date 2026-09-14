@@ -19,6 +19,7 @@
 
 (use-package vertico-repeat
   :after vertico
-  :bind (("C-c C-r" . vertico-repeat))
+  ;; C-c C-r は 95-keybind.el で revert-buffer に割り当て済みのため C-c v を使う
+  :bind (("C-c v" . vertico-repeat))
   :init
   (add-hook 'minibuffer-setup-hook #'vertico-repeat-save))
