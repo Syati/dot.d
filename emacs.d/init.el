@@ -72,8 +72,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(agent-shell company consult dockerfile-mode exec-path-from-shell
-        gptel init-loader magit marginalia migemo
+   '(agent-shell consult corfu corfu-terminal dockerfile-mode
+        exec-path-from-shell init-loader magit marginalia migemo
         multiple-cursors nerd-icons nerd-icons-completion orderless
-        sequential-command switch-window treesit-auto undo-tree
+        sequential-command treesit-auto undo-tree
         use-package vertico vterm wgrep)))
