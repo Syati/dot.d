@@ -1,0 +1,29 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "8fc258ece13f",
+  "strategy": "manual-commit",
+  "branch": "master",
+  "checkpoints_count": 20,
+  "files_touched": [
+    "emacs.d/inits/00-settings.el",
+    "emacs.d/inits/94-font.el",
+    "osx/LaunchAgents/com.mizuki-y.emacs.daemon.plist",
+    "zsh.d/.zshrc"
+  ],
+  "sessions": [
+    {
+      "metadata": "/8f/c258ece13f/0/metadata.json",
+      "transcript": "/8f/c258ece13f/0/full.jsonl",
+      "compact_transcript": "/8f/c258ece13f/0/transcript.jsonl",
+      "content_hash": "/8f/c258ece13f/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 6,
+    "cache_creation_tokens": 1790,
+    "cache_read_tokens": 499695,
+    "output_tokens": 701,
+    "api_call_count": 3
+  }
+}
