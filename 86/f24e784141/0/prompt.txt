@@ -1,0 +1,89 @@
+emacs を起動するとき重いんだけど 毎回 m-x server-star するのもめんどいよね。どうするのがよい？
+
+
+
+@.agent-shell
+
+---
+
+emacs クライアントから開いてますが有効？
+
+---
+
+yes
+
+---
+
+emacs client って常時立ち上げておくって感じ？
+
+---
+
+app をclose してもたちあがってるの？
+
+---
+
+emacs.app をつかっています
+
+---
+
+2+3にしようか
+
+---
+
+spotlight から呼べる必要はないです
+
+---
+
+今の Emacs.app は不要？
+
+---
+
+alfred からApplications/Emacs.app をよんでるけど
+
+---
+
+はい
+
+---
+
+よべましたが、face とかあたってない気がする
+
+---
+
+font は inconsolate ではなく jetbrains mono powerline ってない？
+
+---
+
+はい
+
+---
+
+文字サイズ を -2 くらしてください
+
+---
+
+もうひとつ小さくして
+
+---
+
+Emacs.appだと header の menu bar とかけしてたので同じにしてくれる？
+
+---
+
+いまは何をやっているの？
+
+---
+
+continue
+
+---
+
+emacs client 開くと毎回 app ひらくが、同じの使い回すのは微妙？
+
+---
+
+flaymake より flaycheck のほうがいいじゃないとおもうんだけど。もだんなのはどっち？
+
+---
+
+commit push してください
