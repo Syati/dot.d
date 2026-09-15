@@ -15,7 +15,7 @@ freebsd*|darwin*)
     export PSQL_PATH="/opt/homebrew/opt/libpq/bin"
     export PATH="$GNU_PATH:$CUSTOM_PATH:$HOMEBREW:$JS_YARN_PATH:$FLUTTER_PATH:$MYSQL_PATH:$PSQL_PATH:$DEFAULT_PATH"
     #export PGDATA="/opt/homebrew/var/postgresql@18"
-    alias emacs='XMODIFIERS=@im=none emacs -nw'
+    alias emacs='XMODIFIERS=@im=none emacsclient -t -a "" '
     ;;
 linux*)
 	export PATH="$PATH":~/node_modules/.bin:~/android-sdks/tools:~/android-sdks/platform-tools:~/.framework/play-2.1.2:~/localenv/bin
