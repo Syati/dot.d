@@ -6,4 +6,7 @@
 (use-package agent-shell
   :ensure t
   :defer t
-  :bind ("C-c C-a" . agent-shell-anthropic-start-claude-code))
+  :bind (("C-c C-a" . agent-shell-anthropic-start-claude-code)
+         ("C-c C-w" . agent-shell)
+         ("C-c C-l" . agent-shell-restart)
+  ))
