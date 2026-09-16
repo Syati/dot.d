@@ -19,4 +19,11 @@
 (global-set-key (kbd "M-n") 'flymake-goto-next-error)
 
 (global-set-key [f9] 'display-line-numbers-mode)
-(global-set-key (kbd "C-q C-q") 'quoted-insert)
+
+(defun my/reload-init ()
+  "Reload ~/.emacs.d/init.el (re-runs init-loader-load)."
+  (interactive)
+  (load-file (expand-file-name "~/.dot.d/emacs.d/init.el")))
+
+(global-set-key (kbd "C-z r") #'my/reload-init)
+(global-set-key (kbd "C-z q") 'quoted-insert)

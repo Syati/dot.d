@@ -44,3 +44,6 @@
 ;;; 「^」がを押しにくい場合「b」でも上の階層に移動できるようにする
 (define-key dired-mode-map "b" 'dired-up-directory)
 (put 'dired-find-alternate-file 'disabled nil)
+;;; 「v」を押してもカーソルを移動させず、別ウィンドウに表示するだけにする
+;;; (デフォルトの dired-view-file はビュー先のウィンドウにカーソルが移る)
+(define-key dired-mode-map "v" 'dired-display-file)
