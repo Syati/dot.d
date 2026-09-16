@@ -73,12 +73,12 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(ace-window agent-shell consult corfu corfu-terminal dockerfile-mode
-                exec-path-from-shell grip-mode init-loader magit
+                exec-path-from-shell init-loader magit
                 marginalia markdown-mode migemo multiple-cursors
                 nerd-icons nerd-icons-completion orderless
-                sequential-command treesit-auto undo-tree use-package
-                use-package-ensure-system-package valign vertico vterm
-                wgrep))
+                sequential-command tabspaces treesit-auto undo-tree
+                use-package use-package-ensure-system-package valign
+                vertico vterm wgrep))
  '(package-vc-selected-packages
    '((use-package-ensure-system-package :vc-backend Git :url
                                         "https://github.com/waymondo/use-package-ensure-system-package"))))
