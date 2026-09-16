@@ -1,0 +1,107 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "6d7433e408ae",
+  "session_id": "082a3fd7-e0f9-4031-80eb-3fc20c7baf81",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-16T13:03:37.616385Z",
+  "branch": "master",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    "emacs.d/init.el",
+    "emacs.d/inits/80-agent-shell.el"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "b580e8dddd84",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 88,
+    "cache_creation_tokens": 207229,
+    "cache_read_tokens": 2488600,
+    "output_tokens": 36922,
+    "api_call_count": 44
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-16T13:03:37.595751Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 68,
+    "human_modified": 21,
+    "human_removed": 0,
+    "total_committed": 68,
+    "total_lines_changed": 99,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 11241,
+      "user_lines_removed": 12,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1786,
+        "emacs.d/README.md": 20,
+        "emacs.d/init.el": 14,
+        "emacs.d/inits/80-agent-shell.el": 14,
+        "emacs.d/inits/95-keybind.el": 7,
+        "osx/scripts/install-emacs-client-app.sh": 18,
+        "zsh.d/.zprofile": 6
+      },
+      "user_removed_per_file": {
+        "emacs.d/README.md": 3,
+        "emacs.d/init.el": 4,
+        "zsh.d/.zshrc": 5
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 11206,
+      "user_lines_removed": 0,
+      "agent_lines_added": 79,
+      "agent_lines_removed": 12,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1830
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 11269,
+      "user_lines_removed": 0,
+      "agent_lines_added": 79,
+      "agent_lines_removed": 12,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1893
+      }
+    }
+  ]
+}

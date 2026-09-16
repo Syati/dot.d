@@ -1,0 +1,27 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "6d7433e408ae",
+  "strategy": "manual-commit",
+  "branch": "master",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "emacs.d/init.el",
+    "emacs.d/inits/80-agent-shell.el"
+  ],
+  "sessions": [
+    {
+      "metadata": "/6d/7433e408ae/0/metadata.json",
+      "transcript": "/6d/7433e408ae/0/full.jsonl",
+      "compact_transcript": "/6d/7433e408ae/0/transcript.jsonl",
+      "content_hash": "/6d/7433e408ae/0/content_hash.txt",
+      "prompt": "/6d/7433e408ae/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 88,
+    "cache_creation_tokens": 207229,
+    "cache_read_tokens": 2488600,
+    "output_tokens": 36922,
+    "api_call_count": 44
+  }
+}
