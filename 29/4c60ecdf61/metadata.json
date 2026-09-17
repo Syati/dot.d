@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "294c60ecdf61",
+  "strategy": "manual-commit",
+  "branch": "master",
+  "checkpoints_count": 28,
+  "files_touched": [
+    "emacs.d/inits/80-dirvish.el"
+  ],
+  "sessions": [
+    {
+      "metadata": "/29/4c60ecdf61/0/metadata.json",
+      "transcript": "/29/4c60ecdf61/0/full.jsonl",
+      "compact_transcript": "/29/4c60ecdf61/0/transcript.jsonl",
+      "content_hash": "/29/4c60ecdf61/0/content_hash.txt",
+      "prompt": "/29/4c60ecdf61/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 480,
+    "cache_creation_tokens": 410453,
+    "cache_read_tokens": 35013755,
+    "output_tokens": 149517,
+    "api_call_count": 240
+  }
+}
