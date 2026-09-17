@@ -98,3 +98,13 @@
 ;; trash setting
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.Trash")
+
+;; native-comp の非同期コンパイル警告 (*Warnings* の自動ポップアップの
+;; 主な原因) を黙らせる。エラー自体は起きても実害はほぼ無いログなので、
+;; 毎回ウィンドウが割り込むのが煩わしいだけ。
+(setq native-comp-async-report-warnings-errors nil)
+;; native-comp 以外の原因 (byte-compile 警告等) で *Warnings* が出ても
+;; 自動でウィンドウを割らないようにする。ログ自体は残るので、確認したい
+;; ときは M-x view-echo-area-messages や C-h e で開ける。
+(add-to-list 'display-buffer-alist
+             '("\\*Warnings\\*" display-buffer-no-window))
