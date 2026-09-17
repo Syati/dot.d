@@ -14,7 +14,8 @@
   ((claude . "brew install claude-code")
    (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")
    (codex . "npm install -g @openai/codex")
-   (codex-acp . "npm install -g @agentclientprotocol/codex-acp"))
+   (codex-acp . "npm install -g @agentclientprotocol/codex-acp")
+   (pngpaste . "brew install pngpaste"))
   :init
   (setq agent-shell-session-restore-verbosity 'full)
   :bind (("C-c C-a" . agent-shell-anthropic-start-claude-code)
