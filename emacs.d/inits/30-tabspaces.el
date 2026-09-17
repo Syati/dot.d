@@ -19,11 +19,15 @@
       tab-bar-new-button-show nil
       tab-bar-tab-hints t          ; タブ名の前に番号を表示
       tab-bar-tab-name-truncated-max 20)
-;; 上の tab-bar-tab-hints は番号を表示するだけで、M-1 等で実際に選べる
+;; 上の tab-bar-tab-hints は番号を表示するだけで、s-1 等で実際に選べる
 ;; ようにするにはこちらも必要 (0 は直前のタブ、9 は一番右のタブ)。
 ;; :set 関数でキーバインドを実インストールする変数なので setq ではなく
-;; setopt (customize-set-variable 相当) を使う
-(setopt tab-bar-select-tab-modifiers '(meta))
+;; setopt (customize-set-variable 相当) を使う。
+;; M-<数字> はウィンドウ切り替え (30-ace-window.el) に使うので、タブは
+;; Super (s-<数字>) にしている。shift は数字キー列だと物理的に別記号
+;; (Shift+1 = "!" 等) になってしまい S-M-<数字> という組み合わせを
+;; 安定して送れないため使わない。
+(setopt tab-bar-select-tab-modifiers '(super))
 
 ;; タブの見た目を凝らせようとして何度か試したが (SVGでの角丸描画、
 ;; Powerlineグリフでのピル型描画のどちらも) 、色の unspecified/nil 周りの

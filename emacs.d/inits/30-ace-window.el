@@ -5,16 +5,19 @@
   :bind (("C-x o" . ace-window)
          ("M-o"   . aw-flip-window))
   :config
-  ;; aw-keys のデフォルトは 1..9 の数字。それに合わせて s-<数字> で
+  ;; aw-keys のデフォルトは 1..9 の数字。それに合わせて M-<数字> で
   ;; 選択プロンプト無しのワンショットジャンプにする (winum の M-<数字>
   ;; 相当)。番号は aw-window-list の並び順 (画面左上→右下) に対応する。
+  ;; タブ切り替えは Super (s-<数字>, 30-tabspaces.el) にしてあるので
+  ;; ここでは素の M-<数字> を使う (デフォルトの digit-argument を上書き)。
+  ;; ブラウザの Cmd+数字=タブ切り替えと感覚を合わせている。
   (defun my/aw-select-window-by-number (n)
     "Select the Nth (1-indexed) window from `aw-window-list'."
     (let ((win (nth (1- n) (aw-window-list))))
       (if win (select-window win) (message "No window %d" n))))
   (dotimes (i 9)
     (let ((n (1+ i)))
-      (global-set-key (kbd (format "s-%d" n))
+      (global-set-key (kbd (format "M-%d" n))
                        (lambda () (interactive) (my/aw-select-window-by-number n)))))
   ;; モードラインへの常時番号表示。doom-modeline は ace-window-display-mode
   ;; 自身の mode-line-format 書き込みは無効化する (doom-modeline-segments.el
