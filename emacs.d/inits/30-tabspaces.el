@@ -25,6 +25,10 @@
 ;; setopt (customize-set-variable 相当) を使う
 (setopt tab-bar-select-tab-modifiers '(meta))
 
+;; タブの見た目を凝らせようとして何度か試したが (SVGでの角丸描画、
+;; Powerlineグリフでのピル型描画のどちらも) 、色の unspecified/nil 周りの
+;; エラーや GUIフレーム生成直後のフリーズなど問題が続いたため、標準の
+;; tab-bar 表示のまま見た目のカスタマイズはしないことにした。
 
 (use-package tabspaces
   :ensure t
