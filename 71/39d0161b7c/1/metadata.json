@@ -1,0 +1,327 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "7139d0161b7c",
+  "session_id": "275e153f-71ea-4da0-af1a-4fde83babf0c",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T00:07:21.040489Z",
+  "branch": "master",
+  "checkpoints_count": 8,
+  "save_step_count": 8,
+  "files_touched": [
+    "emacs.d/inits/30-tabspaces.el"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "488eac7b54e0",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 174,
+    "cache_creation_tokens": 181672,
+    "cache_read_tokens": 7617125,
+    "output_tokens": 76028,
+    "api_call_count": 88
+  },
+  "session_metrics": {
+    "turn_count": 8
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T00:07:21.009425Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 63,
+    "human_modified": 34,
+    "human_removed": 0,
+    "total_committed": 63,
+    "total_lines_changed": 97,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 19944,
+      "user_lines_removed": 16,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 15,
+        "emacs.d/init.el": 1,
+        "emacs.d/inits/10-use-package-ensure-system-package.el": 10,
+        "emacs.d/inits/20-markdown-mode.el": 3,
+        "emacs.d/inits/30-perspective.el": 24,
+        "emacs.d/inits/80-agent-shell.el": 10,
+        "emacs.d/inits/80-vterm.el": 7,
+        "emacs.d/persp-state": 1
+      },
+      "user_removed_per_file": {
+        "emacs.d/init.el": 1,
+        "emacs.d/inits/20-markdown-mode.el": 1,
+        "emacs.d/inits/80-agent-shell.el": 12,
+        "emacs.d/inits/80-vterm.el": 2
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 21548,
+      "user_lines_removed": 1,
+      "agent_lines_added": 62,
+      "agent_lines_removed": 17,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 576,
+        "emacs.d/persp-state": 1
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 23543,
+      "user_lines_removed": 1,
+      "agent_lines_added": 68,
+      "agent_lines_removed": 17,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 986,
+        "emacs.d/persp-state": 1
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 24244,
+      "user_lines_removed": 4,
+      "agent_lines_added": 37,
+      "agent_lines_removed": 17,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1659,
+        "emacs.d/init.el": 4,
+        "emacs.d/inits/30-tabspaces.el": 25
+      },
+      "user_removed_per_file": {
+        "emacs.d/init.el": 4
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 26005,
+      "user_lines_removed": 1,
+      "agent_lines_added": 40,
+      "agent_lines_removed": 19,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 1686,
+        "emacs.d/inits/30-tabspaces.el": 25,
+        "emacs.d/persp-state": 1,
+        "emacs.d/tabsession.el": 12
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 26022,
+      "user_lines_removed": 1,
+      "agent_lines_added": 40,
+      "agent_lines_removed": 19,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 1703,
+        "emacs.d/inits/30-tabspaces.el": 25,
+        "emacs.d/persp-state": 1,
+        "emacs.d/tabsession.el": 12
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 26432,
+      "user_lines_removed": 1,
+      "agent_lines_added": 89,
+      "agent_lines_removed": 19,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 2138,
+        "emacs.d/persp-state": 1,
+        "emacs.d/tabsession.el": 12
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    },
+    {
+      "checkpoint_number": 8,
+      "user_lines_added": 26640,
+      "user_lines_removed": 1,
+      "agent_lines_added": 99,
+      "agent_lines_removed": 19,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 2346,
+        "emacs.d/persp-state": 1,
+        "emacs.d/tabsession.el": 12
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    },
+    {
+      "checkpoint_number": 9,
+      "user_lines_added": 26730,
+      "user_lines_removed": 1,
+      "agent_lines_added": 99,
+      "agent_lines_removed": 19,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 2436,
+        "emacs.d/persp-state": 1,
+        "emacs.d/tabsession.el": 12
+      },
+      "user_removed_per_file": {
+        "emacs.d/persp-state": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+emacs kill したのち emacs client.app を起動すると複数起動するので、 emacs client.app の起動方法を検討して
+
+
+@.agent-shell
+
+---
+
+２つ起動するね
+
+---
+
+perspective mode は関係しない？
+
+---
+
+まだ２つひらいてるね
+
+---
+
+<task-notification>
+<task-id>bsqknscne</task-id>
+<tool-use-id>toolu_01NKTY1Ynj7YiMeE4iTd9N59</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-mizuki-y--dot-d/275e153f-71ea-4da0-af1a-4fde83babf0c/tasks/bsqknscne.output</output-file>
+<status>completed</status>
+<summary>Background command "Locate the perspective.el package source file" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+perspective はやめようかな。 tabbar mode にしましょうか
+
+---
+
+2
+
+---
+
+<task-notification>
+<task-id>bogvrtqtb</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-mizuki-y--dot-d/275e153f-71ea-4da0-af1a-4fde83babf0c/tasks/bogvrtqtb.output</output-file>
+<status>completed</status>
+<summary>Background command "Search filesystem broadly for tab-bar.el source" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bjb0a62yt</task-id>
+<tool-use-id>toolu_01JLAvxaoSYhX4wvfajWDjDV</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-mizuki-y--dot-d/275e153f-71ea-4da0-af1a-4fde83babf0c/tasks/bjb0a62yt.output</output-file>
+<status>completed</status>
+<summary>Background command "Quick timed search for any cached tabspaces package files" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+複数起動しませんでした。
+
+---
+
+tab の見た目をよくできない？
+
+---
+
+立体的なのはださいね。material デザインにして
+
+---
+
+top に radius いれられない？
