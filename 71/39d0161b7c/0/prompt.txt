@@ -29,3 +29,7 @@ screenshots の 添付に brew install pngpaste いるっぽいけど、これ�
   ))
 
 </context>
+
+---
+
+commit push
