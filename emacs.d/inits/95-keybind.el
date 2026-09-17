@@ -1,5 +1,14 @@
 ;;; -*- lexical-binding: t -*-
-(setq mac-command-modifier nil)
+;; Cmd+C/Cmd-V 等のOSパススルーは使っていないので、左CmdもSuperとして
+;; Emacs側で使う。kill-ring と yank は select-enable-clipboard (デフォルト
+;; t) でシステムクリップボードと連携済みなので、コピペ自体は M-w / C-y の
+;; ままで問題ない。
+(setq mac-command-modifier 'super)
+;; 以前 karabiner+右Cmd を Hyper にしていた名残。setq を消しても
+;; 既存セッションの変数値は元に戻らない (defcustom の初期値には
+;; リセットされない) ので、'left (= mac-command-modifier を継承) に
+;; 明示的に戻す。
+(setq mac-right-command-modifier 'left)
 
 (global-set-key (kbd "C-1") 'find-tag)
 (global-set-key (kbd "C-2") 'pop-tag-mark)
