@@ -10,7 +10,7 @@
 
     (set-face-attribute 'default frame
                          :family "JetBrains Mono"
-                         :height 110)
+                         :height 130)
 
     (set-fontset-font
      (frame-parameter frame 'font)
