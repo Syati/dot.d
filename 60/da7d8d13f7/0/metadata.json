@@ -1,0 +1,133 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "60da7d8d13f7",
+  "session_id": "04b34822-47d5-4b14-acb8-e6f34f155973",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T00:51:00.553926Z",
+  "branch": "master",
+  "checkpoints_count": 11,
+  "save_step_count": 3,
+  "files_touched": [
+    "emacs.d/inits/30-doom-modeline.el"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "f8ba7d9bff89",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 106,
+    "cache_creation_tokens": 54551,
+    "cache_read_tokens": 2684922,
+    "output_tokens": 20150,
+    "api_call_count": 53
+  },
+  "session_metrics": {
+    "turn_count": 12
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T00:51:00.537234Z",
+    "agent_lines": 16,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 16,
+    "total_lines_changed": 16,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 30102,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 3682,
+        ".agent-shell/transcripts/2026-09-17-09-02-05.md": 459,
+        ".agent-shell/transcripts/2026-09-17-09-10-45.md": 801,
+        ".agent-shell/transcripts/2026-09-17-09-16-39.md": 879
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 32609,
+      "user_lines_removed": 0,
+      "agent_lines_added": 15,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 3682,
+        ".agent-shell/transcripts/2026-09-17-09-02-05.md": 459,
+        ".agent-shell/transcripts/2026-09-17-09-10-45.md": 801,
+        ".agent-shell/transcripts/2026-09-17-09-16-39.md": 1622,
+        ".agent-shell/transcripts/2026-09-17-09-32-17.md": 1764
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 32669,
+      "user_lines_removed": 0,
+      "agent_lines_added": 16,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".agent-shell/transcripts/2026-09-14-11-49-33.md": 85,
+        ".agent-shell/transcripts/2026-09-15-07-42-28.md": 45,
+        ".agent-shell/transcripts/2026-09-15-08-04-44.md": 676,
+        ".agent-shell/transcripts/2026-09-15-08-20-09.md": 18,
+        ".agent-shell/transcripts/2026-09-15-08-35-09.md": 690,
+        ".agent-shell/transcripts/2026-09-15-08-53-01.md": 403,
+        ".agent-shell/transcripts/2026-09-15-08-57-20.md": 5679,
+        ".agent-shell/transcripts/2026-09-16-07-10-48.md": 1780,
+        ".agent-shell/transcripts/2026-09-16-08-43-09.md": 1940,
+        ".agent-shell/transcripts/2026-09-16-13-55-07.md": 4727,
+        ".agent-shell/transcripts/2026-09-16-15-57-32.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-57-52.md": 1915,
+        ".agent-shell/transcripts/2026-09-16-15-58-04.md": 536,
+        ".agent-shell/transcripts/2026-09-16-16-02-57.md": 562,
+        ".agent-shell/transcripts/2026-09-16-16-05-09.md": 782,
+        ".agent-shell/transcripts/2026-09-16-16-07-36.md": 803,
+        ".agent-shell/transcripts/2026-09-16-16-08-00.md": 1725,
+        ".agent-shell/transcripts/2026-09-16-19-02-18.md": 3682,
+        ".agent-shell/transcripts/2026-09-17-09-02-05.md": 459,
+        ".agent-shell/transcripts/2026-09-17-09-10-45.md": 801,
+        ".agent-shell/transcripts/2026-09-17-09-16-39.md": 1622,
+        ".agent-shell/transcripts/2026-09-17-09-32-17.md": 1824
+      }
+    }
+  ]
+}
