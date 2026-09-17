@@ -1,0 +1,289 @@
+screenshots の 添付に brew install pngpaste いるっぽいけど、これもsystem package として記載したほうがいいよね？
+
+[@80-agent-shell.el](file:///Users/mizuki-y/.dot.d/emacs.d/inits/80-agent-shell.el)
+
+<context ref="file:///Users/mizuki-y/.dot.d/emacs.d/inits/80-agent-shell.el">
+;;; -*- lexical-binding: t -*-
+;; Claude Code / Codex それぞれ用の ACP アダプタが別途必要:
+;; https://github.com/agentclientprotocol/claude-agent-acp
+;; https://github.com/agentclientprotocol/codex-acp
+;; 認証はどちらもデフォルトの (:login t) で、既存の claude / codex CLI の
+;; ログインをそのまま使う (agent-shell-anthropic-authentication /
+;; agent-shell-openai-authentication)。
+;; :ensure-system-package のセットアップは 10-use-package-ensure-system-package.el 参照。
+
+(use-package agent-shell
+  :ensure t
+  :defer t
+  :ensure-system-package
+  ((claude . "brew install claude-code")
+   (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")
+   (codex . "npm install -g @openai/codex")
+   (codex-acp . "npm install -g @agentclientprotocol/codex-acp"))
+  :init
+  (setq agent-shell-session-restore-verbosity 'full)
+  :bind (("C-c C-a" . agent-shell-anthropic-start-claude-code)
+         ("C-c C-o" . agent-shell-openai-start-codex)
+         ("C-c C-w" . agent-shell)
+         ("C-c C-l" . agent-shell-restart)
+  ))
+
+</context>
+
+---
+
+commit push
+
+---
+
+なんでだろ？
+agent-shell--save-clipboard-image: Command pngpaste failed with exit code 1
+agent-shell--capture-screenshot: Screenshot command failed with exit code 1
+Quit
+
+---
+
+agent-shell-send-screenshot はエラーになるけど
+
+---
+
+できました。ショートカットあったほうがいいか？osx のショートカットからスクショとってC-y で貼り付けるからなくてもいいきがするか
+
+---
+
+emacs モードラインがダサいんだけど doom-modeline がいいかな？
+
+---
+
+doom-modeline で 間引きしましょう。何を間引けばいいと思う？ 提案してください
+
+---
+
+そう考えると nano-modeline もいい？
+
+---
+
+残す候補＋doom-modeline-icon は残す想定で。
+
+---
+
+反映されてないけど
+
+---
+
+何も変わらないね。 after-init がきいてる？
+
+---
+
+有効化されました
+
+---
+
+pushしましょうか
+
+---
+
+project sidebar みたいな モダンな el ある？
+
+---
+
+dirvish-side つかってみようか。 あと使ってないバッファーを削除するのってはいってたよね？
+
+---
+
+一定時間操作していないバッファーを閉じるをそうていしていました
+
+---
+
+tabspace と相性わるい？
+
+---
+
+dirvish で開く dird にはアイコンとかあってほしいのと 余計な権限表示とかいらないんだよね
+
+---
+
+@.agent-shell
+
+---
+
+表示かわｒないね
+
+---
+
+アイコンもでなければ、情報がフルにでてる
+
+---
+
+かわらないね
+
+---
+
+dire-hide-detail-mode がきいてないのかな
+
+---
+
+設定だけど以下のようにドキュメントかいてあるけど、 init に dirvish-override-dired-mode おかないの？
+(use-package dired
+  :config
+  (setq dired-listing-switches
+        "-l --almost-all --human-readable --group-directories-first --no-group")
+  ;; this command is useful when you want to close the window of `dirvish-side'
+  ;; automatically when opening a file
+  (put 'dired-find-alternate-file 'disabled nil))
+
+(use-package dirvish
+  :ensure t
+  :init
+  (dirvish-override-dired-mode)
+  :custom
+  (dirvish-quick-access-entries ; It's a custom option, `setq' won't work
+   '(("h" "~/"                          "Home")
+     ("d" "~/Downloads/"                "Downloads")
+     ("m" "/mnt/"                       "Drives")
+     ("s" "/ssh:my-remote-server")      "SSH server"
+     ("e" "/sudo:root@localhost:/etc")  "Modify program settings"
+     ("t" "~/.local/share/Trash/files/" "TrashCan")))
+  :config
+  ;; (dirvish-peek-mode)             ; Preview files in minibuffer
+  ;; (dirvish-side-follow-mode)      ; similar to `treemacs-follow-mode'
+  (setq dirvish-mode-line-format
+        '(:left (sort symlink) :right (omit yank index)))
+  (setq dirvish-attributes           ; The order *MATTERS* for some attributes
+        '(vc-state subtree-state nerd-icons collapse git-msg file-time file-size)
+        dirvish-side-attributes
+        '(vc-state nerd-icons collapse file-size))
+  ;; open large directory (over 20000 files) asynchronously with `fd' command
+  (setq dirvish-large-directory-threshold 20000)
+  :bind ; Bind `dirvish-fd|dirvish-side|dirvish-dwim' as you see fit
+  (("C-c f" . dirvish)
+   :map dirvish-mode-map               ; Dirvish inherits `dired-mode-map'
+   (";"   . dired-up-directory)        ; So you can adjust `dired' bindings here
+   ("?"   . dirvish-dispatch)          ; [?] a helpful cheatsheet
+   ("a"   . dirvish-setup-menu)        ; [a]ttributes settings:`t' toggles mtime, `f' toggles fullframe, etc.
+   ("f"   . dirvish-file-info-menu)    ; [f]ile info
+   ("o"   . dirvish-quick-access)      ; [o]pen `dirvish-quick-access-entries'
+   ("s"   . dirvish-quicksort)         ; [s]ort flie list
+   ("r"   . dirvish-history-jump)      ; [r]ecent visited
+   ("l"   . dirvish-ls-switches-menu)  ; [l]s command flags
+   ("v"   . dirvish-vc-menu)           ; [v]ersion control commands
+   ("*"   . dirvish-mark-menu)
+   ("y"   . dirvish-yank-menu)
+   ("N"   . dirvish-narrow)
+   ("^"   . dirvish-history-last)
+   ("TAB" . dirvish-subtree-toggle)
+   ("M-f" . dirvish-history-go-forward)
+   ("M-b" . dirvish-history-go-backward)
+   ("M-e" . dirvish-emerge-menu)))
+
+---
+
+ファイル横の数字はサイズかな？ 不要です
+
+---
+
+C-x p ってめんどくさいね。みんなどうしてるの？
+
+---
+
+project のkeymap 全体的な話です
+
+---
+
+transient メニューかいいかもね。おねがい
+
+---
+
+<F5> などのfunciton key は使いたくないんだよね
+
+---
+
+ctrl+alt+command+p とかは？ karabiner で ctrl+alt+command を key にわりあてている。
+
+---
+
+ctrl alt shif command  を hyper とおもっていたが、emacs ではちがう？
+
+---
+
+Super って？
+
+---
+
+cmd+v とかつかってないから super としていいのかな
+
+---
+
+変更してください
+
+---
+
+必要そうな s-バインドは不要。なぜなら現状でできているため
+
+---
+
+(setq mac-right-command-modifier 'hyper) そしたらこれも不要？
+
+---
+
+C-m-s-p でいいじゃない？
+
+---
+
+project find grep って M-s r で割り当てた ripgrep のほうがいいじゃない？
+
+---
+
+https://github.com/deb0ch/emacs-winum のように ace-window  でも C-x w 1 とかでいどうできない？
+
+---
+
+ワンショットジャンプがほしい
+
+---
+
+super+番号にしようか そっちのほうがつかいやすそう。あと right command が hyper のままになってる
+
+---
+
+番号あるとうれしいな
+
+---
+
+表示されました。commit push
+
+---
+
+tabspace 系の C-x t も transientメニューにしたらいいとおもうんだけど
+
+---
+
+M-1~9 が バファー移動で S-M-1~9 がタブとかのほうがいい？
+
+---
+
+現状の super + 1~9 のはなしです
+
+---
+
+markset や shell command になるんだけど S-M-1
+
+---
+
+shift super +1 ~ 9 がタブは？
+
+---
+
+似たような移動が２つのキーに割り当てられてるとわかにくいきがするんだよね
+
+---
+
+たしかに。それならそれでいいですね
+
+---
+
+*warnings*とか自動で開くの面倒くさいんですけど、それ無効化できない？
+
+---
+
+commit push
