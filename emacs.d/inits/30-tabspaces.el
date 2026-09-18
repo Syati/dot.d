@@ -56,7 +56,13 @@
 (use-package tabspaces
   :ensure t
   :init
-  (tabspaces-mode 1)
+  ;; tabspaces-mode (define-minor-mode) は既に有効でも呼ぶたびに enable
+  ;; 本体を無条件に再実行する実装で、その中の tab-bar 関連セットアップの
+  ;; 再実行がタブの状態を壊すことがある (実際に何度も踏んだ)。C-z r
+  ;; (my/reload-init, 95-keybind.el) で init.el 全体を読み直すたびに
+  ;; ここも再評価されるので、既に有効なら呼ばないようガードする。
+  (unless tabspaces-mode
+    (tabspaces-mode 1))
   :custom
   (tabspaces-use-filtered-buffers-as-default t)
   (tabspaces-remove-to-default t)
@@ -67,8 +73,10 @@
   ;; (上のコメント参照)
   (tabspaces-session t)
   (tabspaces-session-auto-restore nil)
-  :bind (("C-x t s" . tabspaces-switch-or-create-workspace)
-         ("C-x t w" . tabspaces-open-or-create-project-and-workspace))
+  ;; C-x t 系の直接バインドは持たない。30-tabspaces-transient.el が
+  ;; s-t にまとめており (s/w/h がここと同じコマンド)、C-x t は2打鍵とも
+  ;; Ctrl を離す必要があって面倒という、まさにその transient を作った
+  ;; 理由と重複するため。
   :config
   (defun my/tabspaces--enable-project-session-auto-restore (orig-fun &rest args)
     "Run ORIG-FUN with `tabspaces-session-auto-restore' dynamically bound to t.
@@ -97,9 +105,10 @@ Named (rather than an anonymous lambda) so re-evaluating this file via
   ;; オーファンが延々と生き残るループになる。ファイル訪問バッファは対象外:
   ;; `find-file' は既存バッファを素直に再利用するので衝突せず、未保存の
   ;; 編集を確認無しに破棄してしまうリスクもある (save-buffers-kill-terminal
-  ;; 自身がこの直後に保存確認をするので、そちらに任せる)。dired は通常
-  ;; 「未保存の編集」を持たないので同じ理由での除外対象にはならないが、
-  ;; `wdired' 編集中 (buffer-modified-p) だけは保険として除外する。
+  ;; 自身がこの直後に保存確認をするので、そちらに任せる)。`wdired' 編集中は
+  ;; major-mode が `wdired-mode' になり `dired-mode' からの派生ではなくなる
+  ;; ため (`derived-mode-p' が nil)、そもそもここで dired と判定されず
+  ;; 自然に対象外になる。buffer-modified-p による保護は不要。
   (defun my/tabspaces--kill-frame-tab-process-buffers ()
     "Kill process-backed and dired buffers of every tab on the selected frame.
 Reports what it killed (or any error) via `message', since this runs
@@ -116,18 +125,9 @@ would otherwise leave no trace if it failed partway through."
               (dolist (b bufs)
                 (when (and (buffer-live-p b)
                            (with-current-buffer b
-                             ;; buffer-modified-p is only meaningful as a
-                             ;; safety check for dired (protects an
-                             ;; in-progress wdired edit); vterm/agent-shell/
-                             ;; eshell/shell/eat buffers are considered
-                             ;; "modified" just from ordinary process output,
-                             ;; so gating on it there would exclude them
-                             ;; unconditionally.
-                             (and (derived-mode-p 'vterm-mode 'agent-shell-mode
-                                                  'eshell-mode 'shell-mode 'eat-mode
-                                                  'dired-mode)
-                                  (or (not (derived-mode-p 'dired-mode))
-                                      (not (buffer-modified-p))))))
+                             (derived-mode-p 'vterm-mode 'agent-shell-mode
+                                             'eshell-mode 'shell-mode 'eat-mode
+                                             'dired-mode)))
                   (push (buffer-name b) killed)
                   (kill-buffer b)))))
         (error (message "tabspaces: frame-close buffer cleanup failed: %S" err)))
@@ -142,16 +142,42 @@ before `save-buffers-kill-terminal' closes this frame."
   (advice-add 'save-buffers-kill-terminal :before
               #'my/tabspaces--save-session-on-frame-close)
 
-  ;; タブ1を常に "home" という固定名の非プロジェクトタブにする。新規
-  ;; フレームは無名タブ1つだけの状態で作られる (名前はカレントバッファ
-  ;; 追従のデフォルト名) ので、明示的にリネームして固定する。既に "home"
-  ;; という名前のタブがあれば何もしない (このファイルを再読み込みしても
-  ;; 二重に走らない)
+  ;; タブ1を常に "home" という固定名の非プロジェクトタブにし、~/ の
+  ;; dired を開いておく。新規フレームは無名タブ1つだけの状態で作られる
+  ;; (名前はカレントバッファ追従のデフォルト名) ので、明示的に ~/ を開いて
+  ;; からリネームして固定する。既に "home" という名前のタブがあれば何も
+  ;; しない (このファイルを再読み込みしても二重に走らない)。
+  ;;
+  ;; 非プロジェクトタブはセッションの保存はされる (tabspaces-session-file
+  ;; へ) が、tabspaces-session-auto-restore はプロジェクトタブ用の advice
+  ;; でしか動的に有効化していないため復元経路を一切通らない。保存/復元の
+  ;; 往復に頼ると、"*Old buffer NAME*-PID" (window-state-put が復元先の
+  ;; バッファを見失ったときのプレースホルダー) を踏んだ場合、直せないまま
+  ;; 何度も保存し直されて延々と残ってしまう (実際に起きた)。それを避けて
+  ;; 毎回ここで確実に ~/ を開き直す。
+  (defun my/tabspaces--setup-home-buffer ()
+    "Show ~/ in the current window and rename the current tab to \"home\"."
+    (dired "~/")
+    (tab-bar-rename-tab "home"))
   (defun my/tabspaces--ensure-home-tab (&optional frame)
-    "Ensure FRAME's first tab is named \"home\"."
+    "Ensure FRAME's first (and, when fresh, only) tab is \"home\", showing ~/."
     (with-selected-frame (or frame (selected-frame))
       (unless (member "home" (tabspaces--list-tabspaces))
-        (tab-bar-rename-tab "home" 1))))
+        (my/tabspaces--setup-home-buffer))))
   (dolist (frame (frame-list))
     (my/tabspaces--ensure-home-tab frame))
-  (add-hook 'after-make-frame-functions #'my/tabspaces--ensure-home-tab))
+  (add-hook 'after-make-frame-functions #'my/tabspaces--ensure-home-tab)
+
+  ;; C-x t h: 手動で home タブを閉じてしまった後の復帰用。既存の
+  ;; my/tabspaces--ensure-home-tab は「フレームの唯一のタブを home に
+  ;; 仕立てる」新規フレーム用の処理なので、他のタブが既にあるフレームで
+  ;; そのまま使うとカレントタブを home に上書きしてしまい適さない。
+  ;; こちらは常に新規タブを作ってから home に仕立てる。
+  (defun my/tabspaces-open-home-tab ()
+    "Switch to the \"home\" tab, recreating it at position 1 if closed."
+    (interactive)
+    (if (member "home" (tabspaces--list-tabspaces))
+        (tab-bar-switch-to-tab "home")
+      (tab-bar-new-tab)
+      (my/tabspaces--setup-home-buffer)
+      (tab-bar-move-tab-to 1))))

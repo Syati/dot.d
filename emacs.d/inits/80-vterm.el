@@ -10,4 +10,9 @@
   ;; 再実行してしまい、C-c C-t 等のサブバインドが復元されず消える
   ;; (use-package の :custom は customize-set-variable を使うため発火する)。
   ;; setq なら :set フックを経由しないので、この事故を避けられる。
-  (setq vterm-keymap-exceptions '("<f1>" "<f2>" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y")))
+  ;; M-1..M-9 は ace-window の one-shot window jump (30-ace-window.el) 用。
+  ;; 除外していないと vterm が self-insert として端末に送ってしまう。
+  ;; C-z も同様にプレフィックスキーとして除外する (C-z r = my/reload-init 等、
+  ;; 95-keybind.el)。
+  (setq vterm-keymap-exceptions '("<f1>" "<f2>" "C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"
+                                   "M-1" "M-2" "M-3" "M-4" "M-5" "M-6" "M-7" "M-8" "M-9" "C-z")))

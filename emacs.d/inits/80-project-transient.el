@@ -21,3 +21,14 @@
     ("k" "Kill buffers"   project-kill-buffers)]])
 
 (global-set-key (kbd "s-p") #'my/project-transient)
+
+;; project 内では C-x C-f (find-file) をそのまま project-find-file に
+;; する。[remap find-file] なので、M-x find-file やメニュー経由でも
+;; 同じく差し替わる。project の外ではいつも通り find-file のまま。
+(defun my/find-file-or-project-find-file ()
+  "Use `project-find-file' when in a project, otherwise `find-file'."
+  (interactive)
+  (if (project-current)
+      (call-interactively #'project-find-file)
+    (call-interactively #'find-file)))
+(global-set-key [remap find-file] #'my/find-file-or-project-find-file)

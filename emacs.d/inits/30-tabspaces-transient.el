@@ -12,8 +12,7 @@
   [["Workspace"
     ("s" "Switch/create workspace" tabspaces-switch-or-create-workspace)
     ("w" "Open project as workspace" tabspaces-open-or-create-project-and-workspace)
-    ("S" "Save current project session" tabspaces-save-current-project-session)
-    ("R" "Restore session" tabspaces-restore-session)]
+    ("h" "Home tab" my/tabspaces-open-home-tab)]
    ["Tab"
     ("t" "New tab"      tab-new)
     ("0" "Close tab"    tab-close)

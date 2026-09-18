@@ -29,7 +29,9 @@
              agent-shell-send-screenshot
              agent-shell-interrupt
              agent-shell-copy-last-output
-             agent-shell-toggle-logging)
+             agent-shell-toggle-logging
+             agent-shell-set-session-mode
+             agent-shell-set-session-model)
   :bind (("C-c C-a" . agent-shell-anthropic-start-claude-code)
          ("C-c C-o" . agent-shell-openai-start-codex)
          ("C-c C-w" . agent-shell)

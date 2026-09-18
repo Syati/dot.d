@@ -25,6 +25,8 @@
    ["Control"
     ("k" "Interrupt"        agent-shell-interrupt)
     ("c" "Copy last output" agent-shell-copy-last-output)
-    ("l" "Toggle logging"   agent-shell-toggle-logging)]])
+    ("l" "Toggle logging"   agent-shell-toggle-logging)
+    ("m" "Set mode"         agent-shell-set-session-mode)
+    ("M" "Set model"        agent-shell-set-session-model)]])
 
 (global-set-key (kbd "s-a") #'my/agent-shell-transient)
