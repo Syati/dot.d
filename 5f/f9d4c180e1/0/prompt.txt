@@ -1,0 +1,152 @@
+タブを常に表示するようにしてもらっていい？ １ は home タブとかにして
+
+---
+
+意図した操作ではない。
+
+---
+
+undo できなかったので、 C-x C-c して開き直せばいいかな？
+
+---
+
+home タブは ~/ にしてほしいのよね
+
+---
+
+dired dot.d<mizuki-y>って削除したのに C-x C-c で閉じて開くとまたできるんだけど、dired も vterm とか同じ現象になってる？
+
+---
+
+いまクローズして開いたばかりんだけど.dot.d ってできてるよね
+
+---
+
+消して、C-x C-c で emacs を閉じて、再度ひらたのち project を復元したらできるんですよ
+
+---
+
+はい
+
+---
+
+vterm \to
+
+---
+
+vterm と agent-shell 直したらとおもったけど、なおってなかった.変更がもどってる？
+
+---
+
+kill していいよ
+
+---
+
+またもどりましたね
+
+---
+
+Vertico detected an error:
+  backtrace-to-string()
+  vertico--debug((error "Selecting deleted buffer"))
+  #f(compiled-function (cand cat) "Return the icon for the candidate CAND of completion category buffer." #<bytecode -0x15c9525c47b44199>)(#<killed buffer> buffer)
+  apply(#f(compiled-function (cand cat) "Return the icon for the candidate CAND of completion category buffer." #<bytecode -0x15c9525c47b44199>) #<killed buffer> buffer nil)
+  nerd-icons-completion-get-icon(#<killed buffer> buffer)
+  #f(compiled-function (x) #<bytecode 0x937084ab08b195c>)((#("1 ~􀀂" 0 2 (face (shadow consult-buffer) multi-category (buffer . #<killed buffer>)) 2 3 (multi-category (buffer . #<killed buffer>) face consult-buffer) 3 4 (consult-strip t invisible t)) "" #("   (dead buffer)" 0 1 (display (space :align-to (+ left 60)) marginalia--align t) 3 16 (face error))))
+  mapcar(#f(compiled-function (x) #<bytecode 0x937084ab08b195c>) ((... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) (... "" ...) ...))
+  #f(compiled-function (cands) #<bytecode 0xc0a4bb68a928f29>)((#("1 home􀀀" 0 2 (face ... multi-category ...) 2 6 (multi-category ... face consult-buffer) 6 7 (consult-strip t invisible t)) #("2 .dot.d􀀀" 0 2 (face ... multi-category ...) 2 8 (multi-category ... face consult-buffer) 8 9 (consult-strip t invisible t)) #("2 Claude Agent @ .dot.d<2>􀀁" 0 2 (face ... multi-category ...) 2 26 (multi-category ... face consult-buffer) 26 27 (consult-strip t invisible t)) #("Claude Agent @ .dot.d􀀁" 0 21 (multi-category ... face consult-buffer) 21 22 (consult-strip t invisible t)) #("1 ~􀀂" 0 2 (face ... multi-category ...) 2 3 (multi-category ... face consult-buffer) 3 4 (consult-strip t invisible t)) #("1 *scratch*􀀂" 0 2 (face ... multi-category ...) 2 11 (multi-category ... face consult-buffer) 11 12 (consult-strip t invisible t)) #("1 *Messages*􀀂" 0 2 (face ... multi-category ...) 2 12 (multi-category ... face consult-buffer) 12 13 (consult-strip t invisible t)) #("2 *vterm*<2><2><2><2>􀀂" 0 2 (face ... multi-category ...) 2 21 (multi-category ... face consult-buffer) 21 22 (consult-strip t invisible t)) #("2 .dot.d􀀂" 0 2 (face ... multi-category ...) 2 8 (multi-category ... face consult-buffer) 8 9 (consult-strip t invisible t)) #("*vterm*<2><2><2>􀀂" 0 16 (multi-category ... face consult-buffer) 16 17 (consult-strip t invisible t)) #("*Compile-Log*􀀂" 0 13 (multi-category ... face consult-buffer) 13 14 (consult-strip t invisible t)) #("*Async-native-compile-log*􀀂" 0 26 (multi-category ... face consult-buffer) 26 27 (consult-strip t invisible t)) #("*Diff*􀀂" 0 6 (multi-category ... face consult-buffer) 6 7 (consult-strip t invisible t)) #("*Help*􀀂" 0 6 (multi-category ... face consult-buffer) 6 7 (consult-strip t invisible t)) #("magit: .dot.d􀀂" 0 13 (multi-category ... face consult-buffer) 13 14 (consult-strip t invisible t)) #("acp-client-stderr(claude-agent-acp)-99􀀂" 0 38 (multi-category ... face consult-buffer) 38 39 (consult-strip t invisible t)) #("acp-client-stderr(claude-agent-acp)-102􀀂" 0 39 (multi-category ... face consult-buffer) 39 40 (consult-strip t invisible t)) #("/Applications/Emacs.app/Contents/Resources/etc/COPYING􀀅" 0 54 (multi-category ... face consult-file) 54 55 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/30-tabspaces.el􀀅" 0 38 (multi-category ... face consult-file) 38 39 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/80-dirvish.el􀀅" 0 36 (multi-category ... face consult-file) 36 37 (consult-strip t invisible t)) #("~/.dot.d/readme.md􀀅" 0 18 (multi-category ... face consult-file) 18 19 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/80-dired.el􀀅" 0 34 (multi-category ... face consult-file) 34 35 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/95-keybind.el􀀅" 0 36 (multi-category ... face consult-file) 36 37 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/init.el􀀅" 0 24 (multi-category ... face consult-file) 24 25 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/80-project-transient.el􀀅" 0 46 (multi-category ... face consult-file) 46 47 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/30-ace-window.el􀀅" 0 39 (multi-category ... face consult-file) 39 40 (consult-strip t invisible t)) ...))
+  vertico--affixate((#("1 home􀀀" 0 2 (face ... multi-category ...) 2 6 (multi-category ... face consult-buffer) 6 7 (consult-strip t invisible t)) #("2 .dot.d􀀀" 0 2 (face ... multi-category ...) 2 8 (multi-category ... face consult-buffer) 8 9 (consult-strip t invisible t)) #("2 Claude Agent @ .dot.d<2>􀀁" 0 2 (face ... multi-category ...) 2 26 (multi-category ... face consult-buffer) 26 27 (consult-strip t invisible t)) #("Claude Agent @ .dot.d􀀁" 0 21 (multi-category ... face consult-buffer) 21 22 (consult-strip t invisible t)) #("1 ~􀀂" 0 2 (face ... multi-category ...) 2 3 (multi-category ... face consult-buffer) 3 4 (consult-strip t invisible t)) #("1 *scratch*􀀂" 0 2 (face ... multi-category ...) 2 11 (multi-category ... face consult-buffer) 11 12 (consult-strip t invisible t)) #("1 *Messages*􀀂" 0 2 (face ... multi-category ...) 2 12 (multi-category ... face consult-buffer) 12 13 (consult-strip t invisible t)) #("2 *vterm*<2><2><2><2>􀀂" 0 2 (face ... multi-category ...) 2 21 (multi-category ... face consult-buffer) 21 22 (consult-strip t invisible t)) #("2 .dot.d􀀂" 0 2 (face ... multi-category ...) 2 8 (multi-category ... face consult-buffer) 8 9 (consult-strip t invisible t)) #("*vterm*<2><2><2>􀀂" 0 16 (multi-category ... face consult-buffer) 16 17 (consult-strip t invisible t)) #("*Compile-Log*􀀂" 0 13 (multi-category ... face consult-buffer) 13 14 (consult-strip t invisible t)) #("*Async-native-compile-log*􀀂" 0 26 (multi-category ... face consult-buffer) 26 27 (consult-strip t invisible t)) #("*Diff*􀀂" 0 6 (multi-category ... face consult-buffer) 6 7 (consult-strip t invisible t)) #("*Help*􀀂" 0 6 (multi-category ... face consult-buffer) 6 7 (consult-strip t invisible t)) #("magit: .dot.d􀀂" 0 13 (multi-category ... face consult-buffer) 13 14 (consult-strip t invisible t)) #("acp-client-stderr(claude-agent-acp)-99􀀂" 0 38 (multi-category ... face consult-buffer) 38 39 (consult-strip t invisible t)) #("acp-client-stderr(claude-agent-acp)-102􀀂" 0 39 (multi-category ... face consult-buffer) 39 40 (consult-strip t invisible t)) #("/Applications/Emacs.app/Contents/Resources/etc/COPYING􀀅" 0 54 (multi-category ... face consult-file) 54 55 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/30-tabspaces.el􀀅" 0 38 (multi-category ... face consult-file) 38 39 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/80-dirvish.el􀀅" 0 36 (multi-category ... face consult-file) 36 37 (consult-strip t invisible t)) #("~/.dot.d/readme.md􀀅" 0 18 (multi-category ... face consult-file) 18 19 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/80-dired.el􀀅" 0 34 (multi-category ... face consult-file) 34 35 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/95-keybind.el􀀅" 0 36 (multi-category ... face consult-file) 36 37 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/init.el􀀅" 0 24 (multi-category ... face consult-file) 24 25 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/80-project-transient.el􀀅" 0 46 (multi-category ... face consult-file) 46 47 (consult-strip t invisible t)) #("~/.dot.d/emacs.d/inits/30-ace-window.el􀀅" 0 39 (multi-category ... face consult-file) 39 40 (consult-strip t invisible t)) ...))
+  vertico--arrange-candidates()
+  #<subr F616e6f6e796d6f75732d6c616d626461_anonymous_lambda_13>()
+  #f(compiled-function () #<bytecode 0x18ed2e2488b5>)()
+  handler-bind-1(#f(compiled-function () #<bytecode 0x18ed2e2488b5>) (error) vertico--debug)
+  vertico--protect(#<subr F616e6f6e796d6f75732d6c616d626461_anonymous_lambda_13>)
+  vertico--exhibit()
+  #<subr completing-read-default>("Switch to: " #f(compiled-function (str pred action) #<bytecode -0x19fdf3fc8d187e6>) nil confirm-after-completion nil consult--buffer-history nil nil)
+  apply((#<subr completing-read-default> "Switch to: " #f(compiled-function (str pred action) #<bytecode -0x19fdf3fc8d187e6>) nil confirm-after-completion nil consult--buffer-history nil nil))
+  vertico--advice(#<subr completing-read-default> "Switch to: " #f(compiled-function (str pred action) #<bytecode -0x19fdf3fc8d187e6>) nil confirm-after-completion nil consult--buffer-history nil nil)
+  apply(vertico--advice #<subr completing-read-default> ("Switch to: " #f(compiled-function (str pred action) #<bytecode -0x19fdf3fc8d187e6>) nil confirm-after-completion nil consult--buffer-history nil nil))
+  completing-read-default("Switch to: " #f(compiled-function (str pred action) #<bytecode -0x19fdf3fc8d187e6>) nil confirm-after-completion nil consult--buffer-history nil nil)
+  completing-read("Switch to: " #f(compiled-function (str pred action) #<bytecode -0x19fdf3fc8d187e6>) nil confirm-after-completion nil consult--buffer-history nil nil)
+  #f(compiled-function () #<bytecode 0x18a6fc92231dc329>)()
+  consult--with-preview-f("C-o" #f(compiled-function (action arg0) #<bytecode -0x1bd55cba9e647b4e>) #f(compiled-function (narrow input cand) #<bytecode -0x1e3762064cc1696>) #f(compiled-function (&rest args2) #<bytecode -0x5f28304860d8d9c>) nil #f(compiled-function () #<bytecode 0x18a6fc92231dc329>))
+  #f(compiled-function (table) #<bytecode -0x352fdd68d93688a>)(#f(compiled-function (action) #<bytecode 0x170edb67d3db54e2>))
+  consult--with-async-f(#f(compiled-function (action) #<bytecode 0x170edb67d3db54e2>) #f(compiled-function (table) #<bytecode -0x352fdd68d93688a>))
+  consult--read-1(#f(compiled-function (action) #<bytecode 0x170edb67d3db54e2>) :preview-key "C-o" :require-match confirm-after-completion :prompt "Switch to: " :history consult--buffer-history :sort nil :category multi-category :async-wrap nil :predicate nil :annotate #f(compiled-function (&rest args2) #<bytecode -0x9fba681564e8d9c>) :group #f(compiled-function (&rest args2) #<bytecode -0x9fba68156418d9c>) :lookup #f(compiled-function (&rest args2) #<bytecode -0x9fba68156508d9c>) :preview-key (:predicate #<subr F616e6f6e796d6f75732d6c616d626461_anonymous_lambda_206> :keys (any)) :narrow ((97 . "Agent Shell") (98 . "Buffer") (32 . "Hidden Buffer") (42 . "Modified Buffer") (102 . "File") (109 . "Bookmark") (112 . "Project") (66 . "Project Buffer") (70 . "Project File") (82 . "Project Root")) :state #f(compiled-function (action arg0) #<bytecode -0x1bd55cba9e647b4e>) :prompt "Select: " :preview-key any :sort t :async-wrap consult--async-wrap :lookup #<subr F616e6f6e796d6f75732d6c616d626461_anonymous_lambda_196>)
+  consult--read(#f(compiled-function (action) #<bytecode 0x170edb67d3db54e2>) :require-match confirm-after-completion :prompt "Switch to: " :history consult--buffer-history :sort nil :category multi-category :async-wrap nil :predicate nil :annotate #f(compiled-function (&rest args2) #<bytecode -0x9fba681564e8d9c>) :group #f(compiled-function (&rest args2) #<bytecode -0x9fba68156418d9c>) :lookup #f(compiled-function (&rest args2) #<bytecode -0x9fba68156508d9c>) :preview-key (:predicate #<subr F616e6f6e796d6f75732d6c616d626461_anonymous_lambda_206> :keys (any)) :narrow ((97 . "Agent Shell") (98 . "Buffer") (32 . "Hidden Buffer") (42 . "Modified Buffer") (102 . "File") (109 . "Bookmark") (112 . "Project") (66 . "Project Buffer") (70 . "Project File") (82 . "Project Root")) :state #f(compiled-function (action arg0) #<bytecode -0x1bd55cba9e647b4e>))
+  consult--multi((consult--source-tab-bar consult--source-agent-shell consult-source-buffer consult-source-hidden-buffer consult-source-modified-buffer consult-source-other-buffer consult-source-recent-file consult-source-buffer-register consult-source-file-register consult-source-bookmark consult-source-project-buffer-hidden consult-source-project-recent-file-hidden consult-source-project-root-hidden) :require-match confirm-after-completion :prompt "Switch to: " :history consult--buffer-history :sort nil)
+  consult-buffer()
+  funcall-interactively(consult-buffer)
+  command-execute(consult-buffer)
+
+---
+
+funcall-interactively: Text is read-only
+Press RET or ! to Yes, allow all edits during this session
+Press RET or C-c C-c to No
+Press RET or y to Yes
+Yes
+Press RET or y to Yes
+Yes
+Press RET or y to Yes
+Yes
+Press RET or y to Yes
+Yes
+Session mode: Auto [2 times]
+Mark set [2 times]
+scroll-down-command: Beginning of buffer
+Quit [2 times]
+Saved 1 project session(s)
+Saved 1 non-project tab(s) to global session
+tabspaces: killed 0 buffer(s) before frame close: nil
+When done with this frame, type C-x 5 0
+Tabspaces: Project directory: ~/.dot.d/
+Tabspaces - Creating new tab for existing project
+Buffer ‘*tabspaces--placeholder*’ removed from ‘.dot.d’ tabspace.
+Restored session from /Users/mizuki-y/.dot.d/..dot.d-tabspaces-session.el
+Tabspaces: Conditional execution completed
+Loading...done
+Created .dot.d/.agent-shell/transcripts/2026-09-18-21-01-30.md
+Mark set
+Killed inactive buffer: ~.
+Mark set
+
+---
+
+Read-Only mode enabled in current buffer
+Saved 1 project session(s)
+Saved 1 non-project tab(s) to global session
+tabspaces: examined tabs: (("home" " *Old buffer ~*-928857" " *Minibuf-1*" "*scratch*") (".dot.d" "*Messages*" " *Minibuf-1*" "Claude Agent @ .dot.d<3>" "*vterm*<2><2><2><2><2>" "*scratch*" "*Help*"))
+tabspaces: killed 0 buffer(s) before frame close: nil
+When done with this frame, type C-x 5 0
+Tabspaces: Project directory: ~/.dot.d/
+Tabspaces - Creating new tab for existing project
+Buffer ‘*tabspaces--placeholder*’ removed from ‘.dot.d’ tabspace.
+Restored session from /Users/mizuki-y/.dot.d/..dot.d-tabspaces-session.el
+Tabspaces: Conditional execution completed
+Loading...done
+Created .dot.d/.agent-shell/transcripts/2026-09-18-21-05-33.md
+line-move: Beginning of buffer [4 times]
+Mark activated
+
+---
+
+Loading...done
+Saved 1 project session(s)
+Saved 1 non-project tab(s) to global session
+Loading...done
+tabspaces: examined tabs: (("home" " *Old buffer ~*-338348" " *Minibuf-1*" "*scratch*") (".dot.d" "Claude Agent @ .dot.d" "*vterm*<2><2><2><2><2><2>" "*Messages*" " *Minibuf-1*" "*scratch*"))
+tabspaces: killed 2 buffer(s) before frame close: ("*vterm*<2><2><2><2><2><2>" "Claude Agent @ .dot.d")
+When done with this frame, type C-x 5 0
+The mark is not set now, so there is no region
+When done with this frame, type C-x 5 0
+Tabspaces: Project directory: ~/.dot.d/
+Tabspaces - Creating new tab for existing project
+Buffer ‘*tabspaces--placeholder*’ removed from ‘.dot.d’ tabspace.
+Restored session from /Users/mizuki-y/.dot.d/..dot.d-tabspaces-session.el
+Tabspaces: Conditional execution completed
+Loading...done
+Created .dot.d/.agent-shell/transcripts/2026-09-18-21-07-46.md
+Mark set
+line-move: End of buffer
+Mark set
