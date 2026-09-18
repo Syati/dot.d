@@ -18,6 +18,18 @@
    (pngpaste . "brew install pngpaste"))
   :init
   (setq agent-shell-session-restore-verbosity 'full)
+  ;; 30-agent-shell-transient.el から呼ぶが autoload cookie が無いコマンド群
+  ;; (package 側で agent-shell-restart 等と違い autoload 未登録のため、
+  ;; :defer t のままだと transient-setup が "not defined or autoloaded" で失敗する)
+  :commands (agent-shell-switch-buffer
+             agent-shell-other-buffer
+             agent-shell-send-file
+             agent-shell-send-region-to
+             agent-shell-send-clipboard-image
+             agent-shell-send-screenshot
+             agent-shell-interrupt
+             agent-shell-copy-last-output
+             agent-shell-toggle-logging)
   :bind (("C-c C-a" . agent-shell-anthropic-start-claude-code)
          ("C-c C-o" . agent-shell-openai-start-codex)
          ("C-c C-w" . agent-shell)

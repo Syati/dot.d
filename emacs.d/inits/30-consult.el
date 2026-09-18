@@ -10,9 +10,69 @@
   ;; 候補を選んだだけでは自動プレビューせず、C-o を押したときだけ表示する
   (consult-customize consult-buffer consult-recent-file :preview-key "C-o")
 
+  ;; tabspaces--buffer-list (tabspaces.el) はタブ番号 (tabnum) 指定で
+  ;; そのタブのバッファ一覧を返せる唯一の手段 (公開版の
+  ;; tabspaces-local-buffer-list はカレントタブ専用) なので、内部関数だが
+  ;; ここから使い、BUFFER がどのタブに属すか逆引きする
+  (defun my/consult--tab-number-of-buffer (buffer)
+    "Return the 1-based tab-bar number of the tab BUFFER belongs to, or nil."
+    (let ((tabs (frame-parameter nil 'tabs)) (i 0) found)
+      (while (and tabs (not found))
+        (when (memq buffer (tabspaces--buffer-list nil i))
+          (setq found (1+ i)))
+        (setq tabs (cdr tabs) i (1+ i)))
+      found))
+
+  ;; 番号をそのまま埋め込むと目立ちすぎるので shadow face で薄く見せる。
+  ;; 文字自体は残るので絞り込み検索の対象にはなる
+  (defun my/consult--tab-number-prefix (n name)
+    "Prepend NAME with tab number N shown in a dim face; NAME unchanged if N is nil."
+    (if n (concat (propertize (format "%d " n) 'face 'shadow) name) name))
+
+  ;; 標準の "Buffer" source にもタブ番号を付け、agent-shell のバッファは
+  ;; 専用の "Agent Shell" source と重複するので除外する。consult-customize は
+  ;; :items に渡した式を quote してから eval するため、外側の let で
+  ;; キャプチャした値を閉じ込められない。そのため plist-put で直接
+  ;; consult-source-buffer の :items を、元の関数を呼んだ結果に番号を
+  ;; 足すクロージャへ差し替える
+  (let ((orig-items (plist-get consult-source-buffer :items)))
+    (plist-put consult-source-buffer :items
+               (lambda ()
+                 (let ((agent-shell-bufs (and (fboundp 'agent-shell-buffers)
+                                              (agent-shell-buffers))))
+                   (mapcar (lambda (pair)
+                             (let ((n (my/consult--tab-number-of-buffer (cdr pair))))
+                               (if n (cons (my/consult--tab-number-prefix n (car pair)) (cdr pair)) pair)))
+                           (seq-remove (lambda (pair) (memq (cdr pair) agent-shell-bufs))
+                                       (funcall orig-items)))))))
+
+  ;; consult-buffer に agent-shell のバッファも候補として追加する。
+  ;; agent-shell は :defer t なので、まだ一度も使っていない (ライブラリ未ロード)
+  ;; 状態で agent-shell-buffers を呼ぶと void-function になるため fboundp で guard する。
+  ;; 表示名の先頭にタブ番号 (tab-bar-tab-hints と同じ番号) を付けて、
+  ;; どのワークスペースのバッファかひと目で分かるようにする
+  (defvar consult--source-agent-shell
+    `(:name "Agent Shell"
+      :narrow ?a
+      :category buffer
+      :face consult-buffer
+      :state ,#'consult--buffer-state
+      :action ,#'switch-to-buffer
+      :items ,(lambda ()
+                (when (fboundp 'agent-shell-buffers)
+                  (mapcar (lambda (buf)
+                            (let* ((name (buffer-name buf))
+                                   (n (my/consult--tab-number-of-buffer buf)))
+                              (cons (my/consult--tab-number-prefix n name) name)))
+                          (agent-shell-buffers)))))
+    "Consult source for agent-shell buffers.")
+  (add-to-list 'consult-buffer-sources 'consult--source-agent-shell)
+
   ;; consult-buffer に tab-bar のタブ (tabspaces のワークスペースも同じもの)
   ;; を候補として追加する。tab-bar-switch-to-tab は既存なら切り替え、
-  ;; 無ければ新規作成してくれるので選択・新規作成の両方をこれ1つで賄える
+  ;; 無ければ新規作成してくれるので選択・新規作成の両方をこれ1つで賄える。
+  ;; 表示名の先頭にタブ番号 (tab-bar-tab-hints / s-<数字> と同じ番号) を付ける。
+  ;; 最後に add-to-list するので、他の source より前 (一番上) に来る
   (defvar consult--source-tab-bar
     `(:name "Tab"
       :category tab
@@ -23,7 +83,11 @@
       :action ,#'tab-bar-switch-to-tab
       :new ,#'tab-bar-switch-to-tab
       :items ,(lambda ()
-                (mapcar (lambda (tab) (alist-get 'name tab))
-                        (funcall tab-bar-tabs-function))))
+                (let ((n 0))
+                  (mapcar (lambda (tab)
+                            (setq n (1+ n))
+                            (let ((name (alist-get 'name tab)))
+                              (cons (my/consult--tab-number-prefix n name) name)))
+                          (funcall tab-bar-tabs-function)))))
     "Consult source for tab-bar tabs.")
   (add-to-list 'consult-buffer-sources 'consult--source-tab-bar))

@@ -13,7 +13,7 @@
     ("s" "Switch/create workspace" tabspaces-switch-or-create-workspace)
     ("w" "Open project as workspace" tabspaces-open-or-create-project-and-workspace)]
    ["Tab"
-    ("2" "New tab"      tab-new)
+    ("t" "New tab"      tab-new)
     ("0" "Close tab"    tab-close)
     ("1" "Close others" tab-close-other)
     ("r" "Rename tab"   tab-rename)
@@ -22,4 +22,4 @@
     ("o" "Next tab" tab-next)
     ("O" "Prev tab" tab-previous)]])
 
-(global-set-key (kbd "C-M-s-t") #'my/tabspaces-transient)
+(global-set-key (kbd "s-t") #'my/tabspaces-transient)

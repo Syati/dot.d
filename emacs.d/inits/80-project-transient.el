@@ -10,6 +10,7 @@
   "Project commands."
   [["Find"
     ("f" "Find file"      project-find-file)
+    ("d" "Find dir"        project-find-dir)
     ("b" "Switch buffer"  project-switch-to-buffer)
     ("g" "Ripgrep"        consult-ripgrep)]
    ["Browse"
@@ -19,4 +20,4 @@
     ("p" "Switch project" project-switch-project)
     ("k" "Kill buffers"   project-kill-buffers)]])
 
-(global-set-key (kbd "C-M-s-p") #'my/project-transient)
+(global-set-key (kbd "s-p") #'my/project-transient)
