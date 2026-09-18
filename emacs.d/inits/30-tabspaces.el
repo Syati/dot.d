@@ -30,7 +30,7 @@
 ;; 動的に t にして、その関数内の対象コードパス
 ;; (project はあるが tab が無い → 新規タブ作成) だけに絞る。
 (tab-bar-mode 1)
-(setq tab-bar-show 1
+(setq tab-bar-show t
       tab-bar-close-button-show 'selected
       ;; tab-bar-new-button-show (28.1で obsolete) の代替。"+" ボタンを
       ;; 描画する tab-bar-format-add-tab を外して非表示にする
@@ -86,31 +86,72 @@ Named (rather than an anonymous lambda) so re-evaluating this file via
   ;; C-x C-c のたびにも保存されるよう、明示的に差し込む。
   ;;
   ;; さらに、フレームを閉じてもそのタブが使っていたバッファ (vterm の
-  ;; プロセスや agent-shell の ACP 接続) は kill されずオーファンとして
-  ;; 生き残る。保存は済んでいるので古い方を残す意味は無く、放置すると
-  ;; 次に開いたときの復元処理が同名で新規作成しようとして衝突する
+  ;; プロセスや agent-shell の ACP 接続、dired) は kill されずオーファン
+  ;; として生き残る。保存は済んでいるので古い方を残す意味は無く、放置
+  ;; すると次に開いたときの復元処理が同名で新規作成しようとして衝突する
   ;; (vterm は `*vterm*<2><2>' のような別名になり、agent-shell は同じ
-  ;; session-id に2つ目の ACP クライアントが繋がってしまう)。プロセスを
-  ;; 持つ kind (vterm/agent-shell/eshell/shell/eat) のバッファだけを
-  ;; 対象に kill する。dired やファイル訪問バッファは対象外: これらは
-  ;; `dired-noselect'/`find-file' が既存バッファを再利用するので衝突せず、
-  ;; 未保存の編集を確認無しに破棄してしまうリスクもある
-  ;; (save-buffers-kill-terminal 自身がこの直後に保存確認をするので、
-  ;; そちらに任せる)。
+  ;; session-id に2つ目の ACP クライアントが繋がってしまう)。
+  ;; dired も対象: 復元処理はタブをまたいだ使い回しを避けるため
+  ;; `dired-buffers' キャッシュを明示的にクリアしてから毎回新規作成する
+  ;; 実装なので、オーファンが残っていると同様に衝突し、名前がずれた
+  ;; オーファンが延々と生き残るループになる。ファイル訪問バッファは対象外:
+  ;; `find-file' は既存バッファを素直に再利用するので衝突せず、未保存の
+  ;; 編集を確認無しに破棄してしまうリスクもある (save-buffers-kill-terminal
+  ;; 自身がこの直後に保存確認をするので、そちらに任せる)。dired は通常
+  ;; 「未保存の編集」を持たないので同じ理由での除外対象にはならないが、
+  ;; `wdired' 編集中 (buffer-modified-p) だけは保険として除外する。
   (defun my/tabspaces--kill-frame-tab-process-buffers ()
-    "Kill process-backed buffers of every tab on the selected frame."
-    (let ((kill-buffer-query-functions nil))
-      (dolist (tab-name (tabspaces--list-tabspaces))
-        (tab-bar-select-tab-by-name tab-name)
-        (dolist (b (tabspaces--buffer-list))
-          (when (with-current-buffer b
-                  (derived-mode-p 'vterm-mode 'agent-shell-mode
-                                  'eshell-mode 'shell-mode 'eat-mode))
-            (kill-buffer b))))))
+    "Kill process-backed and dired buffers of every tab on the selected frame.
+Reports what it killed (or any error) via `message', since this runs
+silently inside a `:before' advice on `save-buffers-kill-terminal' and
+would otherwise leave no trace if it failed partway through."
+    (let ((kill-buffer-query-functions nil)
+          (killed nil)
+          (seen nil))
+      (condition-case err
+          (dolist (tab-name (tabspaces--list-tabspaces))
+            (tab-bar-select-tab-by-name tab-name)
+            (let ((bufs (tabspaces--buffer-list)))
+              (push (cons tab-name (mapcar #'buffer-name bufs)) seen)
+              (dolist (b bufs)
+                (when (and (buffer-live-p b)
+                           (with-current-buffer b
+                             ;; buffer-modified-p is only meaningful as a
+                             ;; safety check for dired (protects an
+                             ;; in-progress wdired edit); vterm/agent-shell/
+                             ;; eshell/shell/eat buffers are considered
+                             ;; "modified" just from ordinary process output,
+                             ;; so gating on it there would exclude them
+                             ;; unconditionally.
+                             (and (derived-mode-p 'vterm-mode 'agent-shell-mode
+                                                  'eshell-mode 'shell-mode 'eat-mode
+                                                  'dired-mode)
+                                  (or (not (derived-mode-p 'dired-mode))
+                                      (not (buffer-modified-p))))))
+                  (push (buffer-name b) killed)
+                  (kill-buffer b)))))
+        (error (message "tabspaces: frame-close buffer cleanup failed: %S" err)))
+      (message "tabspaces: examined tabs: %S" (nreverse seen))
+      (message "tabspaces: killed %d buffer(s) before frame close: %S"
+               (length killed) killed)))
   (defun my/tabspaces--save-session-on-frame-close (&rest _args)
     "Save the tabspaces session and clean up its process buffers
 before `save-buffers-kill-terminal' closes this frame."
     (tabspaces--save-session-smart)
     (my/tabspaces--kill-frame-tab-process-buffers))
   (advice-add 'save-buffers-kill-terminal :before
-              #'my/tabspaces--save-session-on-frame-close))
+              #'my/tabspaces--save-session-on-frame-close)
+
+  ;; タブ1を常に "home" という固定名の非プロジェクトタブにする。新規
+  ;; フレームは無名タブ1つだけの状態で作られる (名前はカレントバッファ
+  ;; 追従のデフォルト名) ので、明示的にリネームして固定する。既に "home"
+  ;; という名前のタブがあれば何もしない (このファイルを再読み込みしても
+  ;; 二重に走らない)
+  (defun my/tabspaces--ensure-home-tab (&optional frame)
+    "Ensure FRAME's first tab is named \"home\"."
+    (with-selected-frame (or frame (selected-frame))
+      (unless (member "home" (tabspaces--list-tabspaces))
+        (tab-bar-rename-tab "home" 1))))
+  (dolist (frame (frame-list))
+    (my/tabspaces--ensure-home-tab frame))
+  (add-hook 'after-make-frame-functions #'my/tabspaces--ensure-home-tab))

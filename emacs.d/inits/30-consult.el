@@ -108,11 +108,16 @@ buffer when it is already displayed there."
       :action ,#'my/consult--buffer-action
       :items ,(lambda ()
                 (when (fboundp 'agent-shell-buffers)
+                  ;; agent-shell-buffers is agent-shell's own tracking list,
+                  ;; not Emacs's live buffer-list, so it can lag behind a
+                  ;; buffer being killed out from under it (e.g. manual
+                  ;; kill-buffer). A dead buffer here crashes Vertico when
+                  ;; it tries to annotate/icon it, so filter first.
                   (mapcar (lambda (buf)
                             (let* ((name (buffer-name buf))
                                    (n (my/consult--tab-number-of-buffer buf)))
                               (cons (my/consult--tab-number-prefix n name) name)))
-                          (agent-shell-buffers)))))
+                          (seq-filter #'buffer-live-p (agent-shell-buffers))))))
     "Consult source for agent-shell buffers.")
   (add-to-list 'consult-buffer-sources 'consult--source-agent-shell)
 
