@@ -19,11 +19,18 @@
   :bind (:map project-prefix-map
          ("e" . dirvish-side))
   :config
-  ;; dirvish-hide-details (デフォルト t) はフルフレームレイアウト
-  ;; (dirvish--build-layout) 経由でしか dired-hide-details-mode を
-  ;; 切り替えない実装で、side/default セッションでは発火しないため、
-  ;; dired-mode-hook で直接有効化する。file-size 属性の overlay 表示も
-  ;; dired-hide-details-mode が on であることが前提になっている。
-  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+  ;; dirvish-hide-details のデフォルト t は全セッション (素の dired も
+  ;; 含む) で dired-hide-details-mode を有効にしてしまうが、`C-x p d'
+  ;; (project-dired) のような素の dired では隠したくない。'dired を
+  ;; 含めない値にすることで、dirvish 自身の文脈判定
+  ;; (dirvish--apply-hiding-p: full-frame/side は dv-type や
+  ;; dv-curr-layout で判定、それ以外は 'dired 扱い) に任せる。
+  ;; ただし dirvish--maybe-toggle-details (この判定込みの切り替え関数) は
+  ;; フルフレームレイアウト (dirvish--build-layout) 経由でしか呼ばれず
+  ;; side/default セッションでは発火しない実装なので、dired-mode-hook
+  ;; から直接呼ぶ。file-size 属性の overlay 表示は dired-hide-details-mode
+  ;; が on であることが前提になっている。
+  (setq dirvish-hide-details '(dirvish dirvish-side))
+  (add-hook 'dired-mode-hook #'dirvish--maybe-toggle-details)
   ;; 現在のバッファに合わせてサイドバーのカーソル位置・プロジェクトを追従させる
   (dirvish-side-follow-mode))

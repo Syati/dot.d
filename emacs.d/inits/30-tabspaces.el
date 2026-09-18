@@ -77,4 +77,40 @@ Named (rather than an anonymous lambda) so re-evaluating this file via
     (let ((tabspaces-session-auto-restore t))
       (apply orig-fun args)))
   (advice-add 'tabspaces-open-or-create-project-and-workspace :around
-              #'my/tabspaces--enable-project-session-auto-restore))
+              #'my/tabspaces--enable-project-session-auto-restore)
+
+  ;; --fg-daemon + emacsclient 運用では、C-x C-c (save-buffers-kill-terminal)
+  ;; は「今の client 接続 (フレーム) を閉じるだけ」で daemon 自体は終了しない
+  ;; ため、tabspaces-session の保存がぶら下がっている kill-emacs-hook が
+  ;; 実質ほぼ発火しない (daemon を本当に kill-emacs するまで一切保存されない)。
+  ;; C-x C-c のたびにも保存されるよう、明示的に差し込む。
+  ;;
+  ;; さらに、フレームを閉じてもそのタブが使っていたバッファ (vterm の
+  ;; プロセスや agent-shell の ACP 接続) は kill されずオーファンとして
+  ;; 生き残る。保存は済んでいるので古い方を残す意味は無く、放置すると
+  ;; 次に開いたときの復元処理が同名で新規作成しようとして衝突する
+  ;; (vterm は `*vterm*<2><2>' のような別名になり、agent-shell は同じ
+  ;; session-id に2つ目の ACP クライアントが繋がってしまう)。プロセスを
+  ;; 持つ kind (vterm/agent-shell/eshell/shell/eat) のバッファだけを
+  ;; 対象に kill する。dired やファイル訪問バッファは対象外: これらは
+  ;; `dired-noselect'/`find-file' が既存バッファを再利用するので衝突せず、
+  ;; 未保存の編集を確認無しに破棄してしまうリスクもある
+  ;; (save-buffers-kill-terminal 自身がこの直後に保存確認をするので、
+  ;; そちらに任せる)。
+  (defun my/tabspaces--kill-frame-tab-process-buffers ()
+    "Kill process-backed buffers of every tab on the selected frame."
+    (let ((kill-buffer-query-functions nil))
+      (dolist (tab-name (tabspaces--list-tabspaces))
+        (tab-bar-select-tab-by-name tab-name)
+        (dolist (b (tabspaces--buffer-list))
+          (when (with-current-buffer b
+                  (derived-mode-p 'vterm-mode 'agent-shell-mode
+                                  'eshell-mode 'shell-mode 'eat-mode))
+            (kill-buffer b))))))
+  (defun my/tabspaces--save-session-on-frame-close (&rest _args)
+    "Save the tabspaces session and clean up its process buffers
+before `save-buffers-kill-terminal' closes this frame."
+    (tabspaces--save-session-smart)
+    (my/tabspaces--kill-frame-tab-process-buffers))
+  (advice-add 'save-buffers-kill-terminal :before
+              #'my/tabspaces--save-session-on-frame-close))

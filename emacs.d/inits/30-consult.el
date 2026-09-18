@@ -29,6 +29,32 @@
     "Prepend NAME with tab number N shown in a dim face; NAME unchanged if N is nil."
     (if n (concat (propertize (format "%d " n) 'face 'shadow) name) name))
 
+  ;; consult--buffer-action (consult.el 標準) は常にカレントウィンドウで
+  ;; switch-to-buffer するので、別タブのバッファを選ぶとそのバッファが
+  ;; 元のタブから奪われたようにカレントタブのウィンドウに出てしまう
+  ;; (tab2 にいる状態で tab1 のバッファを選ぶと tab2 に開かれる)。選んだ
+  ;; バッファが別タブに属していれば、先にそのタブへ切り替えてから開く
+  (defun my/consult--buffer-action (buffer &optional norecord)
+    "Like `consult--buffer-action', but select BUFFER's own tab first
+when it differs from the current tab, and focus BUFFER's existing
+window within that tab instead of replacing the current window's
+buffer when it is already displayed there."
+    (when-let* ((buf (get-buffer buffer))
+                (n (my/consult--tab-number-of-buffer buf))
+                ((/= n (1+ (tab-bar--current-tab-index)))))
+      (tab-bar-select-tab n))
+    ;; `get-buffer-window' restricted to the selected frame only sees
+    ;; windows of the now-current tab (other tabs' windows are not part
+    ;; of the live window list), so this also covers the just-switched-to
+    ;; tab from above.
+    (if-let* ((win (get-buffer-window buffer (selected-frame))))
+        (select-window win norecord)
+      (consult--buffer-action buffer norecord)))
+
+  (defun my/consult--buffer-state ()
+    "Like `consult--buffer-state', but commit via `my/consult--buffer-action'."
+    (consult--state-with-return (consult--buffer-preview) #'my/consult--buffer-action))
+
   ;; 標準の "Buffer" source にもタブ番号を付け、agent-shell のバッファは
   ;; 専用の "Agent Shell" source と重複するので除外する。consult-customize は
   ;; :items に渡した式を quote してから eval するため、外側の let で
@@ -42,14 +68,31 @@
   ;; ように重複する
   (plist-put consult-source-buffer :items
              (lambda ()
-               (let ((agent-shell-bufs (and (fboundp 'agent-shell-buffers)
-                                            (agent-shell-buffers))))
-                 (mapcar (lambda (pair)
-                           (let ((n (my/consult--tab-number-of-buffer (cdr pair))))
-                             (if n (cons (my/consult--tab-number-prefix n (car pair)) (cdr pair)) pair)))
-                         (seq-remove (lambda (pair) (memq (cdr pair) agent-shell-bufs))
-                                     (consult--buffer-query :sort 'visibility
-                                                            :as #'consult--buffer-pair))))))
+               (let* ((agent-shell-bufs (and (fboundp 'agent-shell-buffers)
+                                             (agent-shell-buffers)))
+                      ;; タブ番号を (n . pair) として一旦キープしておき、
+                      ;; 後で並べ替える。visibility 順のままだとタブ所属を
+                      ;; 考慮しないので、無所属バッファ (n が nil、
+                      ;; *Messages* 等の特殊バッファやオーファン) やタブが
+                      ;; 混ざって出てくる
+                      (tagged (mapcar (lambda (pair)
+                                        (let ((n (my/consult--tab-number-of-buffer (cdr pair))))
+                                          (cons n (if n
+                                                      (cons (my/consult--tab-number-prefix n (car pair)) (cdr pair))
+                                                    pair))))
+                                      (seq-remove (lambda (pair) (memq (cdr pair) agent-shell-bufs))
+                                                  (consult--buffer-query :sort 'visibility
+                                                                         :as #'consult--buffer-pair))))
+                      ;; 各グループ内は visibility 順を保ったまま、タブ番号
+                      ;; の昇順でグループごとにまとめる。seq-filter は順序を
+                      ;; 保つので `sort' の安定性に頼らずに済む
+                      (tab-numbers (sort (delete-dups (delq nil (mapcar #'car tagged))) #'<)))
+                 (mapcar #'cdr
+                         (append (mapcan (lambda (n)
+                                           (seq-filter (lambda (p) (equal (car p) n)) tagged))
+                                         tab-numbers)
+                                 (seq-remove #'car tagged))))))
+  (plist-put consult-source-buffer :state #'my/consult--buffer-state)
 
   ;; consult-buffer に agent-shell のバッファも候補として追加する。
   ;; agent-shell は :defer t なので、まだ一度も使っていない (ライブラリ未ロード)
@@ -61,8 +104,8 @@
       :narrow ?a
       :category buffer
       :face consult-buffer
-      :state ,#'consult--buffer-state
-      :action ,#'switch-to-buffer
+      :state ,#'my/consult--buffer-state
+      :action ,#'my/consult--buffer-action
       :items ,(lambda ()
                 (when (fboundp 'agent-shell-buffers)
                   (mapcar (lambda (buf)
