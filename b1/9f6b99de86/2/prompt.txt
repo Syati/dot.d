@@ -1,0 +1,37 @@
+s-a 押下で、transient-setup: Suffix command agent-shell-buffers is not defined or autoloaded　になる
+
+---
+
+使い方として質問だけど、restartってしない？ セッション開始して、異なることをする場合は、new したほうがいい？
+
+---
+
+日本語で回答してくれる？
+
+---
+
+consult source に agent-shell の buffer があるといいとおもうんだけど、どうおもう？
+
+---
+
+アイコンなどは不要です
+
+---
+
+tab を一番うえにしたい。くわえて source や beffer に tab 番号っていれれない？
+
+---
+
+Buffer には付与できない？
+
+---
+
+narrowing するんだったら今のように 番号 名前が一番いいのかな？美しくないけど
+
+---
+
+薄いface つけましょうか
+
+---
+
+かなり良いと思う。agent-shell と buffer に重複があるから、agent-shell に含むものは、buffer から消すってかのう？
