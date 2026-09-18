@@ -1,0 +1,122 @@
+深追いしてくだし
+
+---
+
+home tab とじると、どうやって home tab ひらけばいい？
+
+---
+
+ここにも追記して。
+
+[@30-tabspaces-transient.el](file:///Users/mizuki-y/.dot.d/emacs.d/inits/30-tabspaces-transient.el)
+
+<context ref="file:///Users/mizuki-y/.dot.d/emacs.d/inits/30-tabspaces-transient.el">
+;;; -*- lexical-binding: t -*-
+;; C-x t も project 同様2打鍵ともCtrlを離す必要があって面倒なので、
+;; tab-bar/tabspaces 系のよく使うコマンドを transient にまとめ、
+;; project 用 (s-p) と揃えて s-t で開けるようにする。
+;; タブそのものへのジャンプは M-1..M-9 (tab-bar-select-tab-modifiers)
+;; があるのでここには含めない。
+
+(require 'transient)
+
+(transient-define-prefix my/tabspaces-transient ()
+  "Tab / workspace commands."
+  [["Workspace"
+    ("s" "Switch/create workspace" tabspaces-switch-or-create-workspace)
+    ("w" "Open project as workspace" tabspaces-open-or-create-project-and-workspace)
+    ("S" "Save current project session" tabspaces-save-current-project-session)
+    ("R" "Restore session" tabspaces-restore-session)]
+   ["Tab"
+    ("t" "New tab"      tab-new)
+    ("0" "Close tab"    tab-close)
+    ("1" "Close others" tab-close-other)
+    ("r" "Rename tab"   tab-rename)
+    ("u" "Undo close"   tab-undo)]
+   ["Move"
+    ("o" "Next tab" tab-next)
+    ("O" "Prev tab" tab-previous)]])
+
+(global-set-key (kbd "s-t") #'my/tabspaces-transient)
+
+</context>
+
+---
+
+s-a に mode と model のswitch もいれてくれる？
+
+---
+
+vterm のwindow では、M-1 M-2 とかきかないんだけど、これって vterm 側にとられてるからだよね？
+
+---
+
+追加してください
+
+---
+
+vterm ってセッション保存される？
+
+---
+
+screen とかつかうってことかな？
+
+---
+
+まぁ不要かな。セッション維持したいってないから
+
+---
+
+project で開いている場合は、C-f を C-x p f に置き換えるってかのう？
+
+---
+
+C-x C-f　です
+
+---
+
+magit で M-1 とかとられるけどバッティングしてる？
+
+---
+
+ace-window 優先で
+
+---
+
+折りたたみって defalt は tab とかじゃない？
+
+---
+
+sequential-command で tab で M-1 M-4 を代替できるんじゃない？
+
+---
+
+shift Tab で reverse もあったのほうがいいのでは？
+
+---
+
+⛔ Error (use-package): init-loader/:config: Symbol’s value as variable is void: my/magit-section-cycle-tab
+
+---
+
+C-z r で読み込むと 読み込み前は dot.d project だったのに home にさしかわるんだけど
+
+---
+
+修正されました
+
+---
+
+vterm で C-z r が効かないから ここも m-1 と同様にして
+
+---
+
+これ不要な気がする
+;; `wdired' 編集中 (buffer-modified-p) だけは保険として除外する。
+
+---
+
+以下もふようかな。transient にもっていってるよえ？
+  :bind (("C-x t s" . tabspaces-switch-or-create-workspace)
+         ("C-x t w" . tabspaces-open-or-create-project-and-workspace)
+         ("C-x t h" . my/tabspaces-open-home-tab))
