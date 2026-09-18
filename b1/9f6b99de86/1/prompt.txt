@@ -1,0 +1,27 @@
+command + t 押下すると osx の font が開くんだけど、 emacs 側で割り当てると打ち消せる？
+
+emacs.d/inits/95-keybind.el
+
+---
+
+わりあてるに付さわいいショートカットある？
+
+---
+
+そうしましょうか
+
+---
+
+agent-shell 系のコマンドも transient にするとしたら何をいれる？
+
+---
+
+session を最初からする restart も便利だとおもうんだけど、どうおもう？
+
+---
+
+はい
+
+---
+
+transient-setup: Suffix command agent-shell-buffers is not defined or autoloaded ってなるけど
