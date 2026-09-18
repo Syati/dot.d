@@ -17,6 +17,7 @@ emacs.d/eln-cache
 emacs.d/agent
 emacs.d/persp-state
 emacs.d/tabsession.el
+.*-tabspaces-session.el
 
 # 
 .tern-port

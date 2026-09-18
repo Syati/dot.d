@@ -33,18 +33,23 @@
   ;; 専用の "Agent Shell" source と重複するので除外する。consult-customize は
   ;; :items に渡した式を quote してから eval するため、外側の let で
   ;; キャプチャした値を閉じ込められない。そのため plist-put で直接
-  ;; consult-source-buffer の :items を、元の関数を呼んだ結果に番号を
-  ;; 足すクロージャへ差し替える
-  (let ((orig-items (plist-get consult-source-buffer :items)))
-    (plist-put consult-source-buffer :items
-               (lambda ()
-                 (let ((agent-shell-bufs (and (fboundp 'agent-shell-buffers)
-                                              (agent-shell-buffers))))
-                   (mapcar (lambda (pair)
-                             (let ((n (my/consult--tab-number-of-buffer (cdr pair))))
-                               (if n (cons (my/consult--tab-number-prefix n (car pair)) (cdr pair)) pair)))
-                           (seq-remove (lambda (pair) (memq (cdr pair) agent-shell-bufs))
-                                       (funcall orig-items)))))))
+  ;; consult-source-buffer の :items を差し替える。
+  ;; consult.el 本体の consult-source-buffer 定義 (consult--buffer-query
+  ;; :sort 'visibility :as #'consult--buffer-pair) を直接呼ぶようにし、
+  ;; 現在の :items 値を捕まえて包む方式にしない。後者だと、この :config が
+  ;; 2回以上実行された場合 (init ファイルを手動で load-file し直した時など)
+  ;; に前回ラップした関数をさらにラップしてしまい、番号が "2 2 2 name" の
+  ;; ように重複する
+  (plist-put consult-source-buffer :items
+             (lambda ()
+               (let ((agent-shell-bufs (and (fboundp 'agent-shell-buffers)
+                                            (agent-shell-buffers))))
+                 (mapcar (lambda (pair)
+                           (let ((n (my/consult--tab-number-of-buffer (cdr pair))))
+                             (if n (cons (my/consult--tab-number-prefix n (car pair)) (cdr pair)) pair)))
+                         (seq-remove (lambda (pair) (memq (cdr pair) agent-shell-bufs))
+                                     (consult--buffer-query :sort 'visibility
+                                                            :as #'consult--buffer-pair))))))
 
   ;; consult-buffer に agent-shell のバッファも候補として追加する。
   ;; agent-shell は :defer t なので、まだ一度も使っていない (ライブラリ未ロード)
