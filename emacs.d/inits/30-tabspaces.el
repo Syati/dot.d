@@ -102,13 +102,12 @@ Named (rather than an anonymous lambda) so re-evaluating this file via
   ;; dired も対象: 復元処理はタブをまたいだ使い回しを避けるため
   ;; `dired-buffers' キャッシュを明示的にクリアしてから毎回新規作成する
   ;; 実装なので、オーファンが残っていると同様に衝突し、名前がずれた
-  ;; オーファンが延々と生き残るループになる。ファイル訪問バッファは対象外:
-  ;; `find-file' は既存バッファを素直に再利用するので衝突せず、未保存の
-  ;; 編集を確認無しに破棄してしまうリスクもある (save-buffers-kill-terminal
-  ;; 自身がこの直後に保存確認をするので、そちらに任せる)。`wdired' 編集中は
-  ;; major-mode が `wdired-mode' になり `dired-mode' からの派生ではなくなる
-  ;; ため (`derived-mode-p' が nil)、そもそもここで dired と判定されず
-  ;; 自然に対象外になる。buffer-modified-p による保護は不要。
+  ;; オーファンが延々と生き残るループになる。ファイル訪問バッファは
+  ;; killしない (下の my/tabspaces--resolve-frame-tab-modified-buffers が
+  ;; 別途処理する)。`wdired' 編集中は major-mode が `wdired-mode' になり
+  ;; `dired-mode' からの派生ではなくなるため (`derived-mode-p' が nil)、
+  ;; そもそもここで dired と判定されず自然に対象外になる。
+  ;; buffer-modified-p による保護は不要。
   (defun my/tabspaces--kill-frame-tab-process-buffers ()
     "Kill process-backed and dired buffers of every tab on the selected frame.
 Reports what it killed (or any error) via `message', since this runs
@@ -134,6 +133,17 @@ would otherwise leave no trace if it failed partway through."
       (message "tabspaces: examined tabs: %S" (nreverse seen))
       (message "tabspaces: killed %d buffer(s) before frame close: %S"
                (length killed) killed)))
+  ;; ファイル訪問バッファは kill-frame-tab-process-buffers の対象外なので、
+  ;; フレームを閉じても (未保存の編集ごと) オーファンとして生き残り、次に
+  ;; 開き直すと `find-file' がそのオーファンをそのまま再利用するので、また
+  ;; 保存確認を求められる。一度 `save-buffers-kill-terminal' より先に独自の
+  ;; 確認を挟んで「保存しなければ revert/kill」する形を試したが、
+  ;; `save-some-buffers' 標準の確認プロンプトには `d' で diff を見る
+  ;; 選択肢があり、それを使わず `y-or-n-p' に置き換えたことで diff を見る
+  ;; 手段が失われてしまった。編集内容を保持したまま「二度と聞かれない」を
+  ;; 両立する手段が無いので、ここは何もせず `save-buffers-kill-terminal'
+  ;; 本来の (diff 込みの) 確認に委ねる。何度も保存確認が出ること自体は
+  ;; 許容する。
   (defun my/tabspaces--save-session-on-frame-close (&rest _args)
     "Save the tabspaces session and clean up its process buffers
 before `save-buffers-kill-terminal' closes this frame."

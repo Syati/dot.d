@@ -32,3 +32,16 @@
       (call-interactively #'project-find-file)
     (call-interactively #'find-file)))
 (global-set-key [remap find-file] #'my/find-file-or-project-find-file)
+
+;; project-dired (C-x p d) は project-switch-project と違って tabspaces の
+;; ワークスペース切り替え advice (tabspaces-project-switch-opens-workspace)
+;; の対象外で、選んだプロジェクトが今のタブと違っても素通しでカレントタブに
+;; dired を開いてしまう。project-root を先に確定させ、ワークスペースを
+;; 開いてから dired するように差し替える。
+(defun my/project-dired ()
+  "Like `project-dired', but also switch to (or create) that project's tabspace."
+  (interactive)
+  (let ((root (project-root (project-current t))))
+    (tabspaces-open-or-create-project-and-workspace root)
+    (dired root)))
+(define-key project-prefix-map "d" #'my/project-dired)

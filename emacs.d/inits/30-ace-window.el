@@ -14,7 +14,7 @@
   (defun my/aw-select-window-by-number (n)
     "Select the Nth (1-indexed) window from `aw-window-list'."
     (let ((win (nth (1- n) (aw-window-list))))
-      (if win (select-window win) (message "No window %d" n))))
+      (if win (aw-switch-to-window win) (message "No window %d" n))))
   (dotimes (i 9)
     (let ((n (1+ i)))
       (global-set-key (kbd (format "M-%d" n))
