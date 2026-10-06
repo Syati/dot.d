@@ -1,8 +1,4 @@
 # ~/.zprofile
-if [ -x "$HOME/.local/bin/mise" ]; then
-  eval "$("$HOME/.local/bin/mise" activate zsh)"
-fi
-
 # Added by Toolbox App
 export PATH="$PATH:/Users/mizuki-y/Library/Application Support/JetBrains/Toolbox/scripts"
 
@@ -39,3 +35,6 @@ esac
 export PATH="$PATH:/Users/mizuki-y/.lmstudio/bin"
 # End of LM Studio CLI section
 
+if [ -r "$HOME/.dot.d/zsh.d/mise.zsh" ]; then
+  source "$HOME/.dot.d/zsh.d/mise.zsh"
+fi

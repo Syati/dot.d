@@ -82,6 +82,8 @@ safe_source() {
   [[ -r "$1" ]] && source "$1"
 }
 
+safe_source "$HOME/.dot.d/zsh.d/mise.zsh"
+
 #keybind
 bindkey -e  # emacs style
 bindkey -r '\ex' # M-x disable
