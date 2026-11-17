@@ -57,6 +57,7 @@ quick-terminal-screen = "main"
 quick-terminal-size = 30%
 quick-terminal-animation-duration = 0.3
 macos-option-as-alt = true
+initial-command = /opt/homebrew/bin/herdr
 
 keybind = clear
 keybind = global:cmd+shift+alt+ctrl+t=toggle_quick_terminal
