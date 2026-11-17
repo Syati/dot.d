@@ -3,6 +3,7 @@
   :ensure t
   :bind ("C-c t" . vterm-other-window)
   :custom
+  (vterm-shell "/bin/zsh")
   (vterm-max-scrollback 10000)
   :init
   ;; vterm-keymap-exceptions には :set 関数が付いていて、customize 経由で

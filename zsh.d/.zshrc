@@ -207,3 +207,7 @@ if [[ -n "$OTTY_SHELL_INTEGRATION" ]]; then
   safe_source "$OTTY_SHELL_INTEGRATION/otty-integration.zsh"
 fi
 # <<< otty shell integration <<<
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/mizuki-y/.local/bin:$PATH"

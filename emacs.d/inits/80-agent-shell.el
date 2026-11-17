@@ -7,17 +7,86 @@
 ;; agent-shell-openai-authentication)。
 ;; :ensure-system-package のセットアップは 10-use-package-ensure-system-package.el 参照。
 
+;; ACP アダプタの自動更新。
+;; シェル起動時にピッカーへ出るモデル一覧 (session/new の availableModels) は
+;; アダプタが同梱する Claude Agent SDK 由来なので、アダプタが古いままだと新しい
+;; モデルが選べない。:ensure-system-package は「無ければ入れる」だけで更新は
+;; しないため、ここで一日一回だけ非同期に更新をかける。
+;;
+;; アダプタは mise の npm backend で入れる前提 (下の :ensure-system-package)。
+;; `npm install -g' だと node のバージョンごとの lib/node_modules に入るため、
+;; mise で node を切り替えているとディレクトリ次第でアダプタが見つからない/
+;; 古い版が使われる、という状態になる。mise 管理ならどの node でも同じ版。
+(defvar my/agent-shell-acp-update-command
+  (list (expand-file-name "~/.local/bin/mise") "upgrade" "--global"
+        "npm:@agentclientprotocol/claude-agent-acp"
+        "npm:@agentclientprotocol/codex-acp")
+  "ACP アダプタを更新するコマンド。
+mise は PATH 非依存の絶対パスで呼び、`--global' で更新対象を
+グローバル設定に固定する (バッファの `default-directory' に依存させない)。")
+
+(defvar my/agent-shell-acp-update-interval (* 24 60 60)
+  "ACP アダプタの更新チェック間隔 (秒)。")
+
+(defvar my/agent-shell-acp-update-stamp
+  (expand-file-name "agent-shell-acp-update" user-emacs-directory)
+  "最後に更新チェックした時刻を mtime で持つスタンプファイル。")
+
+(defun my/agent-shell-acp--due-p ()
+  "前回の更新チェックから `my/agent-shell-acp-update-interval' 経過したか。"
+  (let ((mtime (file-attribute-modification-time
+                (file-attributes my/agent-shell-acp-update-stamp))))
+    (or (null mtime)
+        (> (float-time (time-since mtime))
+           my/agent-shell-acp-update-interval))))
+
+(defun my/agent-shell-update-acp-adapters (&optional force)
+  "ACP アダプタを非同期で更新する。
+前回チェックから `my/agent-shell-acp-update-interval' 経過していなければ
+何もしない。FORCE (C-u) で間隔を無視する。"
+  (interactive "P")
+  (when (and (or force (my/agent-shell-acp--due-p))
+             (file-executable-p (car my/agent-shell-acp-update-command)))
+    ;; 走らせる前にスタンプを更新する。オフラインや失敗時に Emacs 起動ごと
+    ;; 再試行しないよう、成功/失敗ではなく「試した時刻」を記録する。
+    (write-region "" nil my/agent-shell-acp-update-stamp nil 'silent)
+    (let ((buffer (get-buffer-create "*acp-update*")))
+      (with-current-buffer buffer (erase-buffer))
+      (make-process
+       :name "acp-update"
+       :buffer buffer
+       :noquery t
+       :command my/agent-shell-acp-update-command
+       :sentinel
+       (lambda (process _event)
+         (when (memq (process-status process) '(exit signal))
+           (let ((code (process-exit-status process))
+                 (output (if (buffer-live-p (process-buffer process))
+                             (with-current-buffer (process-buffer process)
+                               (buffer-string))
+                           "")))
+             (cond
+              ((/= code 0)
+               (message "ACP アダプタの更新に失敗 (exit %d)。*acp-update* 参照" code))
+              ;; 更新が無いときは mise も何も出さないので、出力があった
+              ;; ときだけ通知する。走っているシェルには反映されない。
+              ((string-match-p "[^ \t\n]" output)
+               (message "ACP アダプタを更新した。agent-shell 再起動 (C-c C-l) で反映"))))))))))
+
 (use-package agent-shell
   :ensure t
   :defer t
   :ensure-system-package
   ((claude . "brew install claude-code")
-   (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")
+   (claude-agent-acp . "mise use -g npm:@agentclientprotocol/claude-agent-acp@latest")
    (codex . "npm install -g @openai/codex")
-   (codex-acp . "npm install -g @agentclientprotocol/codex-acp")
+   (codex-acp . "mise use -g npm:@agentclientprotocol/codex-acp@latest")
    (pngpaste . "brew install pngpaste"))
   :init
   (setq agent-shell-session-restore-verbosity 'full)
+  ;; 起動直後は避け、アイドルしてから一度だけ更新チェック (更新は以降に
+  ;; 新規起動するシェルから効く)。
+  (run-with-idle-timer 180 nil #'my/agent-shell-update-acp-adapters)
   ;; 30-agent-shell-transient.el から呼ぶが autoload cookie が無いコマンド群
   ;; (package 側で agent-shell-restart 等と違い autoload 未登録のため、
   ;; :defer t のままだと transient-setup が "not defined or autoloaded" で失敗する)

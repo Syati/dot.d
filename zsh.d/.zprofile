@@ -38,3 +38,7 @@ export PATH="$PATH:/Users/mizuki-y/.lmstudio/bin"
 if [ -r "$HOME/.dot.d/zsh.d/mise.zsh" ]; then
   source "$HOME/.dot.d/zsh.d/mise.zsh"
 fi
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/mizuki-y/.local/bin:$PATH"

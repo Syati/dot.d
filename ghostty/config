@@ -56,49 +56,25 @@ quick-terminal-position = "left"
 quick-terminal-screen = "main"
 quick-terminal-size = 30%
 quick-terminal-animation-duration = 0.3
-macos-option-as-alt = left
+macos-option-as-alt = true
 
 keybind = clear
 keybind = global:cmd+shift+alt+ctrl+t=toggle_quick_terminal
 
-keybind = cmd+t=toggle_command_palette
-keybind = cmd+x>r=reload_config
-keybind = cmd+`=write_screen_file:open
+keybind = ctrl+alt+cmd+t=toggle_command_palette
+keybind = ctrl+alt+cmd+x>r=reload_config
+keybind = ctrl+alt+cmd+x>n=new_tab
+keybind = ctrl+alt+cmd+x>k=close_tab
+
+keybind = ctrl+alt+cmd+1=goto_tab:1
+keybind = ctrl+alt+cmd+2=goto_tab:2
+keybind = ctrl+alt+cmd+3=goto_tab:3
+keybind = ctrl+alt+cmd+4=goto_tab:4
+keybind = ctrl+alt+cmd+5=goto_tab:5
 
 # search
-keybind = cmd+s=start_search
-keybind = cmd+shift+s=end_search
-
-# split設定
-keybind = cmd+x>k=close_surface
-keybind = cmd+x>2=new_split:right
-keybind = cmd+x>3=new_split:down
-keybind = cmd+x>o=goto_split:next
-keybind = cmd+x>shift+o=goto_split:previous
-#keybind = cmd+x>cmd+o=goto_split:next
-#keybind = cmd+o=goto_split:next
-#keybind = cmd+h=goto_split:left
-#keybind = cmd+j=goto_split:bottom
-#keybind = cmd+k=goto_split:top
-#keybind = cmd+l=goto_split:right
-keybind = cmd+shift+up=resize_split:up,10
-keybind = cmd+shift+down=resize_split:down,10
-keybind = cmd+shift+left=resize_split:left,10
-keybind = cmd+shift+right=resize_split:right,10
-
-
-# tab設定
-keybind = cmd+x>cmd+n=new_tab
-keybind = cmd+x>cmd+k=close_tab
-keybind = cmd+n=next_tab
-keybind = cmd+p=previous_tab
-keybind = cmd+1=goto_tab:1
-keybind = cmd+2=goto_tab:2
-keybind = cmd+3=goto_tab:3
-keybind = cmd+4=goto_tab:4
-keybind = cmd+5=goto_tab:5
-keybind = cmd+shift+n=move_tab:1
-keybind = cmd+shift+p=move_tab:-1
+keybind = ctrl+alt+cmd+s=start_search
+keybind = ctrl+alt+cmd+shift+s=end_search
 
 keybind = alt+p=jump_to_prompt:-1
 keybind = alt+n=jump_to_prompt:1
