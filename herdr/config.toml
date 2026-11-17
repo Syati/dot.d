@@ -1,0 +1,41 @@
+onboarding = false
+
+[keys]
+prefix = "cmd+x"
+goto = ""
+rename_tab = ["prefix+r", "prefix+shift+t"]
+rename_workspace = ["prefix+shift+r", "prefix+shift+w"]
+reload_config = "prefix+ctrl+alt+cmd+r"
+resize_mode = "prefix+ctrl+r"
+
+split_horizontal = ["prefix+2", "prefix+minus"]
+split_vertical = ["prefix+3", "prefix+v"]
+switch_tab = "prefix+alt+1..9"
+new_workspace = "prefix+shift+n"
+new_tab = ["prefix+n", "prefix+c"]
+next_tab = "prefix+right"
+previous_tab = ["prefix+left", "prefix+p"]
+close_workspace = ["prefix+shift+k", "prefix+shift+d"]
+close_tab = ["prefix+k", "prefix+shift+x"]
+close_pane = ["prefix+0", "prefix+x"]
+zoom = ["prefix+1", "prefix+z"]
+toggle_sidebar = ["ctrl+alt+cmd+j", "prefix+shift+b"]
+cycle_pane_next = ["prefix+o", "prefix+tab"]
+cycle_pane_previous = ["prefix+shift+o", "prefix+shift+tab"]
+open_notification_target = "prefix+alt+o"
+
+navigate_workspace_up = "ctrl+p"
+navigate_workspace_down = "ctrl+n"
+navigate_pane_left = "ctrl+b"
+navigate_pane_right = "ctrl+f"
+
+focus_pane_up = "prefix+ctrl+p"
+focus_pane_down = ["prefix+j", "prefix+ctrl+n"]
+focus_pane_left = ["prefix+h", "prefix+ctrl+b"]
+focus_pane_right = ["prefix+l", "prefix+ctrl+f"]
+
+[[keys.command]]
+key = ["cmd+t", "prefix+t", "prefix+b"]
+type = "plugin_action"
+command = "yoshiori.herdr-configurable-picker.open"
+description = "Emacs-style goto picker"
