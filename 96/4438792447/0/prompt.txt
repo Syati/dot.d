@@ -1,0 +1,9 @@
+ctrl+alt+cmd+x 押下すると ;7u が出力されるんだけど
+
+ghostty/config:65-65
+
+keybind = ctrl+alt+cmd+x>r=reload_config
+
+---
+
+exit
