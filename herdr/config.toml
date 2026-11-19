@@ -10,7 +10,7 @@ resize_mode = "prefix+ctrl+r"
 
 split_horizontal = ["prefix+2", "prefix+minus"]
 split_vertical = ["prefix+3", "prefix+v"]
-switch_tab = "prefix+alt+1..9"
+switch_tab = "cmd+1..9"
 new_workspace = "prefix+shift+n"
 new_tab = ["prefix+n", "prefix+c"]
 next_tab = "prefix+right"
@@ -20,8 +20,8 @@ close_tab = ["prefix+k", "prefix+shift+x"]
 close_pane = ["prefix+0", "prefix+x"]
 zoom = ["prefix+1", "prefix+z"]
 toggle_sidebar = ["ctrl+alt+cmd+j", "prefix+shift+b"]
-cycle_pane_next = ["prefix+o", "prefix+tab"]
-cycle_pane_previous = ["prefix+shift+o", "prefix+shift+tab"]
+cycle_pane_next = ["cmd+o", "prefix+tab"]
+cycle_pane_previous = ["cmd+shift+o", "prefix+shift+tab"]
 open_notification_target = "prefix+alt+o"
 
 navigate_workspace_up = "ctrl+p"
@@ -39,3 +39,9 @@ key = ["cmd+t", "prefix+t", "prefix+b"]
 type = "plugin_action"
 command = "yoshiori.herdr-configurable-picker.open"
 description = "Emacs-style goto picker"
+
+[[keys.command]]
+key = "cmd+."
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "Toggle review pane"

@@ -1,0 +1,13 @@
+github_cli = "op plugin run -- gh"
+
+[keybindings]
+up = ["ctrl+p", "k", "up"]
+down = ["ctrl+n", "j", "down"]
+delete = ["ctrl+h", "d"]
+input-backspace = ["ctrl+h"]
+find = ["ctrl+s", "ctrl+r"]
+find-next = ["ctrl+s"]
+find-prev = ["ctrl+r"]
+expand-all = ["alt+right"]
+collapse-all = ["alt+left"]
+search = ["ctrl+t"]
