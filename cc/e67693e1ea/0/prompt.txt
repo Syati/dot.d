@@ -1,0 +1,56 @@
+project の file をひらいてていて、ファイルが存在するdired をみたいときって現状できないのよね？
+[@80-project-transient.el](file:///Users/mizuki-y/.dot.d/emacs.d/inits/80-project-transient.el)
+<context ref="file:///Users/mizuki-y/.dot.d/emacs.d/inits/80-project-transient.el">
+;;; -*- lexical-binding: t -*-
+;; C-x p は2打鍵ともCtrlを一度離す必要があって面倒なので、よく使う
+;; project.el 系コマンドをまとめて transient (magit の依存で既に導入済み)
+;; メニューにする。95-keybind.el で左Cmdを Super にしているので、
+;; Ctrl+Option+Cmd+p (= C-M-s-p) で直接開ける。
+
+(require 'transient)
+
+(transient-define-prefix my/project-transient ()
+  "Project commands."
+  [["Find"
+    ("f" "Find file"      project-find-file)
+    ("d" "Find dir"        project-find-dir)
+    ("b" "Switch buffer"  project-switch-to-buffer)
+    ("g" "Ripgrep"        consult-ripgrep)]
+   ["Browse"
+    ("e" "Sidebar"        dirvish-side)
+    ("v" "Magit status"   magit-status)]
+   ["Workspace"
+    ("p" "Switch project" project-switch-project)
+    ("k" "Kill buffers"   project-kill-buffers)]])
+
+(global-set-key (kbd "s-p") #'my/project-transient)
+
+;; project 内では C-x C-f (find-file) をそのまま project-find-file に
+;; する。[remap find-file] なので、M-x find-file やメニュー経由でも
+;; 同じく差し替わる。project の外ではいつも通り find-file のまま。
+(defun my/find-file-or-project-find-file ()
+  "Use `project-find-file' when in a project, otherwise `find-file'."
+  (interactive)
+  (if (project-current)
+      (call-interactively #'project-find-file)
+    (call-interactively #'find-file)))
+(global-set-key [remap find-file] #'my/find-file-or-project-find-file)
+
+;; project-dired (C-x p d) は project-switch-project と違って tabspaces の
+;; ワークスペース切り替え advice (tabspaces-project-switch-opens-workspace)
+;; の対象外で、選んだプロジェクトが今のタブと違っても素通しでカレントタブに
+;; dired を開いてしまう。project-root を先に確定させ、ワークスペースを
+;; 開いてから dired するように差し替える。
+(defun my/project-dired ()
+  "Like `project-dired', but also switch to (or create) that project's tabspace."
+  (interactive)
+  (let ((root (project-root (project-current t))))
+    (tabspaces-open-or-create-project-and-workspace root)
+    (dired root)))
+(define-key project-prefix-map "d" #'my/project-dired)
+
+</context>
+
+---
+
+dired jump 忘れてたわ. thx
