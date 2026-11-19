@@ -3,8 +3,9 @@
   "checkpoint_id": "cce67693e1ea",
   "strategy": "manual-commit",
   "branch": "master",
-  "checkpoints_count": 52,
+  "checkpoints_count": 55,
   "files_touched": [
+    ".gitignore",
     "herdr/config.toml",
     "herdr/reviewr.toml"
   ],
@@ -29,14 +30,21 @@
       "compact_transcript": "/cc/e67693e1ea/2/transcript.jsonl",
       "content_hash": "/cc/e67693e1ea/2/content_hash.txt",
       "prompt": "/cc/e67693e1ea/2/prompt.txt"
+    },
+    {
+      "metadata": "/cc/e67693e1ea/3/metadata.json",
+      "transcript": "/cc/e67693e1ea/3/full.jsonl",
+      "compact_transcript": "/cc/e67693e1ea/3/transcript.jsonl",
+      "content_hash": "/cc/e67693e1ea/3/content_hash.txt",
+      "prompt": "/cc/e67693e1ea/3/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 1234641,
+    "input_tokens": 1242423,
     "cache_creation_tokens": 0,
-    "cache_read_tokens": 43930240,
-    "output_tokens": 171567,
-    "api_call_count": 314
+    "cache_read_tokens": 44330752,
+    "output_tokens": 173583,
+    "api_call_count": 327
   },
   "redaction": {
     "replacements": 262,
