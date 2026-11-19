@@ -1,0 +1,21 @@
+emacs go mode をいれてほしい
+
+---
+
+gopls って go.mod で入れる感じ？
+
+---
+
+user local に mise はいってるとおもうけど、user local go で管理するのがよさそうね
+
+---
+
+実行して
+
+---
+
+go-mode でjump も可能？
+
+---
+
+設定を commit push してね
