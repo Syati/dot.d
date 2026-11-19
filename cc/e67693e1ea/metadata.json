@@ -3,7 +3,7 @@
   "checkpoint_id": "cce67693e1ea",
   "strategy": "manual-commit",
   "branch": "master",
-  "checkpoints_count": 32,
+  "checkpoints_count": 52,
   "files_touched": [
     "herdr/config.toml",
     "herdr/reviewr.toml"
@@ -22,25 +22,32 @@
       "compact_transcript": "/cc/e67693e1ea/1/transcript.jsonl",
       "content_hash": "/cc/e67693e1ea/1/content_hash.txt",
       "prompt": "/cc/e67693e1ea/1/prompt.txt"
+    },
+    {
+      "metadata": "/cc/e67693e1ea/2/metadata.json",
+      "transcript": "/cc/e67693e1ea/2/full.jsonl",
+      "compact_transcript": "/cc/e67693e1ea/2/transcript.jsonl",
+      "content_hash": "/cc/e67693e1ea/2/content_hash.txt",
+      "prompt": "/cc/e67693e1ea/2/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 945281,
+    "input_tokens": 1234641,
     "cache_creation_tokens": 0,
-    "cache_read_tokens": 38579968,
-    "output_tokens": 146844,
-    "api_call_count": 243
+    "cache_read_tokens": 43930240,
+    "output_tokens": 171567,
+    "api_call_count": 314
   },
   "redaction": {
-    "replacements": 233,
+    "replacements": 262,
     "layers": {
       "betterleaks": 3,
       "connection_string": 0,
       "credential_key": 0,
       "credential_value": 6,
       "credentialed_uri": 0,
-      "entropy": 240,
-      "key_context": 4,
+      "entropy": 274,
+      "key_context": 5,
       "provider_token": 0,
       "shell_stdin": 0
     }

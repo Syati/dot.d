@@ -1,0 +1,83 @@
+tab の移動だけど　prefix+alt+1..9だけど prefix+1..9 でいいとおもわない？
+
+---
+
+prefix じゃなくて　command+1..9 か
+
+---
+
+ghossty は ctrl+alt+cmd+1..9 だからバッテイングしないでしょ
+
+---
+
+反映してください
+
+---
+
+prefix + o をやめて command + o にしましょうか paine の移動がめんどくさすぎる
+
+---
+
+反映して
+
+---
+
+herdr app もいれてみたから以下をして
+Read `herdr-app --skill`, then migrate my keybinds and settings from ~/.config/herdr/config.toml
+
+---
+
+つかっておもったけどtui で十分だね
+
+---
+
+herdr を削除しますわ
+
+---
+
+app ね
+
+---
+
+app は削除しました。bin も .config/herdr-app も不要かな。　使わないから
+
+---
+
+copy mode って変更できるんだっけ？
+
+---
+
+tui だね もう app はわすれていいよ
+
+---
+
+viewer の ショートカットが微妙だね cmd+. とかでいいかな
+
+---
+
+herder の keybind で 今 cmd+x cmd+f だとおもうけど
+
+---
+
+cmd+x -> fね
+
+---
+
+ワンキーで行けたほうが楽だと思うので、
+
+---
+
+op run plugin -- gh でやってると毎回認証がとおるんだけど、１時間は通すとかできない？
+
+---
+
+1password for agent は？
+https://note.com/npaka/n/ne2af05fc3247?hl=en
+
+---
+
+それって脆弱じゃない？
+
+---
+
+維持しましょうか。ありがとう
