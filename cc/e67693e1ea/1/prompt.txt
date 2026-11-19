@@ -1,0 +1,145 @@
+Worktree: /Users/mizuki-y/.dot.d
+
+herdr/config.toml:44
++key = "prefix+f"
+viewer 中は ctrl+h とかで delete できないのは不便ね
+
+---
+
+herder-reviewer のキーバインドはかえれるよね？ emacs like にできる？
+
+---
+
+上下移動はできるようになったけど、comment 入力中に誤入力をけすには backspace キーを叩かないといけないね。ctrl+h でけしたいんだけど
+
+---
+
+ハードコーディングっぴけど、keybind 設定でかえれるようにしたら
+
+---
+
+zoom pine すると split した paine がきえるけど、どうやってattach する？
+
+---
+
+viewer で find って ctrl+f になってるけど emacs like にしてくれる？
+
+---
+
+ctrl+f はいらないや代わりに ctrl+r いれといて
+
+---
+
+find 中の移動は変更できない？
+
+---
+
+emacs だと ctrl+s を押下することで next ctrl + r を押下することで prev にいくけど、それは可能？
+
+---
+
+codex resume
+
+---
+
+reviwer の files 表示されてるとこで expand をenter にできない？
+
+---
+
+directory 行にいるとき search ってできないの？
+
+---
+
+/ ってなれてないんだよね。 ctrl+t とかにわりあてられない？
+
+---
+
+ghostty の ctrl+t ってなににわりあててられてる？
+
+---
+
+continue
+
+---
+
+codex かな
+
+---
+
+transcript 表示って？ いままでの会話をみるってかんじ？
+
+---
+
+割り当てを削除して herdr の copy mode でみれるよね
+
+---
+
+じゃあ ctrl+t は 違うキーにわりあてようか
+
+---
+
+codex のね
+
+---
+
+reviewr って PRの変更ファイルだけをみることってできないの？
+
+---
+
+branch scope から通常にもどすには？
+
+---
+
+u/b/t/g の説明をおねがい
+
+---
+
+hunk tte
+
+---
+
+emacs だと meta n p かな？
+
+---
+
+そのままでいいね。 files ですべてを展開、折りたたむってない？
+
+---
+
+それ ctrl+f b に当てれる？
+
+---
+
+いや 展開を ctrl+f 折りたたみ ctrl+b
+
+---
+
+M-x って ghossty でわりあててる？ いま command-x を prefix にしてるけど、emacs として考えるなら m-x のほうが便利だなと
+
+---
+
+enter で toggle できるようにして。 just qa-install もいれてください
+
+---
+
+zsh も未割り当てなのは、きっと tui から emacs を開いたときぶつかるからだよね。
+
+---
+
+herdr の prefix を Meta-x に割り当てても問題ないと思う？
+
+---
+
+enter のつがいがってがいいね。 逆に ctrl+f, ctrl+b は割り当てが微妙だね。割り当てるなら何かいいかな？
+
+---
+
+そうしてください
+
+---
+
+files でviewで find-next ってできない？
+
+---
+
+files ペインで Ctrl+s 押下すると、paine が preview のほうに移動して find next がはしるんだけど
