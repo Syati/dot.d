@@ -1,0 +1,267 @@
+sbx いれて claude とか利用しようと思うんだけど、 どれがいいかな？
+
+
+<pasted_content id="4dc5">
+  Choose the network policy for sandboxes
+    1. Open   all network traffic allowed, no restrictions
+    2. Balanced   default deny, with common dev sites allowed
+    3. Locked Down   all network traffic blocked unless you allow it
+  Choice [1-3, default 2]:
+</pasted_content id="4dc5">
+
+---
+
+sbx で claude 選ぶと paste new credential ってなるんだけど oauth じゃむり？
+
+---
+
+auth を skip すればいいだけでした
+
+---
+
+環境変数とかどうなるの？
+
+---
+
+1password との連携は？
+
+---
+
+sbx って keybind で変更できる？
+
+---
+
+sbx で claude を利用したとき ~/.claude.json が読み込まれないよね
+
+---
+
+rubymine はどうすればいい？
+
+---
+
+docker から利用してたときは以下のようなことしてたね
+AGENT_TCP_BRIDGES=127.0.0.1:64342->host.docker.internal:64342
+
+---
+
+sbx のグローバル設定みたいなのはないの？
+
+---
+
+設定って user local にあるの？ ~/.sbx てきな？
+１つづつ加えていこうか。 
+1. clipboard は連携しよう。
+2. browser も連携したいね。
+3. 2. で連携するってことは、remote control になるんじゃないの？
+4. git するなら　ssh エージェントの転送もいるよね。　yes
+5. 不要
+6. ボリュームサイズ絞るってこと？
+7. skills をデフォルト読み込むでいいじゃない？ リスクあり？
+
+network_policy も加えたいね
+
+---
+
+64502 だけでいいかな。
+
+---
+
+socat つかうの自動でできないの？
+
+---
+
+1
+
+---
+
+rubymine mcp ってあると便利？
+
+---
+
+不要だね。やめよう。
+
+---
+
+設定ファイルってどこにあるんだっけ？
+
+---
+
+一旦このままでいいかな。kit に rtk とかはいってないけど、あるといいとおもうんだよね
+
+---
+
+1.2.1 で. ほかに ripgrep とかもいれたほうがいいか？
+
+---
+
+rtk だけいれましょうか。 kit って claude だけなの？ codex でも同じようにつかいたいけど。
+
+---
+
+https://entire.com/?redirected_from=entire.io これもつかってるんだけど、ホストのつかわれる？
+
+---
+
+entire もふくめようか。
+
+---
+
+あと git worktree を利用するときに、 https://github.com/k1LoW/git-wt をつかってるんだけど
+
+---
+
+ついでに mise もいる？
+
+---
+
+<task-notification>
+<task-id>bphy56suo</task-id>
+<tool-use-id>toolu_01So8NzGCvGvNbR4PP7b2om4</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-mizuki-y--dot-d/d89cbfab-0b85-4941-a88a-0c3f0966ea50/tasks/bphy56suo.output</output-file>
+<status>completed</status>
+<summary>Background command "dev-tools mixin を作成して validate する" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+mise は普段つかってるんだよね。 /Users/mizuki-y/Projects/47/newkagg とかみてくれる？
+
+---
+
+新しいsandbox を作って　動作確認しましょう。
+precompiled で試してみましょうか
+
+---
+
+a b c までしてください。 commit 前で確認させて
+
+---
+
+codex の場合は？
+
+---
+
+codex で newkagg を実装する場合も claude と同様にできる？
+
+---
+
+みるかぎり rtk init -g --codex ってしてるね
+https://github.com/rtk-ai/rtk
+
+---
+
+dev tools で claude も codex も、 rtk init したら？
+
+---
+
+sbx で tui からどうやって kit って\watasuno?
+
+---
+
+1 作成しようか
+
+---
+
+dotfiles の配置をさきにしようか
+
+---
+
+gitignore に追加して
+
+---
+
+sbx create すればよい？ 実Commandをおしえて
+
+---
+
+name って必要なの？
+
+---
+
+sbxenv.yaml に agent 付与しなければ　default きまらない？
+
+---
+
+--kit が面倒くさいね。
+
+---
+
+zsh.d/functions にファイル作ろうか
+
+---
+
+動かしてみようか
+
+---
+
+sbxc したあとに、 sbx run しないとだめなのか
+
+---
+
+<pasted_content id="4dc5">
+ ~  Projects  …  newkagg  sbxc                                                                                                                            feature/kag478-orders  38⬆  1✎  7⚑
+
+  KITS
+    ✓ /Users/mizuki-y/.dot.d/sbx/kits/dev-tools — cached
+        sbx-kit-src:dev-tools-f670fafca02c
+
+  error: sandbox 'claude-newkagg' already exists; --kit can only be used when creating a new sandbox
+    try: sbx run --name claude-newkagg
+</pasted_content id="4dc5">
+
+---
+
+はい
+
+---
+
+mise.toml ある場合、 以下をしたほうがいいじゃない？
+/etc/sandbox-persistent.sh に mise activate
+
+---
+
+sbx って image 容量確認したいときは？
+
+---
+
+上記実施したけど reclaimable が消えないけど
+
+---
+
+はい
+
+---
+
+kit でつくるのって devcontainer みたいに plugin みたいにかけないの？
+
+---
+
+mise 経由にしたほうがメンテナンスや、update が楽なんじゃない？
+
+---
+
+はい
+
+---
+
+codex rule や mise use -g とか ファイルを読み込むとか渡すって方式にはできないの？
+
+---
+
+今後のことを考えるとdockerfile かした方が楽なんじゃない？
+
+---
+
+そうしましょう
+
+---
+
+project に mise.toml あるなら　mise install したらよくない？
+
+---
+
+bypass permissions on ってなんだろ
+
+---
+
+commit して

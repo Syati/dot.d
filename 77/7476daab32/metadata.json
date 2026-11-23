@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "777476daab32",
+  "strategy": "manual-commit",
+  "branch": "master",
+  "checkpoints_count": 53,
+  "files_touched": [
+    "sbx/kits/dev-tools/dev-tools.dockerfile",
+    "sbx/kits/dev-tools/dev-tools.yaml",
+    "sbx/kits/dev-tools/files/language.md",
+    "sbx/kits/dev-tools/files/mise-config.toml",
+    "sbx/kits/dev-tools/files/mise-shims.sh",
+    "sbx/sbxenv.yaml",
+    "setup.sh",
+    "zsh.d/functions/sbx.zsh"
+  ],
+  "sessions": [
+    {
+      "metadata": "/77/7476daab32/0/metadata.json",
+      "transcript": "/77/7476daab32/0/full.jsonl",
+      "compact_transcript": "/77/7476daab32/0/transcript.jsonl",
+      "content_hash": "/77/7476daab32/0/content_hash.txt",
+      "prompt": "/77/7476daab32/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 508,
+    "cache_creation_tokens": 294441,
+    "cache_read_tokens": 23099773,
+    "output_tokens": 118532,
+    "api_call_count": 200
+  },
+  "redaction": {
+    "replacements": 64,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 60,
+      "key_context": 0,
+      "provider_token": 4,
+      "shell_stdin": 0
+    }
+  }
+}
