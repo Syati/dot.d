@@ -1,0 +1,98 @@
+# syntax=docker/sandbox-kit:3
+schemaVersion: "3"
+displayName: Dev Tools
+description: mise (checksum-pinned) plus rtk, entire and git-wt installed via mise, with rtk/language setup for Claude Code and Codex
+
+kind: mixin
+provides: ["dev-tools"]
+version: "4.0.0"
+
+# mise の挙動をコンテナの環境変数として渡す。
+# ホストの ~/.config/mise/config.toml は sandbox に無いため、ここで補う。
+args:
+  mise_ruby_compile:
+    default: "false"
+    pattern: "^(true|false)$"
+    description: Build Ruby from source (needs gcc) instead of using precompiled binaries
+    env: MISE_RUBY_COMPILE
+  mise_idiomatic_tools:
+    default: ruby
+    pattern: "^[a-z,]*$"
+    description: Tools whose idiomatic version files (.ruby-version etc.) mise reads
+    env: MISE_IDIOMATIC_VERSION_FILE_ENABLE_TOOLS
+
+capabilities:
+  - type: com.docker.sandbox/lifecycle@1
+    config:
+      install:
+        # イメージに同梱した設定ファイル (files/ → /usr/share/dev-tools/) を使う。
+        # rtk / entire / git-wt は mise (github バックエンド) で入れる。バージョンは files/mise-config.toml。
+        # mise の shims は bash (BASH_ENV) 以外では PATH に載らないので、PATH にある
+        # ~/.local/bin へ symlink して、hook や sh からも解決できるようにする。
+        - command: |
+            set -e
+            export HOME=/home/agent
+            mkdir -p "$HOME/.config/mise" "$HOME/.local/bin"
+            cp /usr/share/dev-tools/mise-config.toml "$HOME/.config/mise/config.toml"
+            mise install
+            mise reshim
+            for b in rtk entire git-remote-entire git-wt; do
+              ln -sf "$HOME/.local/share/mise/shims/$b" "$HOME/.local/bin/$b"
+            done
+          user: agent
+          description: Install rtk, entire and git-wt with mise
+
+        # rtk の hook と指示ファイルを、エージェントごとに rtk 自身に生成させる。
+        # ~/.claude があれば Claude 用、~/.codex があれば Codex 用（どちらの sandbox にも使える）。
+        # どちらも既存の設定を保ち、何度実行しても重複しない。
+        - command: |
+            export HOME=/home/agent
+            export PATH="$HOME/.local/bin:$PATH"
+            if [ -d "$HOME/.claude" ]; then rtk init -g --auto-patch </dev/null; fi
+            if [ -d "$HOME/.codex" ]; then rtk init -g --codex </dev/null; fi
+          user: agent
+          description: Run rtk init for the agents present in this sandbox
+
+        # 日本語での回答指定（ホストの ~/.claude/CLAUDE.md 相当）。本文は files/language.md。
+        # Claude は ~/.claude/rules/ が常に読まれる。Codex は AGENTS.md から @ で参照する。
+        - command: |
+            set -e
+            export HOME=/home/agent
+            src=/usr/share/dev-tools/language.md
+            if [ -d "$HOME/.claude" ]; then
+              mkdir -p "$HOME/.claude/rules"
+              cp "$src" "$HOME/.claude/rules/language.md"
+            fi
+            if [ -d "$HOME/.codex" ]; then
+              cp "$src" "$HOME/.codex/LANGUAGE.md"
+              ref="@$HOME/.codex/LANGUAGE.md"
+              grep -qxF "$ref" "$HOME/.codex/AGENTS.md" 2>/dev/null || printf '\n%s\n' "$ref" >> "$HOME/.codex/AGENTS.md"
+            fi
+          user: agent
+          description: Install the always-loaded language rule
+
+        # mise の shims を PATH に載せる。/etc/sandbox-persistent.sh は login シェルと
+        # 非対話 bash (BASH_ENV) の両方で読まれるため、エージェントの Bash ツールからも
+        # ruby / node 等が mise.toml・.ruby-version のとおりに解決される。
+        # `mise activate` はプロンプト hook 前提で非対話では効かないので shims を使う。本文は files/mise-shims.sh。
+        - command: |
+            line='. /usr/share/dev-tools/mise-shims.sh'
+            grep -qxF "$line" /etc/sandbox-persistent.sh 2>/dev/null || printf '%s\n' "$line" >> /etc/sandbox-persistent.sh
+          user: agent
+          description: Put mise shims on PATH for every shell
+
+      startup:
+        # ワークスペースの mise 設定 (mise.toml / .tool-versions / .ruby-version 等) を信頼し、
+        # ツールを入れる。エージェントが起動する前に揃うよう、バックグラウンドにしない。
+        # 入済みなら一瞬で終わる (毎回起動のたびに走るので、mise.toml の更新にも追従する)。
+        # 設定が無いワークスペースや、ネットワーク失敗でも起動は止めない。
+        - command: |
+            [ -n "$WORKSPACE_DIR" ] && command -v mise >/dev/null 2>&1 || exit 0
+            cd "$WORKSPACE_DIR" || exit 0
+            mise trust >/dev/null 2>&1 || true
+            if [ -n "$(mise ls --missing 2>/dev/null)" ]; then
+              echo "mise install: installing missing tools for $WORKSPACE_DIR"
+              mise install --yes || echo "mise install failed (continuing)"
+            fi
+          user: agent
+          description: Trust the workspace mise config and install its tools

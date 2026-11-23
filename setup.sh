@@ -23,6 +23,7 @@ ln -v -s -f ${CWD}/zsh.d/.zshrc ~/.zshrc
 ln -v -s -f ${CWD}/tmux.d/.tmux.conf ~/.tmux.conf
 ln -v -s -f ${CWD}/emacs.d ~/.emacs.d
 ln -v -s -f ${CWD}/hammerspoon.d ~/.hammerspoon
+ln -v -s -f ${CWD}/sbx/sbxenv.yaml ~/.sbxenv.yaml
 
 echo 'DONE'
 

@@ -1,0 +1,5 @@
+# sandbox のグローバル mise 設定。ツールの更新はここのバージョンを書き換える。
+[tools]
+"github:rtk-ai/rtk" = "1.2.1"
+"github:entireio/cli" = "0.13.4"
+"github:k1LoW/git-wt" = "0.30.0"

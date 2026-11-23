@@ -1,0 +1,10 @@
+# sbx env のユーザー共通デフォルト（`sbx env run/create/plan` を PATH なしで実行したときに読まれる）。
+# プロジェクト側の ./sbxenv.yaml があれば、その値で上書き・連結される。
+schemaVersion: "1"
+agent: claude
+
+# 実行したプロジェクトのディレクトリをマウントする
+workspace: ${{ env.projectDir }}
+
+kits:
+  - ./.dot.d/sbx/kits/dev-tools
