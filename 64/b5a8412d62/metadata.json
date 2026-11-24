@@ -3,7 +3,7 @@
   "checkpoint_id": "64b5a8412d62",
   "strategy": "manual-commit",
   "branch": "master",
-  "checkpoints_count": 14,
+  "checkpoints_count": 18,
   "files_touched": [
     "herdr/config.toml",
     "zsh.d/functions/sbx.zsh"
@@ -29,6 +29,13 @@
       "compact_transcript": "/64/b5a8412d62/2/transcript.jsonl",
       "content_hash": "/64/b5a8412d62/2/content_hash.txt",
       "prompt": "/64/b5a8412d62/2/prompt.txt"
+    },
+    {
+      "metadata": "/64/b5a8412d62/3/metadata.json",
+      "transcript": "/64/b5a8412d62/3/full.jsonl",
+      "compact_transcript": "/64/b5a8412d62/3/transcript.jsonl",
+      "content_hash": "/64/b5a8412d62/3/content_hash.txt",
+      "prompt": "/64/b5a8412d62/3/prompt.txt"
     }
   ],
   "token_usage": {
@@ -39,16 +46,16 @@
     "api_call_count": 31
   },
   "redaction": {
-    "replacements": 39,
+    "replacements": 152,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
       "credential_key": 0,
       "credential_value": 0,
       "credentialed_uri": 0,
-      "entropy": 43,
+      "entropy": 156,
       "key_context": 3,
-      "provider_token": 0,
+      "provider_token": 4,
       "shell_stdin": 0
     }
   }
