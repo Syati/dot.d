@@ -1,0 +1,9 @@
+.dot.d で sbxx で実行すると name 規約でエラーになるね
+
+---
+
+sbx dev kit に rg と gh stack をいれてください
+
+---
+
+commit して
