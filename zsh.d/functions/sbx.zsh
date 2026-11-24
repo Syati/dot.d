@@ -7,7 +7,18 @@ _sbx_dev_tools_kit="${HOME}/.dot.d/sbx/kits/dev-tools"
 
 _sbx_run_with_kit() {
   local agent="$1" dir="${2:-.}"
-  local name="${agent}-${${dir:A}:t}"
+  local basename="${${dir:A}:t}" suffix='' char
+  for char in ${(s::)basename}; do
+    if [[ "$char" == [a-zA-Z0-9] ]]; then
+      suffix+="$char"
+    elif [[ -n "$suffix" && "$suffix[-1]" != - ]]; then
+      suffix+='-'
+    fi
+  done
+  suffix="${suffix%-}"
+  [[ -n "$suffix" ]] || suffix='workspace'
+  # sbx names are limited to 63 ASCII characters.
+  local name="${agent}-${suffix[1,$((62 - ${#agent}))]}"
   if ! sbx ls 2>/dev/null | awk 'NR>1{print $1}' | grep -qx -- "$name"; then
     sbx create "$agent" "$dir" --kit "${_sbx_dev_tools_kit}" || return
   fi
