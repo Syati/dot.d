@@ -3,9 +3,10 @@
   "checkpoint_id": "64b5a8412d62",
   "strategy": "manual-commit",
   "branch": "master",
-  "checkpoints_count": 13,
+  "checkpoints_count": 14,
   "files_touched": [
-    "herdr/config.toml"
+    "herdr/config.toml",
+    "zsh.d/functions/sbx.zsh"
   ],
   "sessions": [
     {
@@ -21,17 +22,24 @@
       "compact_transcript": "/64/b5a8412d62/1/transcript.jsonl",
       "content_hash": "/64/b5a8412d62/1/content_hash.txt",
       "prompt": "/64/b5a8412d62/1/prompt.txt"
+    },
+    {
+      "metadata": "/64/b5a8412d62/2/metadata.json",
+      "transcript": "/64/b5a8412d62/2/full.jsonl",
+      "compact_transcript": "/64/b5a8412d62/2/transcript.jsonl",
+      "content_hash": "/64/b5a8412d62/2/content_hash.txt",
+      "prompt": "/64/b5a8412d62/2/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 83144,
+    "input_tokens": 86743,
     "cache_creation_tokens": 0,
-    "cache_read_tokens": 959232,
-    "output_tokens": 6182,
-    "api_call_count": 28
+    "cache_read_tokens": 1113856,
+    "output_tokens": 6444,
+    "api_call_count": 31
   },
   "redaction": {
-    "replacements": 38,
+    "replacements": 39,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -39,7 +47,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "entropy": 43,
-      "key_context": 2,
+      "key_context": 3,
       "provider_token": 0,
       "shell_stdin": 0
     }
