@@ -86,6 +86,20 @@ capabilities:
           user: agent
           description: Install the always-loaded language rule
 
+        # GitHub の SSH URL を HTTPS に読み替える（サンドボックス内の global git config だけ。
+        # リポジトリの .git/config はホストと共有なので触らない）。
+        # ネットワークポリシーが 22 番を拒否し、SSH エージェントは署名専用のため、SSH では push/fetch できない。
+        # HTTPS は sbx の github secret をプロキシが注入して認証する。
+        - command: |
+            set -e
+            export HOME=/home/agent
+            key='url.https://github.com/.insteadOf'
+            for from in 'git@github.com:' 'ssh://git@github.com/'; do
+              git config --global --get-all "$key" | grep -qxF "$from" || git config --global --add "$key" "$from"
+            done
+          user: agent
+          description: Rewrite GitHub SSH URLs to HTTPS
+
         # mise の shims を PATH に載せる。/etc/sandbox-persistent.sh は login シェルと
         # 非対話 bash (BASH_ENV) の両方で読まれるため、エージェントの Bash ツールからも
         # ruby / node 等が mise.toml・.ruby-version のとおりに解決される。
@@ -97,6 +111,12 @@ capabilities:
           description: Put mise shims on PATH for every shell
 
       startup:
+        # OpenSearch / Elasticsearch が要求する mmap の上限。サンドボックス (microVM) のカーネルの値で、
+        # 内側の Docker コンテナにも効く。再起動で戻るので毎回の起動時に設定する。
+        - command: sysctl -w vm.max_map_count=262144
+          user: "0"
+          description: Raise vm.max_map_count for OpenSearch
+
         # SSH エージェントが使えるときだけ、git の SSH 署名を既定で有効にする（kit 公式例 git-signing に準拠）。
         # 無いときに gpgsign=true にするとコミットが失敗するので、何もしない。
         # ~/.gitconfig の値は上書きしない（無いキーだけ XDG の config に補う）。
