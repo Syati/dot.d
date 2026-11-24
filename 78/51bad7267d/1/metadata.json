@@ -1,0 +1,69 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "7851bad7267d",
+  "session_id": "d89cbfab-0b85-4941-a88a-0c3f0966ea50",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-24T01:35:39.003184Z",
+  "branch": "master",
+  "checkpoints_count": 29,
+  "save_step_count": 16,
+  "files_touched": [
+    "sbx/kits/dev-tools/dev-tools.yaml",
+    "sbx/settings.sh",
+    "setup.sh",
+    "zsh.d/functions/sbx.zsh"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "turn_id": "ae76c1e028b5",
+  "checkpoint_transcript_start": 1908,
+  "transcript_lines_at_start": 1908,
+  "compact_transcript_start": 263,
+  "token_usage": {
+    "input_tokens": 240,
+    "cache_creation_tokens": 88582,
+    "cache_read_tokens": 16641233,
+    "output_tokens": 53460,
+    "api_call_count": 89,
+    "subagent_tokens": {
+      "input_tokens": 10,
+      "cache_creation_tokens": 19190,
+      "cache_read_tokens": 38915,
+      "output_tokens": 3805,
+      "api_call_count": 4
+    },
+    "subagent_tokens_complete": true
+  },
+  "session_token_usage": {
+    "input_tokens": 748,
+    "cache_creation_tokens": 383023,
+    "cache_read_tokens": 39741006,
+    "output_tokens": 171992,
+    "api_call_count": 289,
+    "subagent_tokens": {
+      "input_tokens": 10,
+      "cache_creation_tokens": 19190,
+      "cache_read_tokens": 38915,
+      "output_tokens": 3805,
+      "api_call_count": 4
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 105,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 105,
+      "key_context": 0,
+      "provider_token": 4,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 82
+  }
+}

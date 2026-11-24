@@ -1,0 +1,19 @@
+{
+  "tool_use_id": "toolu_01QGCWE4qbAgdRuyvqJe7UW3",
+  "agent_id": "aa95e124356f5dde0",
+  "subagent_type": "web-fetch",
+  "task_description": "Read sbx settings docs page",
+  "files": [
+    "setup.sh",
+    "zsh.d/functions/sbx.zsh"
+  ],
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 19190,
+    "cache_read_tokens": 38915,
+    "output_tokens": 3805,
+    "api_call_count": 4
+  },
+  "started_at": "2026-11-24T09:47:59.064359+09:00",
+  "completed_at": "2026-11-24T09:47:59.065119+09:00"
+}
