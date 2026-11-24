@@ -1,0 +1,25 @@
+worktree ってなに？
+
+---
+
+herdr で worktree 作る意味って？ workspace だけで十分じゃない・遮断
+
+---
+
+herdr で worktree 作る意味って？ workspace だけで十分じゃない？
+
+---
+
+paine から tab に移行ってできる？
+
+---
+
+format ってある？ json で出力されるから醜すぎる jq とかつかえばいいのか？
+
+---
+
+prefix+t で移動してるけど agent だけで移動もできたほうが楽なきがしてきた。なんかいい方法ある？
+
+---
+
+そうしようか
