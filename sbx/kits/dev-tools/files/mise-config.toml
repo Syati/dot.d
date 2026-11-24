@@ -1,5 +1,7 @@
 # sandbox のグローバル mise 設定。ツールの更新はここのバージョンを書き換える。
 [tools]
+"github:BurntSushi/ripgrep" = "15.2.0"
+"github:cli/cli" = { version = "2.104.0", strip_components = 1 }
 "github:rtk-ai/rtk" = "1.2.1"
 "github:entireio/cli" = "0.13.4"
 "github:k1LoW/git-wt" = "0.30.0"

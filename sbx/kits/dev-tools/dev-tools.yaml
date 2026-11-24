@@ -1,11 +1,11 @@
 # syntax=docker/sandbox-kit:3
 schemaVersion: "3"
 displayName: Dev Tools
-description: mise (checksum-pinned) plus rtk, entire and git-wt installed via mise, with rtk/language setup for Claude Code and Codex
+description: mise (checksum-pinned) plus rg, gh, rtk, entire and git-wt installed via mise, with rtk/language setup for Claude Code and Codex
 
 kind: mixin
 provides: ["dev-tools"]
-version: "4.0.0"
+version: "4.1.0"
 
 # mise の挙動をコンテナの環境変数として渡す。
 # ホストの ~/.config/mise/config.toml は sandbox に無いため、ここで補う。
@@ -41,7 +41,7 @@ capabilities:
     config:
       install:
         # イメージに同梱した設定ファイル (files/ → /usr/share/dev-tools/) を使う。
-        # rtk / entire / git-wt は mise (github バックエンド) で入れる。バージョンは files/mise-config.toml。
+        # rg / gh / rtk / entire / git-wt は mise (github バックエンド) で入れる。バージョンは files/mise-config.toml。
         # mise の shims は bash (BASH_ENV) 以外では PATH に載らないので、PATH にある
         # ~/.local/bin へ symlink して、hook や sh からも解決できるようにする。
         - command: |
@@ -51,11 +51,11 @@ capabilities:
             cp /usr/share/dev-tools/mise-config.toml "$HOME/.config/mise/config.toml"
             mise install
             mise reshim
-            for b in rtk entire git-remote-entire git-wt; do
+            for b in rg gh rtk entire git-remote-entire git-wt; do
               ln -sf "$HOME/.local/share/mise/shims/$b" "$HOME/.local/bin/$b"
             done
           user: agent
-          description: Install rtk, entire and git-wt with mise
+          description: Install rg, gh, rtk, entire and git-wt with mise
 
         # rtk の hook と指示ファイルを、エージェントごとに rtk 自身に生成させる。
         # ~/.claude があれば Claude 用、~/.codex があれば Codex 用（どちらの sandbox にも使える）。
