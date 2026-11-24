@@ -24,6 +24,7 @@ ln -v -s -f ${CWD}/tmux.d/.tmux.conf ~/.tmux.conf
 ln -v -s -f ${CWD}/emacs.d ~/.emacs.d
 ln -v -s -f ${CWD}/hammerspoon.d ~/.hammerspoon
 ln -v -s -f ${CWD}/sbx/sbxenv.yaml ~/.sbxenv.yaml
+sh ${CWD}/sbx/settings.sh
 
 echo 'DONE'
 

@@ -22,6 +22,21 @@ args:
     env: MISE_IDIOMATIC_VERSION_FILE_ENABLE_TOOLS
 
 capabilities:
+  # ホストの git の名前・メールを、サンドボックスの global git config に渡す（ランタイムが提供）。
+  - type: com.docker.sandbox/git-identity@1
+    optional: true
+    description: Attribute commits to the user's Git identity
+
+  # ホストの SSH エージェント (1Password) 経由で git の署名だけを許可する。秘密鍵は外に出ない。
+  # sign: [git] なので、ログインや他の署名には使えない。署名のたびにホスト側で承認が要る。
+  - type: com.docker.sandbox/ssh-agent@1
+    optional: true
+    description: Sign git commits and tags with the user's SSH key
+    config:
+      phase: runtime
+      unrestricted: false
+      sign: [git]
+
   - type: com.docker.sandbox/lifecycle@1
     config:
       install:
@@ -82,6 +97,31 @@ capabilities:
           description: Put mise shims on PATH for every shell
 
       startup:
+        # SSH エージェントが使えるときだけ、git の SSH 署名を既定で有効にする（kit 公式例 git-signing に準拠）。
+        # 無いときに gpgsign=true にするとコミットが失敗するので、何もしない。
+        # ~/.gitconfig の値は上書きしない（無いキーだけ XDG の config に補う）。
+        - command: |
+            set -u
+            ssh-add -L >/dev/null 2>&1 || exit 0
+            config="${XDG_CONFIG_HOME:-$HOME/.config}/git/config"
+            mkdir -p "$(dirname "$config")"
+            set_default() {
+              if git config --file "$config" --get "$1" >/dev/null; then
+                return
+              else
+                status=$?
+                [ "$status" -eq 1 ] || return "$status"
+              fi
+              git config --file "$config" "$1" "$2"
+            }
+            set_default gpg.format ssh
+            set_default gpg.ssh.defaultKeyCommand 'ssh-add -L'
+            set_default commit.gpgsign true
+            set_default tag.gpgsign true
+          user: agent
+          env: [XDG_CONFIG_HOME, SSH_AUTH_SOCK]
+          description: Enable git SSH signing when an SSH agent is available
+
         # ワークスペースの mise 設定 (mise.toml / .tool-versions / .ruby-version 等) を信頼し、
         # ツールを入れる。エージェントが起動する前に揃うよう、バックグラウンドにしない。
         # 入済みなら一瞬で終わる (毎回起動のたびに走るので、mise.toml の更新にも追従する)。
